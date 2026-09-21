@@ -1,0 +1,8 @@
+# Compatibility environment for the archived acne-CV KerasCV model.
+tensorflow==2.16.2
+keras==3.15.1
+keras-cv==0.9.0
+tensorflow-datasets==4.9.4
+tensorflow-metadata==1.15.0
+pycocotools==2.0.10
+

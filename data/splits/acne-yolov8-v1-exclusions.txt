@@ -1,0 +1,5 @@
+# This test image is byte-identical to train/images/acne-299_jpeg...
+# The two copies also have different labels, so the test copy is excluded
+# from the clean comparison set used for both legacy and future models.
+test/images/acne-112_jpeg.rf.a03c796422719e964f46be1c118861bc.jpg
+
