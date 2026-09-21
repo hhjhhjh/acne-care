@@ -1,0 +1,31 @@
+status: legacy_baseline_candidate
+source:
+  repository: acne-CV
+  git_head: 9d7fc56c
+  canonical_weight_path: app/model/yolo_acne_detection.weights.h5
+  weight_size_bytes: 47016328
+  weight_sha256: 0aa53871402aa540ebebd6368151eb2d21cf4fa9fa1a41b742ac3facc18f0f35
+
+framework:
+  runtime: tensorflow
+  library: keras_cv
+  exact_versions: unknown
+
+model:
+  detector: keras_cv.models.YOLOV8Detector
+  backbone_preset: yolo_v8_xs_backbone
+  include_rescaling: true
+  num_classes: 1
+  bounding_box_format: xyxy
+  fpn_depth: 5
+
+inference:
+  input_width: 640
+  input_height: 640
+  confidence_threshold: 0.4
+
+provenance:
+  training_script_available: false
+  training_config_available: false
+  evaluation_metrics_available: false
+  dataset_association_confirmed: false

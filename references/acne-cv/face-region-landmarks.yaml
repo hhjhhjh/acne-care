@@ -1,0 +1,142 @@
+status: unverified_reference
+mediapipe_api: solutions.face_mesh.FaceMesh
+source_file: PythonProject1/app_db/model/model.py
+
+coordinate_direction_warning: >-
+  MediaPipe 좌표, 촬영 이미지의 미러링 여부와 사용자 기준 좌우를 함께 검증해야 한다.
+  이전 코드의 app 버전과 PythonProject1 버전은 두 볼의 이름이 서로 반대이다.
+
+regions:
+  forehead:
+    display_name: 이마
+    landmark_indices:
+      - 8
+      - 9
+      - 10
+      - 107
+      - 66
+      - 105
+      - 63
+      - 70
+      - 71
+      - 109
+      - 108
+      - 151
+      - 296
+      - 334
+      - 293
+      - 300
+      - 299
+      - 383
+      - 368
+      - 389
+      - 356
+      - 337
+      - 276
+      - 283
+      - 282
+      - 295
+      - 285
+      - 336
+      - 65
+      - 66
+      - 67
+      - 68
+
+  nose:
+    display_name: 코
+    landmark_indices:
+      - 0
+      - 1
+      - 2
+      - 5
+      - 6
+      - 45
+      - 275
+      - 274
+      - 164
+      - 165
+      - 97
+      - 98
+      - 99
+      - 2
+      - 94
+      - 240
+      - 218
+      - 219
+      - 220
+      - 237
+      - 218
+      - 134
+      - 399
+      - 398
+
+  right_cheek_legacy_final:
+    display_name: 오른쪽볼
+    landmark_indices:
+      - 116
+      - 117
+      - 118
+      - 119
+      - 120
+      - 121
+      - 128
+      - 130
+      - 132
+      - 226
+      - 113
+      - 225
+      - 224
+      - 223
+      - 222
+      - 221
+      - 189
+      - 190
+      - 137
+      - 139
+      - 146
+
+  left_cheek_legacy_final:
+    display_name: 왼쪽볼
+    landmark_indices:
+      - 345
+      - 346
+      - 347
+      - 348
+      - 349
+      - 350
+      - 359
+      - 361
+      - 447
+      - 366
+      - 436
+      - 435
+      - 414
+      - 398
+      - 397
+      - 380
+      - 381
+      - 382
+      - 383
+      - 384
+      - 385
+      - 386
+      - 387
+      - 388
+      - 389
+
+  chin:
+    display_name: 턱
+    landmark_indices:
+      - 0
+      - 17
+      - 170
+      - 175
+      - 364
+      - 335
+      - 172
+      - 152
+      - 395
+      - 396
+      - 397
+      - 400

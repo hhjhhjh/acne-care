@@ -1,0 +1,22 @@
+.DS_Store
+.env
+.venv/
+__pycache__/
+*.py[cod]
+
+# 사용자 얼굴 이미지와 실행 중 생성되는 파일
+uploads/
+data/raw/
+data/processed/
+*.db
+*.sqlite
+*.sqlite3
+
+# 모델 가중치는 로컬이나 별도 artifact 저장소에서 관리한다.
+models/**/*.h5
+models/**/*.pt
+models/**/*.onnx
+
+# 실험 결과
+mlruns/
+runs/
