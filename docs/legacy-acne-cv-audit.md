@@ -103,10 +103,8 @@ SHA-256은 `0aa53871402aa540ebebd6368151eb2d21cf4fa9fa1a41b742ac3facc18f0f35`이
 
 따라서 기존 가중치는 출처가 완전히 재현되는 모델로 표시하지 않고 `legacy baseline candidate`로 관리한다. Kaggle test set에서 다시 평가한 뒤 baseline 채택 여부를 결정한다.
 
-## 다음 작업
+## 조사 이후 처리 결과
 
-1. Kaggle 데이터셋을 `data/raw/`에 내려받고 분할 간 중복을 검사한다.
-2. TensorFlow와 KerasCV의 호환 버전을 찾는 최소 실행 환경을 만든다.
-3. 기존 가중치로 한 장의 이미지 추론과 test set 평가를 수행한다.
-4. 얼굴 좌우가 명확한 테스트 이미지로 볼 인덱스를 검증한다.
-5. 검증된 로직만 새 `src/` 모듈과 테스트로 다시 작성한다.
+Kaggle 데이터셋을 내려받아 파일 대응, 라벨 범위와 분할 간 완전 중복을 검사했다. train과 test에 같은 이미지 한 쌍이 있어 test 쪽 파일을 비교 집합에서 제외했다. TensorFlow 2.16.2와 KerasCV 0.9.0으로 이전 가중치를 복원했고, 남은 test 이미지 47장의 기준 성능을 `docs/experiments/legacy-baseline.md`에 기록했다.
+
+탐지 결과의 자료형, 탐지기 인터페이스, 데이터 검사와 평가 지표는 `backend/src/acne_care/`에 독립 모듈로 다시 작성했다. 얼굴 부위 landmark는 아직 검증 전 참고 자료로 유지한다. 다음 작업은 현재 관리되는 YOLO 구현으로 새 baseline을 학습한 뒤 같은 비교 집합에서 이전 모델과 비교하는 것이다.
