@@ -1,0 +1,4 @@
+# Training environment for the new YOLO11 baseline.
+ultralytics==8.4.157
+torch==2.14.0
+torchvision==0.29.0

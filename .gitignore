@@ -16,6 +16,7 @@ data/processed/
 models/**/*.h5
 models/**/*.pt
 models/**/*.onnx
+*.pt
 
 # 실험 결과
 mlruns/
