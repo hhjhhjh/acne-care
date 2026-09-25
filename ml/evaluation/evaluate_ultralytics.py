@@ -15,8 +15,9 @@ from ultralytics import YOLO
 from acne_care.dataset.yolo import read_yolo_ground_truths
 from acne_care.domain import BoundingBox, Detection
 from acne_care.evaluation.detection_metrics import (
-    DetectionMetricCounts,
-    evaluate_detections,
+    ThresholdMetrics,
+    evaluate_thresholds,
+    select_best_threshold,
 )
 
 
@@ -25,14 +26,14 @@ CLASS_ID = 0
 
 def main() -> None:
     arguments = parse_arguments()
-    image_paths = read_manifest_images(arguments.test_manifest)
+    image_paths = read_manifest_images(arguments.image_manifest)
     if not image_paths:
         raise ValueError("test manifest contains no images")
 
     model = YOLO(str(arguments.weights))
     validation = model.val(
         data=str(arguments.data),
-        split="test",
+        split=arguments.split,
         imgsz=arguments.image_size,
         batch=arguments.batch_size,
         device=arguments.device,
@@ -40,13 +41,15 @@ def main() -> None:
         verbose=False,
     )
 
-    aggregate_counts = DetectionMetricCounts()
+    minimum_confidence = min(
+        (arguments.confidence_threshold, *(arguments.thresholds or ()))
+    )
     synchronize_device(arguments.device)
     inference_started_at = time.perf_counter()
     results = model.predict(
         source=[str(path) for path in image_paths],
         imgsz=arguments.image_size,
-        conf=arguments.confidence_threshold,
+        conf=minimum_confidence,
         device=arguments.device,
         batch=arguments.batch_size,
         verbose=False,
@@ -54,6 +57,7 @@ def main() -> None:
     )
     synchronize_device(arguments.device)
     inference_seconds = time.perf_counter() - inference_started_at
+    samples = []
     for image_path, result in zip(image_paths, results, strict=True):
         ground_truths = read_yolo_ground_truths(
             label_path_for(image_path),
@@ -74,11 +78,18 @@ def main() -> None:
             )
             if int(class_id) == CLASS_ID
         )
-        aggregate_counts += evaluate_detections(
-            ground_truths,
-            detections,
-            iou_threshold=arguments.iou_threshold,
-        )
+        samples.append((ground_truths, detections))
+
+    primary_metrics = evaluate_thresholds(
+        samples,
+        thresholds=(arguments.confidence_threshold,),
+        iou_threshold=arguments.iou_threshold,
+    )[0]
+    sweep_results = evaluate_thresholds(
+        samples,
+        thresholds=arguments.thresholds,
+        iou_threshold=arguments.iou_threshold,
+    ) if arguments.thresholds else ()
 
     result_document = {
         "model": {
@@ -94,16 +105,18 @@ def main() -> None:
         },
         "dataset": {
             "data_yaml": str(arguments.data),
-            "test_manifest": str(arguments.test_manifest),
-            "test_images_evaluated": len(image_paths),
+            "split": arguments.split,
+            "image_manifest": str(arguments.image_manifest),
+            "images_evaluated": len(image_paths),
         },
         "evaluation": {
             "confidence_threshold": arguments.confidence_threshold,
             "iou_threshold": arguments.iou_threshold,
-            "counts": asdict(aggregate_counts),
-            "precision": aggregate_counts.precision,
-            "recall": aggregate_counts.recall,
-            "f1": aggregate_counts.f1,
+            "counts": asdict(primary_metrics.counts),
+            "precision": primary_metrics.precision,
+            "recall": primary_metrics.recall,
+            "f1": primary_metrics.f1,
+            "count_mae": primary_metrics.count_mae,
             "coco": {
                 "mAP50-95": float(validation.box.map),
                 "mAP50": float(validation.box.map50),
@@ -114,6 +127,16 @@ def main() -> None:
             / len(image_paths),
         },
     }
+    if sweep_results:
+        result_document["threshold_sweep"] = {
+            "selection_rule": "maximum F1, then minimum count MAE, then maximum recall",
+            "selected": threshold_result_to_dict(
+                select_best_threshold(sweep_results)
+            ),
+            "results": [
+                threshold_result_to_dict(item) for item in sweep_results
+            ],
+        }
     serialized = json.dumps(result_document, ensure_ascii=False, indent=2)
     print(serialized)
     if arguments.output is not None:
@@ -124,14 +147,22 @@ def main() -> None:
 def parse_arguments() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Evaluate a YOLO11 acne model")
     parser.add_argument("--data", type=Path, required=True)
-    parser.add_argument("--test-manifest", type=Path, required=True)
+    parser.add_argument(
+        "--image-manifest",
+        "--test-manifest",
+        dest="image_manifest",
+        type=Path,
+        required=True,
+    )
     parser.add_argument("--weights", type=Path, required=True)
     parser.add_argument("--output", type=Path)
     parser.add_argument("--image-size", type=int, default=640)
     parser.add_argument("--batch-size", type=int, default=8)
     parser.add_argument("--device", default="mps")
+    parser.add_argument("--split", choices=("val", "test"), default="test")
     parser.add_argument("--confidence-threshold", type=float, default=0.4)
     parser.add_argument("--iou-threshold", type=float, default=0.5)
+    parser.add_argument("--thresholds", nargs="*", type=float)
     return parser.parse_args()
 
 
@@ -164,6 +195,17 @@ def file_sha256(path: Path) -> str:
 def synchronize_device(device: str) -> None:
     if device == "mps" and torch.backends.mps.is_available():
         torch.mps.synchronize()
+
+
+def threshold_result_to_dict(result: ThresholdMetrics) -> dict[str, object]:
+    return {
+        "threshold": result.threshold,
+        "counts": asdict(result.counts),
+        "precision": result.precision,
+        "recall": result.recall,
+        "f1": result.f1,
+        "count_mae": result.count_mae,
+    }
 
 
 if __name__ == "__main__":
