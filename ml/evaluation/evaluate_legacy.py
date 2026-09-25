@@ -16,8 +16,9 @@ import tensorflow as tf
 from acne_care.dataset.yolo import read_yolo_ground_truths
 from acne_care.domain import BoundingBox, Detection
 from acne_care.evaluation.detection_metrics import (
-    DetectionMetricCounts,
-    evaluate_detections,
+    ThresholdMetrics,
+    evaluate_thresholds,
+    select_best_threshold,
 )
 
 
@@ -27,21 +28,24 @@ CLASS_ID = 0
 
 def main() -> None:
     arguments = parse_arguments()
+    source_split = "valid" if arguments.split == "val" else "test"
     excluded_paths = read_exclusions(arguments.exclude_file)
-    image_paths = sorted((arguments.dataset_root / "test" / "images").glob("*.jpg"))
+    image_paths = sorted(
+        (arguments.dataset_root / source_split / "images").glob("*.jpg")
+    )
     selected_paths = [
         path
         for path in image_paths
         if path.relative_to(arguments.dataset_root).as_posix() not in excluded_paths
     ]
     if not selected_paths:
-        raise ValueError("no test images remain after applying exclusions")
+        raise ValueError("no images remain after applying exclusions")
 
     maximum_ground_truth_boxes = max(
         len(
             read_yolo_ground_truths(
                 arguments.dataset_root
-                / "test"
+                / source_split
                 / "labels"
                 / f"{image_path.stem}.txt",
                 image_width=IMAGE_SIZE,
@@ -56,12 +60,16 @@ def main() -> None:
         bounding_box_format="xyxy",
         evaluate_freq=len(selected_paths) + 1,
     )
-    aggregate_counts = DetectionMetricCounts()
+    samples = []
     inference_seconds = 0.0
 
     for batch_start in range(0, len(selected_paths), arguments.batch_size):
         batch_paths = selected_paths[batch_start : batch_start + arguments.batch_size]
-        images, ground_truth_batches = load_batch(arguments.dataset_root, batch_paths)
+        images, ground_truth_batches = load_batch(
+            arguments.dataset_root,
+            source_split,
+            batch_paths,
+        )
         started_at = time.perf_counter()
         predictions = model.predict(images, verbose=0)
         inference_seconds += time.perf_counter() - started_at
@@ -76,13 +84,20 @@ def main() -> None:
             detections = prediction_to_detections(
                 predictions,
                 batch_index=index,
-                confidence_threshold=arguments.confidence_threshold,
+                confidence_threshold=0.0,
             )
-            aggregate_counts += evaluate_detections(
-                ground_truths,
-                detections,
-                iou_threshold=arguments.iou_threshold,
-            )
+            samples.append((ground_truths, detections))
+
+    primary_metrics = evaluate_thresholds(
+        samples,
+        thresholds=(arguments.confidence_threshold,),
+        iou_threshold=arguments.iou_threshold,
+    )[0]
+    sweep_results = evaluate_thresholds(
+        samples,
+        thresholds=arguments.thresholds,
+        iou_threshold=arguments.iou_threshold,
+    ) if arguments.thresholds else ()
 
     coco_values = {
         key: float(value.numpy())
@@ -102,22 +117,34 @@ def main() -> None:
         },
         "dataset": {
             "root": str(arguments.dataset_root),
-            "test_images_total": len(image_paths),
-            "test_images_evaluated": len(selected_paths),
+            "split": arguments.split,
+            "images_total": len(image_paths),
+            "images_evaluated": len(selected_paths),
             "excluded_paths": sorted(excluded_paths),
         },
         "evaluation": {
             "confidence_threshold": arguments.confidence_threshold,
             "iou_threshold": arguments.iou_threshold,
-            "counts": asdict(aggregate_counts),
-            "precision": aggregate_counts.precision,
-            "recall": aggregate_counts.recall,
-            "f1": aggregate_counts.f1,
+            "counts": asdict(primary_metrics.counts),
+            "precision": primary_metrics.precision,
+            "recall": primary_metrics.recall,
+            "f1": primary_metrics.f1,
+            "count_mae": primary_metrics.count_mae,
             "coco": coco_values,
             "inference_seconds_total": inference_seconds,
             "inference_seconds_per_image": inference_seconds / len(selected_paths),
         },
     }
+    if sweep_results:
+        result["threshold_sweep"] = {
+            "selection_rule": "maximum F1, then minimum count MAE, then maximum recall",
+            "selected": threshold_result_to_dict(
+                select_best_threshold(sweep_results)
+            ),
+            "results": [
+                threshold_result_to_dict(item) for item in sweep_results
+            ],
+        }
 
     serialized = json.dumps(result, ensure_ascii=False, indent=2)
     print(serialized)
@@ -132,9 +159,11 @@ def parse_arguments() -> argparse.Namespace:
     parser.add_argument("--weights", type=Path, required=True)
     parser.add_argument("--exclude-file", type=Path)
     parser.add_argument("--output", type=Path)
+    parser.add_argument("--split", choices=("val", "test"), default="test")
     parser.add_argument("--batch-size", type=int, default=4)
     parser.add_argument("--confidence-threshold", type=float, default=0.4)
     parser.add_argument("--iou-threshold", type=float, default=0.5)
+    parser.add_argument("--thresholds", nargs="*", type=float)
     return parser.parse_args()
 
 
@@ -150,11 +179,19 @@ def load_model(weights_path: Path):
         fpn_depth=5,
     )
     model.load_weights(weights_path)
+    model.prediction_decoder = keras_cv.layers.NonMaxSuppression(
+        bounding_box_format="xyxy",
+        from_logits=False,
+        iou_threshold=0.7,
+        confidence_threshold=0.01,
+        max_detections=100,
+    )
     return model
 
 
 def load_batch(
     dataset_root: Path,
+    source_split: str,
     image_paths: list[Path],
 ) -> tuple[tf.Tensor, list[tuple[tuple[BoundingBox, int], ...]]]:
     images: list[tf.Tensor] = []
@@ -163,9 +200,7 @@ def load_batch(
         image = tf.io.decode_jpeg(tf.io.read_file(str(image_path)), channels=3)
         image = tf.image.resize(image, (IMAGE_SIZE, IMAGE_SIZE))
         images.append(tf.cast(image, tf.float32))
-        label_path = (
-            dataset_root / "test" / "labels" / f"{image_path.stem}.txt"
-        )
+        label_path = dataset_root / source_split / "labels" / f"{image_path.stem}.txt"
         ground_truth_batches.append(
             read_yolo_ground_truths(
                 label_path,
@@ -236,6 +271,17 @@ def file_sha256(path: Path) -> str:
         for chunk in iter(lambda: source_file.read(1024 * 1024), b""):
             digest.update(chunk)
     return digest.hexdigest()
+
+
+def threshold_result_to_dict(result: ThresholdMetrics) -> dict[str, object]:
+    return {
+        "threshold": result.threshold,
+        "counts": asdict(result.counts),
+        "precision": result.precision,
+        "recall": result.recall,
+        "f1": result.f1,
+        "count_mae": result.count_mae,
+    }
 
 
 if __name__ == "__main__":

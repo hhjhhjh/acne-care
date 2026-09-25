@@ -1,7 +1,11 @@
 import unittest
 
 from acne_care.domain import BoundingBox, Detection
-from acne_care.evaluation.detection_metrics import evaluate_detections
+from acne_care.evaluation.detection_metrics import (
+    evaluate_detections,
+    evaluate_thresholds,
+    select_best_threshold,
+)
 
 
 class DetectionMetricsTest(unittest.TestCase):
@@ -49,6 +53,40 @@ class DetectionMetricsTest(unittest.TestCase):
         self.assertEqual(result.precision, 0.0)
         self.assertEqual(result.recall, 0.0)
         self.assertEqual(result.f1, 0.0)
+
+    def test_evaluates_thresholds_and_count_mae(self) -> None:
+        ground_truths = ((BoundingBox(0, 0, 10, 10), 0),)
+        predictions = (
+            Detection(BoundingBox(0, 0, 10, 10), confidence=0.8, class_id=0),
+            Detection(BoundingBox(20, 20, 30, 30), confidence=0.3, class_id=0),
+        )
+
+        results = evaluate_thresholds(
+            ((ground_truths, predictions),),
+            thresholds=(0.2, 0.5),
+            iou_threshold=0.5,
+        )
+
+        self.assertEqual(results[0].false_positives, 1)
+        self.assertEqual(results[0].count_mae, 1.0)
+        self.assertEqual(results[1].false_positives, 0)
+        self.assertEqual(results[1].count_mae, 0.0)
+
+    def test_selects_highest_f1_then_lowest_count_mae(self) -> None:
+        ground_truths = ((BoundingBox(0, 0, 10, 10), 0),)
+        predictions = (
+            Detection(BoundingBox(0, 0, 10, 10), confidence=0.9, class_id=0),
+            Detection(BoundingBox(20, 20, 30, 30), confidence=0.4, class_id=0),
+        )
+        results = evaluate_thresholds(
+            ((ground_truths, predictions),),
+            thresholds=(0.3, 0.5),
+            iou_threshold=0.5,
+        )
+
+        best = select_best_threshold(results)
+
+        self.assertEqual(best.threshold, 0.5)
 
 
 if __name__ == "__main__":

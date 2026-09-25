@@ -1,0 +1,10 @@
+status: selected_baseline
+model_id: yolo11n-acne-seed42
+framework: ultralytics
+confidence_threshold: 0.20
+iou_threshold: 0.50
+input_size: 640
+weights_sha256: 3870c1a2ccf3a0498e03cdb35b26d4e0671fde70a3c496264a0988d5cf75168b
+selection_dataset: validation
+final_evaluation_dataset: clean_test_47
+selection_rule: maximum_f1_then_minimum_count_mae_then_maximum_recall

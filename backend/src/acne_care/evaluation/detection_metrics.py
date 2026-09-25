@@ -37,6 +37,42 @@ class DetectionMetricCounts:
         )
 
 
+@dataclass(frozen=True, slots=True)
+class ThresholdMetrics:
+    threshold: float
+    counts: DetectionMetricCounts
+    image_count: int
+    total_absolute_count_error: int
+
+    @property
+    def true_positives(self) -> int:
+        return self.counts.true_positives
+
+    @property
+    def false_positives(self) -> int:
+        return self.counts.false_positives
+
+    @property
+    def false_negatives(self) -> int:
+        return self.counts.false_negatives
+
+    @property
+    def precision(self) -> float:
+        return self.counts.precision
+
+    @property
+    def recall(self) -> float:
+        return self.counts.recall
+
+    @property
+    def f1(self) -> float:
+        return self.counts.f1
+
+    @property
+    def count_mae(self) -> float:
+        return self.total_absolute_count_error / self.image_count
+
+
 def evaluate_detections(
     ground_truths: Sequence[GroundTruth],
     predictions: Sequence[Detection],
@@ -92,3 +128,59 @@ def intersection_over_union(first: BoundingBox, second: BoundingBox) -> float:
     intersection_area = intersection_width * intersection_height
     union_area = first.area + second.area - intersection_area
     return intersection_area / union_area if union_area else 0.0
+
+
+def evaluate_thresholds(
+    samples: Sequence[tuple[Sequence[GroundTruth], Sequence[Detection]]],
+    *,
+    thresholds: Sequence[float],
+    iou_threshold: float,
+) -> tuple[ThresholdMetrics, ...]:
+    if not samples:
+        raise ValueError("at least one evaluation sample is required")
+
+    results: list[ThresholdMetrics] = []
+    for threshold in thresholds:
+        if not 0 <= threshold <= 1:
+            raise ValueError("confidence thresholds must be between 0 and 1")
+        counts = DetectionMetricCounts()
+        total_absolute_count_error = 0
+        for ground_truths, predictions in samples:
+            selected_predictions = tuple(
+                prediction
+                for prediction in predictions
+                if prediction.confidence >= threshold
+            )
+            counts += evaluate_detections(
+                ground_truths,
+                selected_predictions,
+                iou_threshold=iou_threshold,
+            )
+            total_absolute_count_error += abs(
+                len(selected_predictions) - len(ground_truths)
+            )
+        results.append(
+            ThresholdMetrics(
+                threshold=float(threshold),
+                counts=counts,
+                image_count=len(samples),
+                total_absolute_count_error=total_absolute_count_error,
+            )
+        )
+    return tuple(results)
+
+
+def select_best_threshold(
+    results: Sequence[ThresholdMetrics],
+) -> ThresholdMetrics:
+    if not results:
+        raise ValueError("at least one threshold result is required")
+    return max(
+        results,
+        key=lambda result: (
+            result.f1,
+            -result.count_mae,
+            result.recall,
+            result.threshold,
+        ),
+    )
