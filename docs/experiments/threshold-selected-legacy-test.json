@@ -1,0 +1,51 @@
+{
+  "model": {
+    "id": "acne-cv-legacy-keras-cv-yolov8-xs",
+    "weights": "models/legacy/acne-cv/yolo_acne_detection.weights.h5",
+    "weights_sha256": "0aa53871402aa540ebebd6368151eb2d21cf4fa9fa1a41b742ac3facc18f0f35"
+  },
+  "runtime": {
+    "python": "3.11.14",
+    "tensorflow": "2.16.2",
+    "keras": "3.15.1",
+    "keras_cv": "0.9.0"
+  },
+  "dataset": {
+    "root": "data/raw/acne-dataset-in-yolov8-format/data-2",
+    "split": "test",
+    "images_total": 48,
+    "images_evaluated": 47,
+    "excluded_paths": [
+      "test/images/acne-112_jpeg.rf.a03c796422719e964f46be1c118861bc.jpg"
+    ]
+  },
+  "evaluation": {
+    "confidence_threshold": 0.3,
+    "iou_threshold": 0.5,
+    "counts": {
+      "true_positives": 285,
+      "false_positives": 132,
+      "false_negatives": 301
+    },
+    "precision": 0.6834532374100719,
+    "recall": 0.4863481228668942,
+    "f1": 0.5682951146560319,
+    "count_mae": 4.659574468085107,
+    "coco": {
+      "MaP": 0.23158207535743713,
+      "MaP@[IoU=50]": 0.5601062178611755,
+      "MaP@[IoU=75]": 0.14179381728172302,
+      "MaP@[area=small]": 0.1790330559015274,
+      "MaP@[area=medium]": 0.2862713932991028,
+      "MaP@[area=large]": 0.0,
+      "Recall@[max_detections=1]": 0.035324230790138245,
+      "Recall@[max_detections=10]": 0.24812287092208862,
+      "Recall@[max_detections=100]": 0.4317406117916107,
+      "Recall@[area=small]": 0.326053649187088,
+      "Recall@[area=medium]": 0.5156441926956177,
+      "Recall@[area=large]": 0.0
+    },
+    "inference_seconds_total": 8.265272208001079,
+    "inference_seconds_per_image": 0.17585685548938465
+  }
+}
