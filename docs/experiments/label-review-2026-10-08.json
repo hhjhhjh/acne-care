@@ -1,0 +1,527 @@
+{
+  "schema_version": 1,
+  "dataset_fingerprint": "f06cb73e88d9",
+  "exported_at": "2026-10-08T00:23:58.758Z",
+  "reviews": {
+    "valid/images/acne-103_jpeg.rf.055236d16a0ad3642b8e9f44250a8999.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:09:28.474Z"
+    },
+    "valid/images/acne-113_jpeg.rf.61f34253768c2c2d90f282009cc85cc1.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:09:43.821Z"
+    },
+    "valid/images/acne-115_jpeg.rf.1c4b3100bd61c3be8b101094633f80e0.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:09:48.556Z"
+    },
+    "valid/images/acne-11_jpeg.rf.7371382ec505972eb878bf9f4765b068.jpg": {
+      "status": "needs_correction",
+      "note": "라벨 1,2 근처에도 여드름 많음",
+      "updated_at": "2026-10-08T00:10:18.972Z"
+    },
+    "valid/images/acne-121_jpg.rf.fda929f19402573163ffba906f3509ac.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:10:24.337Z"
+    },
+    "valid/images/acne-131_jpg.rf.116f58db510524f94237b01e37f3a16f.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:10:28.453Z"
+    },
+    "valid/images/acne-134_jpg.rf.417c82e7063a6160461440b5758b9993.jpg": {
+      "status": "needs_correction",
+      "note": "9와 4 밑에 여드름 1개 누락",
+      "updated_at": "2026-10-08T00:10:50.034Z"
+    },
+    "valid/images/acne-135_jpg.rf.042025713da3de0b88f75367822f27a0.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:10:56.251Z"
+    },
+    "valid/images/acne-142_jpg.rf.9ffefe2ae2611433749ba9e3198ce75e.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:11:01.650Z"
+    },
+    "valid/images/acne-145_jpg.rf.0a5ef2e06e9910a40d972dca98b41eef.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:11:07.639Z"
+    },
+    "valid/images/acne-149_jpg.rf.03e8887e9c8de1c1f12b9d147d0dda17.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:11:10.694Z"
+    },
+    "valid/images/acne-150_jpg.rf.ffcc725634ec3221b86686905e57e399.jpg": {
+      "status": "needs_correction",
+      "note": "2의 오른쪽 윗 부분에 여드름 1개 누락",
+      "updated_at": "2026-10-08T00:11:40.499Z"
+    },
+    "valid/images/acne-162_jpg.rf.3e7a961c691682bef628b7784a4dd8e7.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:11:47.304Z"
+    },
+    "valid/images/acne-204_jpg.rf.f33f3ded55db615da9540b2ad9e8ffc3.jpg": {
+      "status": "needs_correction",
+      "note": "9의 오른쪽 맨끝 부분에 여드름 1개 누락",
+      "updated_at": "2026-10-08T00:12:20.380Z"
+    },
+    "valid/images/acne-205_jpg.rf.38aad590bdaf41afcf089fa97467ed1b.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:12:26.721Z"
+    },
+    "valid/images/acne-20_jpeg.rf.d401578b451f1b68e8c29f5e4c7f4da1.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:12:29.515Z"
+    },
+    "valid/images/acne-211_jpg.rf.897fd14484e689e5a579422312525be5.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:12:31.835Z"
+    },
+    "valid/images/acne-216_jpg.rf.229a8cdefe7eae1fa2fdcd7f63036f7e.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:12:43.411Z"
+    },
+    "valid/images/acne-217_jpg.rf.50e3f9c13b5969348eeef19d2c81e0ba.jpg": {
+      "status": "needs_correction",
+      "note": "15의 윗 부분에 여드름 다수 누락",
+      "updated_at": "2026-10-08T00:13:04.074Z"
+    },
+    "valid/images/acne-21_jpeg.rf.1520100798d86a2e36b9727e4b6ac613.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:13:07.667Z"
+    },
+    "valid/images/acne-220_jpg.rf.71b2cf21050700b1329f90be30ef4a66.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:13:10.477Z"
+    },
+    "valid/images/acne-221_jpg.rf.b18cf9dc385b45ae4d38acec4b978e51.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:13:20.544Z"
+    },
+    "valid/images/acne-223_jpg.rf.1b603f941d5d6b2ed05a4998dabd83d4.jpg": {
+      "status": "needs_correction",
+      "note": "17의 왼쪽에 여드름 누락",
+      "updated_at": "2026-10-08T00:13:38.541Z"
+    },
+    "valid/images/acne-224_jpg.rf.21be34e10c2c539505d35f293f36f36d.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:13:44.591Z"
+    },
+    "valid/images/acne-22_jpeg.rf.ee4659bccc79f60a653fd52a8d6b4d51.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:13:47.892Z"
+    },
+    "valid/images/acne-237_jpg.rf.e5f4f7eaa88499717b72c8d9d88fe289.jpg": {
+      "status": "ok",
+      "note": "4와 6의 아래쪽에 여드름 다수 누락",
+      "updated_at": "2026-10-08T00:14:34.838Z"
+    },
+    "valid/images/acne-246_jpeg.rf.97766b7ea51380c13600bb25c9153fca.jpg": {
+      "status": "needs_correction",
+      "note": "오른쪽 볼 부분에 여드름 다수 누락",
+      "updated_at": "2026-10-08T00:14:38.971Z"
+    },
+    "valid/images/acne-257_jpeg.rf.895db52509dcf3274333c8a46af00f79.jpg": {
+      "status": "needs_correction",
+      "note": "전체적으로 여드름 다수 누락",
+      "updated_at": "2026-10-08T00:14:28.845Z"
+    },
+    "valid/images/acne-267_jpeg.rf.f242964df9d8d9b39d5da13dea75712c.jpg": {
+      "status": "needs_correction",
+      "note": "턱 부분 여드름 다수 누락",
+      "updated_at": "2026-10-08T00:14:50.321Z"
+    },
+    "valid/images/acne-284_jpeg.rf.3c07273f141120e450c0bc506bb64849.jpg": {
+      "status": "exclude",
+      "note": "",
+      "updated_at": "2026-10-08T00:14:59.819Z"
+    },
+    "valid/images/acne-291_jpeg.rf.edde17fb518b35f2edf62b9d529cfae0.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:15:05.300Z"
+    },
+    "valid/images/acne-2_jpeg.rf.f4ec613e23dd372f3232c4cd68424250.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:15:09.999Z"
+    },
+    "valid/images/acne-319_jpeg.rf.205637ac39511f1f1662a5aec69ebdfa.jpg": {
+      "status": "needs_correction",
+      "note": "턱 부분 여드름 다수 누락",
+      "updated_at": "2026-10-08T00:16:01.366Z"
+    },
+    "valid/images/acne-320_jpeg.rf.36da7f5652215ec1bcc16a1d1dc6a420.jpg": {
+      "status": "needs_correction",
+      "note": "왼쪽 볼 부분 여드름 다수 누락",
+      "updated_at": "2026-10-08T00:16:03.781Z"
+    },
+    "valid/images/acne-337_jpeg.rf.d8466fa49f89fb18f3bd152da42a71e5.jpg": {
+      "status": "needs_correction",
+      "note": "1, 4의 아래쪽 부분 여드름 다수 누락",
+      "updated_at": "2026-10-08T00:16:06.932Z"
+    },
+    "valid/images/acne-352_jpeg.rf.5ba32bd220a14e6891977c4037ff03a4.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:16:10.508Z"
+    },
+    "valid/images/acne-35_jpeg.rf.873fbd0bd8c09cc8a0f9282f08ba1725.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:16:13.230Z"
+    },
+    "valid/images/acne-363_jpeg.rf.0c5af213756448958464517dac64be5f.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:16:15.493Z"
+    },
+    "valid/images/acne-373_jpeg.rf.fd792665746bf19c7deebc4d5a166e27.jpg": {
+      "status": "needs_correction",
+      "note": "라벨 주변에 여드름 다수 누락",
+      "updated_at": "2026-10-08T00:16:28.829Z"
+    },
+    "valid/images/acne-380_jpeg.rf.4e088c1e0484bfd28ea8f858e2d66a71.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:16:32.890Z"
+    },
+    "valid/images/acne-389_jpeg.rf.ab217fe1f261ae90befc002ba47247b3.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:16:34.578Z"
+    },
+    "valid/images/acne-407_jpeg.rf.5604336c78d700604ccee404912ed721.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:16:36.732Z"
+    },
+    "valid/images/acne-42_jpeg.rf.922e1ad2015d0b38de6725dfa26aa056.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:16:38.671Z"
+    },
+    "valid/images/acne-430_jpeg.rf.060bf1e5e68a338a3c3257f61533d42d.jpg": {
+      "status": "exclude",
+      "note": "",
+      "updated_at": "2026-10-08T00:16:42.413Z"
+    },
+    "valid/images/acne-432_jpeg.rf.ce392bcdec15d58d1616de4db76bdbd4.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:16:45.673Z"
+    },
+    "valid/images/acne-434_jpeg.rf.4ec27684c5e305eba0542a73f4e7e9e1.jpg": {
+      "status": "needs_correction",
+      "note": "입가 주변 여드름 다수 누락",
+      "updated_at": "2026-10-08T00:16:56.157Z"
+    },
+    "valid/images/acne-438_jpeg.rf.d6c4182d7db62c91edd02d5eb0e91e3f.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:16:58.949Z"
+    },
+    "valid/images/acne-454_jpeg.rf.18a13bf93c2bd2276ccc6d4e8d5889c3.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:17:02.370Z"
+    },
+    "valid/images/acne-50_jpeg.rf.482e3ccd2dd52214470131746460f538.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:17:06.188Z"
+    },
+    "valid/images/acne-56_jpeg.rf.967731b7fd228e7b4e8d996b656781cd.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:17:07.694Z"
+    },
+    "valid/images/acne-6_jpeg.rf.80265b4fa3a385c07f2f9395e486faf9.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:17:08.987Z"
+    },
+    "valid/images/acne-77_jpeg.rf.b5794c2f868e45624ee538ed0e36657b.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:17:10.704Z"
+    },
+    "valid/images/acne-78_jpeg.rf.ca1dc8af44d36a59fe0b4964ebcca155.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:17:12.365Z"
+    },
+    "valid/images/acne-83_jpeg.rf.5e49317764327db080c83ca841084390.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:17:14.885Z"
+    },
+    "valid/images/acne-90_jpeg.rf.715856ba33d2f7c26294ceea4aaa611b.jpg": {
+      "status": "needs_correction",
+      "note": "1,3,4주변 여드름 다수 누락",
+      "updated_at": "2026-10-08T00:17:29.962Z"
+    },
+    "valid/images/acne-98_jpeg.rf.e3ee418c4157dffff8102998f94e7257.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:17:35.016Z"
+    },
+    "test/images/acne-102_jpeg.rf.d15b34dc9a1e69aa996118a4c1a173ef.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:17:36.998Z"
+    },
+    "test/images/acne-105_jpeg.rf.e9b2ecfb4afb0217f046179f125242d2.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:17:38.833Z"
+    },
+    "test/images/acne-112_jpeg.rf.a03c796422719e964f46be1c118861bc.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:17:40.430Z"
+    },
+    "test/images/acne-128_jpg.rf.e3826584d02398d0f1d915cf3365a959.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:17:42.234Z"
+    },
+    "test/images/acne-140_jpg.rf.785b2c29676c422c6a1cdbe6708f86e8.jpg": {
+      "status": "needs_correction",
+      "note": "턱 부분 여드름 다수 누락",
+      "updated_at": "2026-10-08T00:17:56.284Z"
+    },
+    "test/images/acne-144_jpg.rf.e7404e17167235e55bc46e5c3914e22f.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:17:59.168Z"
+    },
+    "test/images/acne-151_jpg.rf.638c693eb9342b4800bd8b1758e566e1.jpg": {
+      "status": "needs_correction",
+      "note": "2,4 사이의 윗부분 여드름 1개 누락",
+      "updated_at": "2026-10-08T00:18:15.643Z"
+    },
+    "test/images/acne-155_jpg.rf.96681853cd48ff20eb8c2f0e3f32bdbf.jpg": {
+      "status": "needs_correction",
+      "note": "7의 윗부분 여드름 1개 누락",
+      "updated_at": "2026-10-08T00:18:32.756Z"
+    },
+    "test/images/acne-158_jpg.rf.9c07578d00524a159f65bff978a79c5a.jpg": {
+      "status": "needs_correction",
+      "note": "귀 근처 부분 여듦 다수 누락",
+      "updated_at": "2026-10-08T00:18:47.906Z"
+    },
+    "test/images/acne-15_jpeg.rf.510f6ab6153777e8087f1439ef39d8cc.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:18:53.250Z"
+    },
+    "test/images/acne-160_jpg.rf.b50f56372db5685c5301c83c555a777a.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:18:57.534Z"
+    },
+    "test/images/acne-161_jpg.rf.78459635cae3ff835cac7159c10bce51.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:18:59.817Z"
+    },
+    "test/images/acne-166_jpg.rf.a12f2acc98f6a862f6d8b7d28306e6ff.jpg": {
+      "status": "needs_correction",
+      "note": "여드름 다수 누락",
+      "updated_at": "2026-10-08T00:19:09.371Z"
+    },
+    "test/images/acne-167_jpg.rf.ca7f225b1a40cb053f3f590585061393.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:19:11.796Z"
+    },
+    "test/images/acne-172_jpg.rf.f8ed4f69412f8420d6628e206113b64c.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:19:13.433Z"
+    },
+    "test/images/acne-187_jpg.rf.a4bc43c7fb75ea9ddc00fa14bf06eda5.jpg": {
+      "status": "needs_correction",
+      "note": "여드름 다수 누락",
+      "updated_at": "2026-10-08T00:19:25.688Z"
+    },
+    "test/images/acne-194_jpg.rf.1d82dbb7c1fa130420898223ef06720a.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:19:45.120Z"
+    },
+    "test/images/acne-202_jpg.rf.3cb4d03fc5719519ae3f8319099eddef.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:19:47.909Z"
+    },
+    "test/images/acne-206_jpg.rf.8c9e6075fe0cfed1632f82cf23a2d9e4.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:19:50.187Z"
+    },
+    "test/images/acne-209_jpg.rf.a1dde106a5e5c3cd2b93666e9e226930.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:19:52.377Z"
+    },
+    "test/images/acne-219_jpg.rf.49ae2c76139959c042cfa3cf03848824.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:19:54.490Z"
+    },
+    "test/images/acne-230_jpg.rf.92c53cee80df6a2454765f7636b67d1a.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:19:56.212Z"
+    },
+    "test/images/acne-236_jpg.rf.c937d8c3c60bac296eb9e3b9237e13aa.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:19:59.306Z"
+    },
+    "test/images/acne-239_jpg.rf.08487e45a5ca975c038eabe8464b0c87.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:20:00.653Z"
+    },
+    "test/images/acne-25_jpeg.rf.61edfe1eaf01bce48403a1a22f693a86.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:20:01.957Z"
+    },
+    "test/images/acne-276_jpeg.rf.9d0990f99dee0e0ec17d89fd07384e0b.jpg": {
+      "status": "needs_correction",
+      "note": "머리 주변 여드름 1개 누락",
+      "updated_at": "2026-10-08T00:20:11.852Z"
+    },
+    "test/images/acne-286_jpeg.rf.1b6bcca440593ac6e33617083f34a4c5.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:20:17.367Z"
+    },
+    "test/images/acne-290_jpeg.rf.116ac413d37048340ce6c5b36e1b9d8a.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:20:20.085Z"
+    },
+    "test/images/acne-329_jpeg.rf.705fb900ba87dc12538508177c52c8a6.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:20:21.508Z"
+    },
+    "test/images/acne-32_jpeg.rf.6cfebd1da197182fd10391fc051d7308.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:20:23.384Z"
+    },
+    "test/images/acne-33_jpeg.rf.5f883b1bb6eacef56d03175d54955561.jpg": {
+      "status": "needs_correction",
+      "note": "14,6 밑 부분 여드름 다수 누락",
+      "updated_at": "2026-10-08T00:20:36.515Z"
+    },
+    "test/images/acne-355_jpeg.rf.a407ad30612ee0eea150efed8772694d.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:20:40.596Z"
+    },
+    "test/images/acne-370_jpeg.rf.a774873f1db723d298598b08cfc47315.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:20:42.844Z"
+    },
+    "test/images/acne-404_jpeg.rf.120f5acce0b15ea040f6e1a6f8a16dd5.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:20:44.298Z"
+    },
+    "test/images/acne-422_jpeg.rf.c90a75e149931778d9c643273737df59.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:20:45.426Z"
+    },
+    "test/images/acne-440_jpeg.rf.74f7f4b7cabd5d5e65c05367b20cb921.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:20:46.680Z"
+    },
+    "test/images/acne-457_jpeg.rf.96817d48e7a4fe76651012d96df43141.jpg": {
+      "status": "needs_correction",
+      "note": "1 밑부분 여드름 1개 누락",
+      "updated_at": "2026-10-08T00:21:08.715Z"
+    },
+    "test/images/acne-49_jpeg.rf.3c951af43df31b304067823e836ec20b.jpg": {
+      "status": "needs_correction",
+      "note": "코 밑부분 여드름 1개 누락",
+      "updated_at": "2026-10-08T00:21:21.048Z"
+    },
+    "test/images/acne-57_jpeg.rf.b9ed02768080fdfcf648eef4e58c1904.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:21:23.594Z"
+    },
+    "test/images/acne-5_jpeg.rf.2d6671715f0149df7b494c4d3f12a98b.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:21:25.323Z"
+    },
+    "test/images/acne-60_jpeg.rf.f2694c8e6226c725ff40b771560b5e06.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:21:26.578Z"
+    },
+    "test/images/acne-70_jpeg.rf.79a8da468a25fbeeb5a047793a3e9a4d.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:21:28.171Z"
+    },
+    "test/images/acne-75_jpeg.rf.d648e68373adc0adfd965b63d4632a48.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:21:29.407Z"
+    },
+    "test/images/acne-7_jpeg.rf.34ee37b930f592f787bb8d1bf6b37d30.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:21:30.717Z"
+    },
+    "test/images/acne-84_jpeg.rf.040421ad53965f5f41ddc6f6a8edef9f.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:21:32.154Z"
+    },
+    "test/images/acne-92_jpeg.rf.ffaa4abd4c59b50edc52a68d96de7679.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:21:37.236Z"
+    },
+    "test/images/acne-95_jpeg.rf.28c5c0321aca3fbff22844c56937dbfd.jpg": {
+      "status": "needs_correction",
+      "note": "턱 부분 여드름 다수 누락",
+      "updated_at": "2026-10-08T00:21:46.078Z"
+    },
+    "test/images/acne-99_jpeg.rf.38ff75b46468fb68d29e4125bde66e86.jpg": {
+      "status": "ok",
+      "note": "",
+      "updated_at": "2026-10-08T00:21:49.717Z"
+    }
+  }
+}
