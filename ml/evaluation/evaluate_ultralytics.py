@@ -19,6 +19,10 @@ from acne_care.evaluation.detection_metrics import (
     evaluate_thresholds,
     select_best_threshold,
 )
+from acne_care.evaluation.prediction_artifact import (
+    save_prediction_artifact,
+    serialize_sample,
+)
 
 
 CLASS_ID = 0
@@ -58,6 +62,7 @@ def main() -> None:
     synchronize_device(arguments.device)
     inference_seconds = time.perf_counter() - inference_started_at
     samples = []
+    serialized_samples = []
     for image_path, result in zip(image_paths, results, strict=True):
         ground_truths = read_yolo_ground_truths(
             label_path_for(image_path),
@@ -79,6 +84,16 @@ def main() -> None:
             if int(class_id) == CLASS_ID
         )
         samples.append((ground_truths, detections))
+        serialized_samples.append(
+            serialize_sample(
+                image_path=image_path.resolve(),
+                image_width=result.orig_shape[1],
+                image_height=result.orig_shape[0],
+                ground_truths=ground_truths,
+                predictions=detections,
+                confidence_threshold=arguments.confidence_threshold,
+            )
+        )
 
     primary_metrics = evaluate_thresholds(
         samples,
@@ -142,6 +157,15 @@ def main() -> None:
     if arguments.output is not None:
         arguments.output.parent.mkdir(parents=True, exist_ok=True)
         arguments.output.write_text(serialized + "\n", encoding="utf-8")
+    if arguments.predictions_output is not None:
+        save_prediction_artifact(
+            arguments.predictions_output,
+            model_id=result_document["model"]["id"],
+            split=arguments.split,
+            confidence_threshold=arguments.confidence_threshold,
+            iou_threshold=arguments.iou_threshold,
+            samples=serialized_samples,
+        )
 
 
 def parse_arguments() -> argparse.Namespace:
@@ -156,6 +180,7 @@ def parse_arguments() -> argparse.Namespace:
     )
     parser.add_argument("--weights", type=Path, required=True)
     parser.add_argument("--output", type=Path)
+    parser.add_argument("--predictions-output", type=Path)
     parser.add_argument("--image-size", type=int, default=640)
     parser.add_argument("--batch-size", type=int, default=8)
     parser.add_argument("--device", default="mps")

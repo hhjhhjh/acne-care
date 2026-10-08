@@ -38,6 +38,13 @@ class DetectionMetricCounts:
 
 
 @dataclass(frozen=True, slots=True)
+class DetectionMatches:
+    matched_pairs: tuple[tuple[int, int, float], ...]
+    false_positive_indices: tuple[int, ...]
+    false_negative_indices: tuple[int, ...]
+
+
+@dataclass(frozen=True, slots=True)
 class ThresholdMetrics:
     threshold: float
     counts: DetectionMetricCounts
@@ -79,18 +86,37 @@ def evaluate_detections(
     *,
     iou_threshold: float,
 ) -> DetectionMetricCounts:
+    matches = match_detections(
+        ground_truths,
+        predictions,
+        iou_threshold=iou_threshold,
+    )
+    return DetectionMetricCounts(
+        true_positives=len(matches.matched_pairs),
+        false_positives=len(matches.false_positive_indices),
+        false_negatives=len(matches.false_negative_indices),
+    )
+
+
+def match_detections(
+    ground_truths: Sequence[GroundTruth],
+    predictions: Sequence[Detection],
+    *,
+    iou_threshold: float,
+) -> DetectionMatches:
     if not 0 < iou_threshold <= 1:
         raise ValueError("iou_threshold must be greater than 0 and at most 1")
 
     matched_ground_truths: set[int] = set()
-    true_positives = 0
-    false_positives = 0
+    matched_pairs: list[tuple[int, int, float]] = []
+    false_positive_indices: list[int] = []
 
-    for prediction in sorted(
-        predictions,
-        key=lambda detection: detection.confidence,
+    indexed_predictions = sorted(
+        enumerate(predictions),
+        key=lambda item: item[1].confidence,
         reverse=True,
-    ):
+    )
+    for prediction_index, prediction in indexed_predictions:
         best_index: int | None = None
         best_iou = 0.0
         for index, (truth_box, truth_class_id) in enumerate(ground_truths):
@@ -105,14 +131,18 @@ def evaluate_detections(
 
         if best_index is not None and best_iou >= iou_threshold:
             matched_ground_truths.add(best_index)
-            true_positives += 1
+            matched_pairs.append((best_index, prediction_index, best_iou))
         else:
-            false_positives += 1
+            false_positive_indices.append(prediction_index)
 
-    return DetectionMetricCounts(
-        true_positives=true_positives,
-        false_positives=false_positives,
-        false_negatives=len(ground_truths) - len(matched_ground_truths),
+    return DetectionMatches(
+        matched_pairs=tuple(matched_pairs),
+        false_positive_indices=tuple(sorted(false_positive_indices)),
+        false_negative_indices=tuple(
+            index
+            for index in range(len(ground_truths))
+            if index not in matched_ground_truths
+        ),
     )
 
 
