@@ -14,6 +14,25 @@ Kaggle 데이터 카드에는 640×640 stretch resize와 사전 augmentation이 
 
 다운로드한 원본은 `data/raw/acne-dataset-in-yolov8-format/`에 둔다. `data/raw/`는 Git에서 제외되어 있다.
 
+## 라벨 수정 데이터셋 생성
+
+검토가 끝난 라벨은 원본에 덮어쓰지 않는다. 다음 명령은 편집 결과를 적용한 독립 데이터셋을
+`data/processed/acne-dataset-v2/`에 만든다. 같은 명령을 다시 실행하면 기존 생성물을 교체하므로
+이전 실행에서 남은 파일이 섞이지 않는다.
+
+```bash
+PYTHONPATH=backend/src .venv/training/bin/python ml/dataset/build_dataset_v2.py \
+  --source-root data/raw/acne-dataset-in-yolov8-format/data-2 \
+  --audit-json runs/dataset-audit/audit.json \
+  --label-edits docs/experiments/label-edits-2026-10-08.json \
+  --exclude-file data/splits/acne-yolov8-v1-exclusions.txt \
+  --output-root data/processed/acne-dataset-v2
+```
+
+2026년 10월 8일 편집 결과를 적용하면 26장의 라벨이 바뀐다. 검토에서 제외한 Validation 이미지
+2장과 기존 분할 중복 Test 이미지 1장을 제외한다. 생성 결과는 Train 823장, Validation 54장,
+Test 47장이다. `data/processed/`는 Git에서 제외되므로 생성 코드와 편집 JSON을 기준으로 다시 만든다.
+
 ## 학습 전 검사
 
 이미지와 라벨의 대응, 클래스 값과 bounding box 범위를 검사했다. 파일 내용이 완전히 같은 이미지 한 쌍이 train과 test에 걸쳐 발견되었다.
