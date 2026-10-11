@@ -1,0 +1,39 @@
+{
+  "model": {
+    "id": "yolo11n-acne-seed42",
+    "weights": "runs/detect/runs/baselines/yolo11n-acne-seed42/weights/best.pt",
+    "weights_sha256": "3870c1a2ccf3a0498e03cdb35b26d4e0671fde70a3c496264a0988d5cf75168b"
+  },
+  "runtime": {
+    "python": "3.11.14",
+    "ultralytics": "8.4.157",
+    "torch": "2.14.0",
+    "device": "cpu"
+  },
+  "dataset": {
+    "data_yaml": "data/processed/acne-yolo11-v2-eval/data.yaml",
+    "split": "test",
+    "image_manifest": "data/processed/acne-yolo11-v2-eval/test.txt",
+    "images_evaluated": 47
+  },
+  "evaluation": {
+    "confidence_threshold": 0.2,
+    "iou_threshold": 0.5,
+    "counts": {
+      "true_positives": 358,
+      "false_positives": 171,
+      "false_negatives": 253
+    },
+    "precision": 0.6767485822306238,
+    "recall": 0.5859247135842881,
+    "f1": 0.6280701754385964,
+    "count_mae": 3.74468085106383,
+    "coco": {
+      "mAP50-95": 0.29284565728604944,
+      "mAP50": 0.6485769804825927,
+      "mAP75": 0.21225887055245368
+    },
+    "prediction_pipeline_seconds_total": 1.7205300000005082,
+    "prediction_pipeline_seconds_per_image": 0.036607021276606554
+  }
+}
