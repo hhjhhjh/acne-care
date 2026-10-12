@@ -20,6 +20,10 @@ from acne_care.evaluation.detection_metrics import (
     evaluate_thresholds,
     select_best_threshold,
 )
+from acne_care.evaluation.prediction_artifact import (
+    save_prediction_artifact,
+    serialize_sample,
+)
 
 
 IMAGE_SIZE = 640
@@ -61,6 +65,7 @@ def main() -> None:
         evaluate_freq=len(selected_paths) + 1,
     )
     samples = []
+    serialized_samples = []
     inference_seconds = 0.0
 
     for batch_start in range(0, len(selected_paths), arguments.batch_size):
@@ -87,6 +92,16 @@ def main() -> None:
                 confidence_threshold=0.0,
             )
             samples.append((ground_truths, detections))
+            serialized_samples.append(
+                serialize_sample(
+                    image_path=batch_paths[index].resolve(),
+                    image_width=IMAGE_SIZE,
+                    image_height=IMAGE_SIZE,
+                    ground_truths=ground_truths,
+                    predictions=detections,
+                    confidence_threshold=arguments.confidence_threshold,
+                )
+            )
 
     primary_metrics = evaluate_thresholds(
         samples,
@@ -151,6 +166,15 @@ def main() -> None:
     if arguments.output is not None:
         arguments.output.parent.mkdir(parents=True, exist_ok=True)
         arguments.output.write_text(serialized + "\n", encoding="utf-8")
+    if arguments.predictions_output is not None:
+        save_prediction_artifact(
+            arguments.predictions_output,
+            model_id=result["model"]["id"],
+            split=arguments.split,
+            confidence_threshold=arguments.confidence_threshold,
+            iou_threshold=arguments.iou_threshold,
+            samples=serialized_samples,
+        )
 
 
 def parse_arguments() -> argparse.Namespace:
@@ -159,6 +183,7 @@ def parse_arguments() -> argparse.Namespace:
     parser.add_argument("--weights", type=Path, required=True)
     parser.add_argument("--exclude-file", type=Path)
     parser.add_argument("--output", type=Path)
+    parser.add_argument("--predictions-output", type=Path)
     parser.add_argument("--split", choices=("val", "test"), default="test")
     parser.add_argument("--batch-size", type=int, default=4)
     parser.add_argument("--confidence-threshold", type=float, default=0.4)

@@ -1,0 +1,1172 @@
+{
+  "images": 56,
+  "ground_truths": 643,
+  "outcomes": {
+    "both_detected": 286,
+    "yolo11_only": 97,
+    "legacy_only": 57,
+    "both_missed": 203
+  },
+  "false_positives": {
+    "legacy": 196,
+    "yolo11": 253
+  },
+  "iou_sensitivity": {
+    "0.30": {
+      "ground_truths": 643,
+      "legacy_recall": 0.5940902021772939,
+      "yolo11_recall": 0.6500777604976672
+    },
+    "0.50": {
+      "ground_truths": 643,
+      "legacy_recall": 0.5334370139968896,
+      "yolo11_recall": 0.5956454121306376
+    },
+    "0.75": {
+      "ground_truths": 643,
+      "legacy_recall": 0.25038880248833595,
+      "yolo11_recall": 0.3141524105754277
+    }
+  },
+  "by_size": {
+    "small": {
+      "ground_truths": 205,
+      "legacy_detected": 73,
+      "yolo11_detected": 100,
+      "legacy_recall": 0.35609756097560974,
+      "yolo11_recall": 0.4878048780487805
+    },
+    "medium": {
+      "ground_truths": 429,
+      "legacy_detected": 265,
+      "yolo11_detected": 279,
+      "legacy_recall": 0.6177156177156177,
+      "yolo11_recall": 0.6503496503496503
+    },
+    "large": {
+      "ground_truths": 9,
+      "legacy_detected": 5,
+      "yolo11_detected": 4,
+      "legacy_recall": 0.5555555555555556,
+      "yolo11_recall": 0.4444444444444444
+    }
+  },
+  "per_image": [
+    {
+      "image_path": "valid/images/acne-103_jpeg.rf.055236d16a0ad3642b8e9f44250a8999.jpg",
+      "ground_truth_count": 7,
+      "outcomes": {
+        "both_detected": 4,
+        "yolo11_only": 0,
+        "legacy_only": 0,
+        "both_missed": 3
+      },
+      "false_positives": {
+        "legacy": 6,
+        "yolo11": 1
+      },
+      "brightness": 0.662251646752451,
+      "sharpness": 14.973305663847922
+    },
+    {
+      "image_path": "valid/images/acne-113_jpeg.rf.61f34253768c2c2d90f282009cc85cc1.jpg",
+      "ground_truth_count": 6,
+      "outcomes": {
+        "both_detected": 0,
+        "yolo11_only": 0,
+        "legacy_only": 3,
+        "both_missed": 3
+      },
+      "false_positives": {
+        "legacy": 3,
+        "yolo11": 0
+      },
+      "brightness": 0.673706361060049,
+      "sharpness": 49.13410372323394
+    },
+    {
+      "image_path": "valid/images/acne-115_jpeg.rf.1c4b3100bd61c3be8b101094633f80e0.jpg",
+      "ground_truth_count": 6,
+      "outcomes": {
+        "both_detected": 4,
+        "yolo11_only": 0,
+        "legacy_only": 1,
+        "both_missed": 1
+      },
+      "false_positives": {
+        "legacy": 0,
+        "yolo11": 1
+      },
+      "brightness": 0.6336755610447303,
+      "sharpness": 62.19528315045832
+    },
+    {
+      "image_path": "valid/images/acne-11_jpeg.rf.7371382ec505972eb878bf9f4765b068.jpg",
+      "ground_truth_count": 2,
+      "outcomes": {
+        "both_detected": 2,
+        "yolo11_only": 0,
+        "legacy_only": 0,
+        "both_missed": 0
+      },
+      "false_positives": {
+        "legacy": 1,
+        "yolo11": 4
+      },
+      "brightness": 0.6321367570465686,
+      "sharpness": 19.487875971198083
+    },
+    {
+      "image_path": "valid/images/acne-121_jpg.rf.fda929f19402573163ffba906f3509ac.jpg",
+      "ground_truth_count": 21,
+      "outcomes": {
+        "both_detected": 8,
+        "yolo11_only": 3,
+        "legacy_only": 2,
+        "both_missed": 8
+      },
+      "false_positives": {
+        "legacy": 4,
+        "yolo11": 6
+      },
+      "brightness": 0.5423264303768383,
+      "sharpness": 280.12448347277046
+    },
+    {
+      "image_path": "valid/images/acne-131_jpg.rf.116f58db510524f94237b01e37f3a16f.jpg",
+      "ground_truth_count": 9,
+      "outcomes": {
+        "both_detected": 1,
+        "yolo11_only": 1,
+        "legacy_only": 0,
+        "both_missed": 7
+      },
+      "false_positives": {
+        "legacy": 1,
+        "yolo11": 2
+      },
+      "brightness": 0.45599225451899505,
+      "sharpness": 127.30825379557012
+    },
+    {
+      "image_path": "valid/images/acne-134_jpg.rf.417c82e7063a6160461440b5758b9993.jpg",
+      "ground_truth_count": 15,
+      "outcomes": {
+        "both_detected": 7,
+        "yolo11_only": 0,
+        "legacy_only": 3,
+        "both_missed": 5
+      },
+      "false_positives": {
+        "legacy": 1,
+        "yolo11": 4
+      },
+      "brightness": 0.6258694374234068,
+      "sharpness": 202.41632362980246
+    },
+    {
+      "image_path": "valid/images/acne-135_jpg.rf.042025713da3de0b88f75367822f27a0.jpg",
+      "ground_truth_count": 13,
+      "outcomes": {
+        "both_detected": 6,
+        "yolo11_only": 0,
+        "legacy_only": 3,
+        "both_missed": 4
+      },
+      "false_positives": {
+        "legacy": 5,
+        "yolo11": 5
+      },
+      "brightness": 0.5784177006740195,
+      "sharpness": 640.404224977249
+    },
+    {
+      "image_path": "valid/images/acne-142_jpg.rf.9ffefe2ae2611433749ba9e3198ce75e.jpg",
+      "ground_truth_count": 3,
+      "outcomes": {
+        "both_detected": 3,
+        "yolo11_only": 0,
+        "legacy_only": 0,
+        "both_missed": 0
+      },
+      "false_positives": {
+        "legacy": 1,
+        "yolo11": 1
+      },
+      "brightness": 0.5160355775122548,
+      "sharpness": 334.95844872936607
+    },
+    {
+      "image_path": "valid/images/acne-145_jpg.rf.0a5ef2e06e9910a40d972dca98b41eef.jpg",
+      "ground_truth_count": 3,
+      "outcomes": {
+        "both_detected": 3,
+        "yolo11_only": 0,
+        "legacy_only": 0,
+        "both_missed": 0
+      },
+      "false_positives": {
+        "legacy": 2,
+        "yolo11": 2
+      },
+      "brightness": 0.5288236347273284,
+      "sharpness": 390.30294836709504
+    },
+    {
+      "image_path": "valid/images/acne-149_jpg.rf.03e8887e9c8de1c1f12b9d147d0dda17.jpg",
+      "ground_truth_count": 6,
+      "outcomes": {
+        "both_detected": 4,
+        "yolo11_only": 1,
+        "legacy_only": 1,
+        "both_missed": 0
+      },
+      "false_positives": {
+        "legacy": 1,
+        "yolo11": 2
+      },
+      "brightness": 0.6419740445006128,
+      "sharpness": 93.26036872804166
+    },
+    {
+      "image_path": "valid/images/acne-150_jpg.rf.ffcc725634ec3221b86686905e57e399.jpg",
+      "ground_truth_count": 4,
+      "outcomes": {
+        "both_detected": 1,
+        "yolo11_only": 1,
+        "legacy_only": 0,
+        "both_missed": 2
+      },
+      "false_positives": {
+        "legacy": 1,
+        "yolo11": 3
+      },
+      "brightness": 0.6978581973805148,
+      "sharpness": 195.71853973150255
+    },
+    {
+      "image_path": "valid/images/acne-162_jpg.rf.3e7a961c691682bef628b7784a4dd8e7.jpg",
+      "ground_truth_count": 13,
+      "outcomes": {
+        "both_detected": 4,
+        "yolo11_only": 2,
+        "legacy_only": 0,
+        "both_missed": 7
+      },
+      "false_positives": {
+        "legacy": 1,
+        "yolo11": 0
+      },
+      "brightness": 0.2579700616574755,
+      "sharpness": 143.7752968688965
+    },
+    {
+      "image_path": "valid/images/acne-204_jpg.rf.f33f3ded55db615da9540b2ad9e8ffc3.jpg",
+      "ground_truth_count": 25,
+      "outcomes": {
+        "both_detected": 8,
+        "yolo11_only": 6,
+        "legacy_only": 0,
+        "both_missed": 11
+      },
+      "false_positives": {
+        "legacy": 4,
+        "yolo11": 10
+      },
+      "brightness": 0.38980019722732845,
+      "sharpness": 194.08183782443405
+    },
+    {
+      "image_path": "valid/images/acne-205_jpg.rf.38aad590bdaf41afcf089fa97467ed1b.jpg",
+      "ground_truth_count": 6,
+      "outcomes": {
+        "both_detected": 6,
+        "yolo11_only": 0,
+        "legacy_only": 0,
+        "both_missed": 0
+      },
+      "false_positives": {
+        "legacy": 1,
+        "yolo11": 4
+      },
+      "brightness": 0.4091973805147059,
+      "sharpness": 175.12634744591116
+    },
+    {
+      "image_path": "valid/images/acne-20_jpeg.rf.d401578b451f1b68e8c29f5e4c7f4da1.jpg",
+      "ground_truth_count": 24,
+      "outcomes": {
+        "both_detected": 9,
+        "yolo11_only": 3,
+        "legacy_only": 0,
+        "both_missed": 12
+      },
+      "false_positives": {
+        "legacy": 2,
+        "yolo11": 6
+      },
+      "brightness": 0.6194559015012255,
+      "sharpness": 37.676750355952976
+    },
+    {
+      "image_path": "valid/images/acne-211_jpg.rf.897fd14484e689e5a579422312525be5.jpg",
+      "ground_truth_count": 7,
+      "outcomes": {
+        "both_detected": 2,
+        "yolo11_only": 2,
+        "legacy_only": 0,
+        "both_missed": 3
+      },
+      "false_positives": {
+        "legacy": 0,
+        "yolo11": 3
+      },
+      "brightness": 0.49789102711397054,
+      "sharpness": 127.45969195306299
+    },
+    {
+      "image_path": "valid/images/acne-216_jpg.rf.229a8cdefe7eae1fa2fdcd7f63036f7e.jpg",
+      "ground_truth_count": 26,
+      "outcomes": {
+        "both_detected": 12,
+        "yolo11_only": 6,
+        "legacy_only": 1,
+        "both_missed": 7
+      },
+      "false_positives": {
+        "legacy": 4,
+        "yolo11": 11
+      },
+      "brightness": 0.5839917183670343,
+      "sharpness": 302.7511742712915
+    },
+    {
+      "image_path": "valid/images/acne-217_jpg.rf.50e3f9c13b5969348eeef19d2c81e0ba.jpg",
+      "ground_truth_count": 18,
+      "outcomes": {
+        "both_detected": 10,
+        "yolo11_only": 4,
+        "legacy_only": 1,
+        "both_missed": 3
+      },
+      "false_positives": {
+        "legacy": 10,
+        "yolo11": 12
+      },
+      "brightness": 0.3195276979932598,
+      "sharpness": 204.79071287689212
+    },
+    {
+      "image_path": "valid/images/acne-21_jpeg.rf.1520100798d86a2e36b9727e4b6ac613.jpg",
+      "ground_truth_count": 11,
+      "outcomes": {
+        "both_detected": 5,
+        "yolo11_only": 0,
+        "legacy_only": 0,
+        "both_missed": 6
+      },
+      "false_positives": {
+        "legacy": 5,
+        "yolo11": 2
+      },
+      "brightness": 0.49500822418811274,
+      "sharpness": 41.30575682542324
+    },
+    {
+      "image_path": "valid/images/acne-220_jpg.rf.71b2cf21050700b1329f90be30ef4a66.jpg",
+      "ground_truth_count": 25,
+      "outcomes": {
+        "both_detected": 16,
+        "yolo11_only": 1,
+        "legacy_only": 2,
+        "both_missed": 6
+      },
+      "false_positives": {
+        "legacy": 6,
+        "yolo11": 12
+      },
+      "brightness": 0.423161008348652,
+      "sharpness": 194.67362960290313
+    },
+    {
+      "image_path": "valid/images/acne-221_jpg.rf.b18cf9dc385b45ae4d38acec4b978e51.jpg",
+      "ground_truth_count": 21,
+      "outcomes": {
+        "both_detected": 13,
+        "yolo11_only": 5,
+        "legacy_only": 0,
+        "both_missed": 3
+      },
+      "false_positives": {
+        "legacy": 5,
+        "yolo11": 12
+      },
+      "brightness": 0.5467122395833334,
+      "sharpness": 49.17187627122402
+    },
+    {
+      "image_path": "valid/images/acne-223_jpg.rf.1b603f941d5d6b2ed05a4998dabd83d4.jpg",
+      "ground_truth_count": 17,
+      "outcomes": {
+        "both_detected": 11,
+        "yolo11_only": 5,
+        "legacy_only": 0,
+        "both_missed": 1
+      },
+      "false_positives": {
+        "legacy": 7,
+        "yolo11": 9
+      },
+      "brightness": 0.459883243336397,
+      "sharpness": 262.57516343469024
+    },
+    {
+      "image_path": "valid/images/acne-224_jpg.rf.21be34e10c2c539505d35f293f36f36d.jpg",
+      "ground_truth_count": 26,
+      "outcomes": {
+        "both_detected": 6,
+        "yolo11_only": 7,
+        "legacy_only": 2,
+        "both_missed": 11
+      },
+      "false_positives": {
+        "legacy": 14,
+        "yolo11": 13
+      },
+      "brightness": 0.4660978956035539,
+      "sharpness": 175.32680565795897
+    },
+    {
+      "image_path": "valid/images/acne-22_jpeg.rf.ee4659bccc79f60a653fd52a8d6b4d51.jpg",
+      "ground_truth_count": 7,
+      "outcomes": {
+        "both_detected": 2,
+        "yolo11_only": 1,
+        "legacy_only": 1,
+        "both_missed": 3
+      },
+      "false_positives": {
+        "legacy": 3,
+        "yolo11": 1
+      },
+      "brightness": 0.5839229377297793,
+      "sharpness": 125.55245356172918
+    },
+    {
+      "image_path": "valid/images/acne-237_jpg.rf.e5f4f7eaa88499717b72c8d9d88fe289.jpg",
+      "ground_truth_count": 26,
+      "outcomes": {
+        "both_detected": 8,
+        "yolo11_only": 5,
+        "legacy_only": 5,
+        "both_missed": 8
+      },
+      "false_positives": {
+        "legacy": 7,
+        "yolo11": 13
+      },
+      "brightness": 0.5812506606158088,
+      "sharpness": 711.6191907035769
+    },
+    {
+      "image_path": "valid/images/acne-246_jpeg.rf.97766b7ea51380c13600bb25c9153fca.jpg",
+      "ground_truth_count": 2,
+      "outcomes": {
+        "both_detected": 2,
+        "yolo11_only": 0,
+        "legacy_only": 0,
+        "both_missed": 0
+      },
+      "false_positives": {
+        "legacy": 2,
+        "yolo11": 0
+      },
+      "brightness": 0.5559516793045344,
+      "sharpness": 21.738032203650473
+    },
+    {
+      "image_path": "valid/images/acne-257_jpeg.rf.895db52509dcf3274333c8a46af00f79.jpg",
+      "ground_truth_count": 5,
+      "outcomes": {
+        "both_detected": 2,
+        "yolo11_only": 1,
+        "legacy_only": 1,
+        "both_missed": 1
+      },
+      "false_positives": {
+        "legacy": 3,
+        "yolo11": 5
+      },
+      "brightness": 0.5382004825367647,
+      "sharpness": 68.17253650259374
+    },
+    {
+      "image_path": "valid/images/acne-267_jpeg.rf.f242964df9d8d9b39d5da13dea75712c.jpg",
+      "ground_truth_count": 12,
+      "outcomes": {
+        "both_detected": 7,
+        "yolo11_only": 1,
+        "legacy_only": 0,
+        "both_missed": 4
+      },
+      "false_positives": {
+        "legacy": 9,
+        "yolo11": 3
+      },
+      "brightness": 0.5245749080882353,
+      "sharpness": 22.436417043393853
+    },
+    {
+      "image_path": "valid/images/acne-284_jpeg.rf.3c07273f141120e450c0bc506bb64849.jpg",
+      "ground_truth_count": 7,
+      "outcomes": {
+        "both_detected": 1,
+        "yolo11_only": 4,
+        "legacy_only": 1,
+        "both_missed": 1
+      },
+      "false_positives": {
+        "legacy": 6,
+        "yolo11": 8
+      },
+      "brightness": 0.5547585975796568,
+      "sharpness": 111.45098375081419
+    },
+    {
+      "image_path": "valid/images/acne-291_jpeg.rf.edde17fb518b35f2edf62b9d529cfae0.jpg",
+      "ground_truth_count": 24,
+      "outcomes": {
+        "both_detected": 10,
+        "yolo11_only": 1,
+        "legacy_only": 10,
+        "both_missed": 3
+      },
+      "false_positives": {
+        "legacy": 3,
+        "yolo11": 2
+      },
+      "brightness": 0.495410462622549,
+      "sharpness": 168.68885983323452
+    },
+    {
+      "image_path": "valid/images/acne-2_jpeg.rf.f4ec613e23dd372f3232c4cd68424250.jpg",
+      "ground_truth_count": 23,
+      "outcomes": {
+        "both_detected": 7,
+        "yolo11_only": 9,
+        "legacy_only": 1,
+        "both_missed": 6
+      },
+      "false_positives": {
+        "legacy": 4,
+        "yolo11": 7
+      },
+      "brightness": 0.8147867072610294,
+      "sharpness": 22.67394040372372
+    },
+    {
+      "image_path": "valid/images/acne-319_jpeg.rf.205637ac39511f1f1662a5aec69ebdfa.jpg",
+      "ground_truth_count": 1,
+      "outcomes": {
+        "both_detected": 1,
+        "yolo11_only": 0,
+        "legacy_only": 0,
+        "both_missed": 0
+      },
+      "false_positives": {
+        "legacy": 1,
+        "yolo11": 2
+      },
+      "brightness": 0.6476631338082107,
+      "sharpness": 24.768504807949068
+    },
+    {
+      "image_path": "valid/images/acne-320_jpeg.rf.36da7f5652215ec1bcc16a1d1dc6a420.jpg",
+      "ground_truth_count": 4,
+      "outcomes": {
+        "both_detected": 3,
+        "yolo11_only": 1,
+        "legacy_only": 0,
+        "both_missed": 0
+      },
+      "false_positives": {
+        "legacy": 4,
+        "yolo11": 5
+      },
+      "brightness": 0.7162727864583334,
+      "sharpness": 33.246476932281254
+    },
+    {
+      "image_path": "valid/images/acne-337_jpeg.rf.d8466fa49f89fb18f3bd152da42a71e5.jpg",
+      "ground_truth_count": 6,
+      "outcomes": {
+        "both_detected": 6,
+        "yolo11_only": 0,
+        "legacy_only": 0,
+        "both_missed": 0
+      },
+      "false_positives": {
+        "legacy": 3,
+        "yolo11": 2
+      },
+      "brightness": 0.5867189414828431,
+      "sharpness": 23.76585195464492
+    },
+    {
+      "image_path": "valid/images/acne-352_jpeg.rf.5ba32bd220a14e6891977c4037ff03a4.jpg",
+      "ground_truth_count": 6,
+      "outcomes": {
+        "both_detected": 1,
+        "yolo11_only": 1,
+        "legacy_only": 2,
+        "both_missed": 2
+      },
+      "false_positives": {
+        "legacy": 2,
+        "yolo11": 2
+      },
+      "brightness": 0.35962671377144606,
+      "sharpness": 50.72947882127166
+    },
+    {
+      "image_path": "valid/images/acne-35_jpeg.rf.873fbd0bd8c09cc8a0f9282f08ba1725.jpg",
+      "ground_truth_count": 17,
+      "outcomes": {
+        "both_detected": 9,
+        "yolo11_only": 0,
+        "legacy_only": 0,
+        "both_missed": 8
+      },
+      "false_positives": {
+        "legacy": 1,
+        "yolo11": 2
+      },
+      "brightness": 0.5659627087162991,
+      "sharpness": 57.62516842865348
+    },
+    {
+      "image_path": "valid/images/acne-363_jpeg.rf.0c5af213756448958464517dac64be5f.jpg",
+      "ground_truth_count": 14,
+      "outcomes": {
+        "both_detected": 9,
+        "yolo11_only": 2,
+        "legacy_only": 1,
+        "both_missed": 2
+      },
+      "false_positives": {
+        "legacy": 4,
+        "yolo11": 3
+      },
+      "brightness": 0.624258425245098,
+      "sharpness": 81.20624252128006
+    },
+    {
+      "image_path": "valid/images/acne-373_jpeg.rf.fd792665746bf19c7deebc4d5a166e27.jpg",
+      "ground_truth_count": 6,
+      "outcomes": {
+        "both_detected": 4,
+        "yolo11_only": 2,
+        "legacy_only": 0,
+        "both_missed": 0
+      },
+      "false_positives": {
+        "legacy": 1,
+        "yolo11": 10
+      },
+      "brightness": 0.550397767310049,
+      "sharpness": 10.305768946832417
+    },
+    {
+      "image_path": "valid/images/acne-380_jpeg.rf.4e088c1e0484bfd28ea8f858e2d66a71.jpg",
+      "ground_truth_count": 7,
+      "outcomes": {
+        "both_detected": 6,
+        "yolo11_only": 0,
+        "legacy_only": 0,
+        "both_missed": 1
+      },
+      "false_positives": {
+        "legacy": 3,
+        "yolo11": 2
+      },
+      "brightness": 0.41234367340686273,
+      "sharpness": 10.18400949882865
+    },
+    {
+      "image_path": "valid/images/acne-389_jpeg.rf.ab217fe1f261ae90befc002ba47247b3.jpg",
+      "ground_truth_count": 9,
+      "outcomes": {
+        "both_detected": 3,
+        "yolo11_only": 0,
+        "legacy_only": 2,
+        "both_missed": 4
+      },
+      "false_positives": {
+        "legacy": 1,
+        "yolo11": 1
+      },
+      "brightness": 0.40181971890318624,
+      "sharpness": 9.751100962346793
+    },
+    {
+      "image_path": "valid/images/acne-407_jpeg.rf.5604336c78d700604ccee404912ed721.jpg",
+      "ground_truth_count": 6,
+      "outcomes": {
+        "both_detected": 2,
+        "yolo11_only": 2,
+        "legacy_only": 1,
+        "both_missed": 1
+      },
+      "false_positives": {
+        "legacy": 3,
+        "yolo11": 4
+      },
+      "brightness": 0.47810907820159315,
+      "sharpness": 17.65008507966399
+    },
+    {
+      "image_path": "valid/images/acne-42_jpeg.rf.922e1ad2015d0b38de6725dfa26aa056.jpg",
+      "ground_truth_count": 6,
+      "outcomes": {
+        "both_detected": 1,
+        "yolo11_only": 0,
+        "legacy_only": 0,
+        "both_missed": 5
+      },
+      "false_positives": {
+        "legacy": 1,
+        "yolo11": 0
+      },
+      "brightness": 0.5667501531862744,
+      "sharpness": 154.01454276394247
+    },
+    {
+      "image_path": "valid/images/acne-430_jpeg.rf.060bf1e5e68a338a3c3257f61533d42d.jpg",
+      "ground_truth_count": 19,
+      "outcomes": {
+        "both_detected": 3,
+        "yolo11_only": 5,
+        "legacy_only": 2,
+        "both_missed": 9
+      },
+      "false_positives": {
+        "legacy": 6,
+        "yolo11": 12
+      },
+      "brightness": 0.6844570599724265,
+      "sharpness": 32.10421951078772
+    },
+    {
+      "image_path": "valid/images/acne-432_jpeg.rf.ce392bcdec15d58d1616de4db76bdbd4.jpg",
+      "ground_truth_count": 8,
+      "outcomes": {
+        "both_detected": 7,
+        "yolo11_only": 1,
+        "legacy_only": 0,
+        "both_missed": 0
+      },
+      "false_positives": {
+        "legacy": 2,
+        "yolo11": 3
+      },
+      "brightness": 0.5463486328125,
+      "sharpness": 31.130850717252493
+    },
+    {
+      "image_path": "valid/images/acne-434_jpeg.rf.4ec27684c5e305eba0542a73f4e7e9e1.jpg",
+      "ground_truth_count": 3,
+      "outcomes": {
+        "both_detected": 2,
+        "yolo11_only": 0,
+        "legacy_only": 0,
+        "both_missed": 1
+      },
+      "false_positives": {
+        "legacy": 1,
+        "yolo11": 2
+      },
+      "brightness": 0.32735785271139706,
+      "sharpness": 19.41112540387511
+    },
+    {
+      "image_path": "valid/images/acne-438_jpeg.rf.d6c4182d7db62c91edd02d5eb0e91e3f.jpg",
+      "ground_truth_count": 16,
+      "outcomes": {
+        "both_detected": 5,
+        "yolo11_only": 4,
+        "legacy_only": 0,
+        "both_missed": 7
+      },
+      "false_positives": {
+        "legacy": 7,
+        "yolo11": 1
+      },
+      "brightness": 0.41471559053308826,
+      "sharpness": 11.864125971889496
+    },
+    {
+      "image_path": "valid/images/acne-454_jpeg.rf.18a13bf93c2bd2276ccc6d4e8d5889c3.jpg",
+      "ground_truth_count": 9,
+      "outcomes": {
+        "both_detected": 3,
+        "yolo11_only": 1,
+        "legacy_only": 1,
+        "both_missed": 4
+      },
+      "false_positives": {
+        "legacy": 4,
+        "yolo11": 2
+      },
+      "brightness": 0.3161617742800245,
+      "sharpness": 9.538969690299034
+    },
+    {
+      "image_path": "valid/images/acne-50_jpeg.rf.482e3ccd2dd52214470131746460f538.jpg",
+      "ground_truth_count": 7,
+      "outcomes": {
+        "both_detected": 5,
+        "yolo11_only": 0,
+        "legacy_only": 0,
+        "both_missed": 2
+      },
+      "false_positives": {
+        "legacy": 3,
+        "yolo11": 3
+      },
+      "brightness": 0.8020135091145832,
+      "sharpness": 88.90315914342403
+    },
+    {
+      "image_path": "valid/images/acne-56_jpeg.rf.967731b7fd228e7b4e8d996b656781cd.jpg",
+      "ground_truth_count": 8,
+      "outcomes": {
+        "both_detected": 4,
+        "yolo11_only": 2,
+        "legacy_only": 0,
+        "both_missed": 2
+      },
+      "false_positives": {
+        "legacy": 0,
+        "yolo11": 2
+      },
+      "brightness": 0.5677031154258579,
+      "sharpness": 31.456928709769254
+    },
+    {
+      "image_path": "valid/images/acne-6_jpeg.rf.80265b4fa3a385c07f2f9395e486faf9.jpg",
+      "ground_truth_count": 43,
+      "outcomes": {
+        "both_detected": 15,
+        "yolo11_only": 4,
+        "legacy_only": 7,
+        "both_missed": 17
+      },
+      "false_positives": {
+        "legacy": 5,
+        "yolo11": 5
+      },
+      "brightness": 0.49038108915441175,
+      "sharpness": 103.75749511659146
+    },
+    {
+      "image_path": "valid/images/acne-77_jpeg.rf.b5794c2f868e45624ee538ed0e36657b.jpg",
+      "ground_truth_count": 3,
+      "outcomes": {
+        "both_detected": 1,
+        "yolo11_only": 0,
+        "legacy_only": 0,
+        "both_missed": 2
+      },
+      "false_positives": {
+        "legacy": 0,
+        "yolo11": 3
+      },
+      "brightness": 0.7087982823988971,
+      "sharpness": 8.129819309973715
+    },
+    {
+      "image_path": "valid/images/acne-78_jpeg.rf.ca1dc8af44d36a59fe0b4964ebcca155.jpg",
+      "ground_truth_count": 8,
+      "outcomes": {
+        "both_detected": 2,
+        "yolo11_only": 0,
+        "legacy_only": 1,
+        "both_missed": 5
+      },
+      "false_positives": {
+        "legacy": 4,
+        "yolo11": 4
+      },
+      "brightness": 0.8035554438572303,
+      "sharpness": 28.882573544973138
+    },
+    {
+      "image_path": "valid/images/acne-83_jpeg.rf.5e49317764327db080c83ca841084390.jpg",
+      "ground_truth_count": 3,
+      "outcomes": {
+        "both_detected": 1,
+        "yolo11_only": 0,
+        "legacy_only": 1,
+        "both_missed": 1
+      },
+      "false_positives": {
+        "legacy": 1,
+        "yolo11": 1
+      },
+      "brightness": 0.658551212086397,
+      "sharpness": 20.128132092899083
+    },
+    {
+      "image_path": "valid/images/acne-90_jpeg.rf.715856ba33d2f7c26294ceea4aaa611b.jpg",
+      "ground_truth_count": 4,
+      "outcomes": {
+        "both_detected": 4,
+        "yolo11_only": 0,
+        "legacy_only": 0,
+        "both_missed": 0
+      },
+      "false_positives": {
+        "legacy": 12,
+        "yolo11": 10
+      },
+      "brightness": 0.471015806908701,
+      "sharpness": 90.42474099121092
+    },
+    {
+      "image_path": "valid/images/acne-98_jpeg.rf.e3ee418c4157dffff8102998f94e7257.jpg",
+      "ground_truth_count": 10,
+      "outcomes": {
+        "both_detected": 5,
+        "yolo11_only": 3,
+        "legacy_only": 1,
+        "both_missed": 1
+      },
+      "false_positives": {
+        "legacy": 5,
+        "yolo11": 8
+      },
+      "brightness": 0.6476632582720587,
+      "sharpness": 19.239321278548243
+    }
+  ],
+  "by_brightness": {
+    "low": {
+      "images": 19,
+      "ground_truths": 277,
+      "brightness_minimum": 0.2579700616574755,
+      "brightness_maximum": 0.495410462622549,
+      "legacy_recall": 0.5270758122743683,
+      "yolo11_recall": 0.5667870036101083,
+      "legacy_false_positives": 90,
+      "yolo11_false_positives": 95
+    },
+    "middle": {
+      "images": 19,
+      "ground_truths": 204,
+      "brightness_minimum": 0.49789102711397054,
+      "brightness_maximum": 0.5867189414828431,
+      "legacy_recall": 0.5588235294117647,
+      "yolo11_recall": 0.6519607843137255,
+      "legacy_false_positives": 59,
+      "yolo11_false_positives": 89
+    },
+    "high": {
+      "images": 18,
+      "ground_truths": 162,
+      "brightness_minimum": 0.6194559015012255,
+      "brightness_maximum": 0.8147867072610294,
+      "legacy_recall": 0.5123456790123457,
+      "yolo11_recall": 0.5740740740740741,
+      "legacy_false_positives": 47,
+      "yolo11_false_positives": 69
+    }
+  },
+  "by_sharpness": {
+    "low": {
+      "images": 19,
+      "ground_truths": 141,
+      "sharpness_minimum": 8.129819309973715,
+      "sharpness_maximum": 31.130850717252493,
+      "legacy_recall": 0.5531914893617021,
+      "yolo11_recall": 0.6595744680851063,
+      "legacy_false_positives": 58,
+      "yolo11_false_positives": 60
+    },
+    "middle": {
+      "images": 19,
+      "ground_truths": 224,
+      "sharpness_minimum": 31.456928709769254,
+      "sharpness_maximum": 127.30825379557012,
+      "legacy_recall": 0.5089285714285714,
+      "yolo11_recall": 0.5580357142857143,
+      "legacy_false_positives": 66,
+      "yolo11_false_positives": 83
+    },
+    "high": {
+      "images": 18,
+      "ground_truths": 278,
+      "sharpness_minimum": 127.45969195306299,
+      "sharpness_maximum": 711.6191907035769,
+      "legacy_recall": 0.5431654676258992,
+      "yolo11_recall": 0.5935251798561151,
+      "legacy_false_positives": 72,
+      "yolo11_false_positives": 110
+    }
+  },
+  "ranking": {
+    "most_yolo11_false_negatives": [
+      {
+        "image_path": "valid/images/acne-6_jpeg.rf.80265b4fa3a385c07f2f9395e486faf9.jpg",
+        "count": 24,
+        "ground_truth_count": 43,
+        "brightness": 0.49038108915441175,
+        "sharpness": 103.75749511659146
+      },
+      {
+        "image_path": "valid/images/acne-224_jpg.rf.21be34e10c2c539505d35f293f36f36d.jpg",
+        "count": 13,
+        "ground_truth_count": 26,
+        "brightness": 0.4660978956035539,
+        "sharpness": 175.32680565795897
+      },
+      {
+        "image_path": "valid/images/acne-237_jpg.rf.e5f4f7eaa88499717b72c8d9d88fe289.jpg",
+        "count": 13,
+        "ground_truth_count": 26,
+        "brightness": 0.5812506606158088,
+        "sharpness": 711.6191907035769
+      },
+      {
+        "image_path": "valid/images/acne-291_jpeg.rf.edde17fb518b35f2edf62b9d529cfae0.jpg",
+        "count": 13,
+        "ground_truth_count": 24,
+        "brightness": 0.495410462622549,
+        "sharpness": 168.68885983323452
+      },
+      {
+        "image_path": "valid/images/acne-20_jpeg.rf.d401578b451f1b68e8c29f5e4c7f4da1.jpg",
+        "count": 12,
+        "ground_truth_count": 24,
+        "brightness": 0.6194559015012255,
+        "sharpness": 37.676750355952976
+      },
+      {
+        "image_path": "valid/images/acne-204_jpg.rf.f33f3ded55db615da9540b2ad9e8ffc3.jpg",
+        "count": 11,
+        "ground_truth_count": 25,
+        "brightness": 0.38980019722732845,
+        "sharpness": 194.08183782443405
+      },
+      {
+        "image_path": "valid/images/acne-430_jpeg.rf.060bf1e5e68a338a3c3257f61533d42d.jpg",
+        "count": 11,
+        "ground_truth_count": 19,
+        "brightness": 0.6844570599724265,
+        "sharpness": 32.10421951078772
+      },
+      {
+        "image_path": "valid/images/acne-121_jpg.rf.fda929f19402573163ffba906f3509ac.jpg",
+        "count": 10,
+        "ground_truth_count": 21,
+        "brightness": 0.5423264303768383,
+        "sharpness": 280.12448347277046
+      },
+      {
+        "image_path": "valid/images/acne-134_jpg.rf.417c82e7063a6160461440b5758b9993.jpg",
+        "count": 8,
+        "ground_truth_count": 15,
+        "brightness": 0.6258694374234068,
+        "sharpness": 202.41632362980246
+      },
+      {
+        "image_path": "valid/images/acne-216_jpg.rf.229a8cdefe7eae1fa2fdcd7f63036f7e.jpg",
+        "count": 8,
+        "ground_truth_count": 26,
+        "brightness": 0.5839917183670343,
+        "sharpness": 302.7511742712915
+      }
+    ],
+    "most_yolo11_false_positives": [
+      {
+        "image_path": "valid/images/acne-224_jpg.rf.21be34e10c2c539505d35f293f36f36d.jpg",
+        "count": 13,
+        "ground_truth_count": 26,
+        "brightness": 0.4660978956035539,
+        "sharpness": 175.32680565795897
+      },
+      {
+        "image_path": "valid/images/acne-237_jpg.rf.e5f4f7eaa88499717b72c8d9d88fe289.jpg",
+        "count": 13,
+        "ground_truth_count": 26,
+        "brightness": 0.5812506606158088,
+        "sharpness": 711.6191907035769
+      },
+      {
+        "image_path": "valid/images/acne-217_jpg.rf.50e3f9c13b5969348eeef19d2c81e0ba.jpg",
+        "count": 12,
+        "ground_truth_count": 18,
+        "brightness": 0.3195276979932598,
+        "sharpness": 204.79071287689212
+      },
+      {
+        "image_path": "valid/images/acne-220_jpg.rf.71b2cf21050700b1329f90be30ef4a66.jpg",
+        "count": 12,
+        "ground_truth_count": 25,
+        "brightness": 0.423161008348652,
+        "sharpness": 194.67362960290313
+      },
+      {
+        "image_path": "valid/images/acne-221_jpg.rf.b18cf9dc385b45ae4d38acec4b978e51.jpg",
+        "count": 12,
+        "ground_truth_count": 21,
+        "brightness": 0.5467122395833334,
+        "sharpness": 49.17187627122402
+      },
+      {
+        "image_path": "valid/images/acne-430_jpeg.rf.060bf1e5e68a338a3c3257f61533d42d.jpg",
+        "count": 12,
+        "ground_truth_count": 19,
+        "brightness": 0.6844570599724265,
+        "sharpness": 32.10421951078772
+      },
+      {
+        "image_path": "valid/images/acne-216_jpg.rf.229a8cdefe7eae1fa2fdcd7f63036f7e.jpg",
+        "count": 11,
+        "ground_truth_count": 26,
+        "brightness": 0.5839917183670343,
+        "sharpness": 302.7511742712915
+      },
+      {
+        "image_path": "valid/images/acne-204_jpg.rf.f33f3ded55db615da9540b2ad9e8ffc3.jpg",
+        "count": 10,
+        "ground_truth_count": 25,
+        "brightness": 0.38980019722732845,
+        "sharpness": 194.08183782443405
+      },
+      {
+        "image_path": "valid/images/acne-373_jpeg.rf.fd792665746bf19c7deebc4d5a166e27.jpg",
+        "count": 10,
+        "ground_truth_count": 6,
+        "brightness": 0.550397767310049,
+        "sharpness": 10.305768946832417
+      },
+      {
+        "image_path": "valid/images/acne-90_jpeg.rf.715856ba33d2f7c26294ceea4aaa611b.jpg",
+        "count": 10,
+        "ground_truth_count": 4,
+        "brightness": 0.471015806908701,
+        "sharpness": 90.42474099121092
+      }
+    ]
+  },
+  "metadata": {
+    "legacy_model_id": "acne-cv-legacy-keras-cv-yolov8-xs",
+    "legacy_confidence_threshold": 0.3,
+    "yolo11_model_id": "yolo11n-acne-seed42",
+    "yolo11_confidence_threshold": 0.2,
+    "iou_threshold": 0.5,
+    "split": "val",
+    "size_rule": "COCO area: small < 32^2, medium < 96^2, large otherwise",
+    "condition_rule": "images divided into three equal-sized rank groups"
+  }
+}

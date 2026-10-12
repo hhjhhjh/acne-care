@@ -1,0 +1,3327 @@
+{
+  "schema_version": 1,
+  "dataset_fingerprint": "f06cb73e88d9",
+  "exported_at": "2026-10-08T00:35:47.307Z",
+  "edits": {
+    "valid/images/acne-11_jpeg.rf.7371382ec505972eb878bf9f4765b068.jpg": {
+      "annotations": [
+        {
+          "class_id": 0,
+          "x_center": 0.49609375,
+          "y_center": 0.47734375,
+          "width": 0.0328125,
+          "height": 0.06171875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.534375,
+          "y_center": 0.2515625,
+          "width": 0.03046875,
+          "height": 0.0484375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.5336578369140625,
+          "y_center": 0.317755126953125,
+          "width": 0.03772583007812502,
+          "height": 0.02874755859375,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.7569976806640625,
+          "y_center": 0.4706207275390625,
+          "width": 0.023590087890625,
+          "height": 0.027093505859375033,
+          "source": "added"
+        }
+      ],
+      "note": "라벨 1,2 근처에도 여드름 많음",
+      "excluded": false,
+      "completed": true,
+      "updated_at": "2026-10-08T00:29:29.097Z"
+    },
+    "valid/images/acne-134_jpg.rf.417c82e7063a6160461440b5758b9993.jpg": {
+      "annotations": [
+        {
+          "class_id": 0,
+          "x_center": 0.88203125,
+          "y_center": 0.1390625,
+          "width": 0.08125,
+          "height": 0.09921875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.87578125,
+          "y_center": 0.2734375,
+          "width": 0.07734375,
+          "height": 0.15703125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.79296875,
+          "y_center": 0.38125,
+          "width": 0.0484375,
+          "height": 0.078125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.6203125,
+          "y_center": 0.6921875,
+          "width": 0.0734375,
+          "height": 0.13125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.8296875,
+          "y_center": 0.93828125,
+          "width": 0.08125,
+          "height": 0.08125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.4046875,
+          "y_center": 0.9359375,
+          "width": 0.071875,
+          "height": 0.0984375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.12265625,
+          "y_center": 0.74765625,
+          "width": 0.0640625,
+          "height": 0.12109375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.228125,
+          "y_center": 0.74375,
+          "width": 0.0640625,
+          "height": 0.1171875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.4734375,
+          "y_center": 0.58828125,
+          "width": 0.08828125,
+          "height": 0.1078125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.27109375,
+          "y_center": 0.3046875,
+          "width": 0.0484375,
+          "height": 0.0921875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.596875,
+          "y_center": 0.41640625,
+          "width": 0.0765625,
+          "height": 0.12109375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.625,
+          "y_center": 0.37734375,
+          "width": 0.1453125,
+          "height": 0.20703125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.39609375,
+          "y_center": 0.05,
+          "width": 0.07734375,
+          "height": 0.09921875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.853125,
+          "y_center": 0.6203125,
+          "width": 0.06640625,
+          "height": 0.09609375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.91640625,
+          "y_center": 0.67890625,
+          "width": 0.16640625,
+          "height": 0.24765625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.3615875244140625,
+          "y_center": 0.2103973388671875,
+          "width": 0.043072509765625044,
+          "height": 0.05073852539062501,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.3370147705078125,
+          "y_center": 0.4128448486328125,
+          "width": 0.08837280273437503,
+          "height": 0.09197387695312498,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.5428924560546875,
+          "y_center": 0.834991455078125,
+          "width": 0.10119018554687503,
+          "height": 0.09215087890624996,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.1113128662109375,
+          "y_center": 0.194500732421875,
+          "width": 0.05958862304687501,
+          "height": 0.062219238281250006,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.0765167236328125,
+          "y_center": 0.493621826171875,
+          "width": 0.046466064453125,
+          "height": 0.051220703125000044,
+          "source": "added"
+        }
+      ],
+      "note": "9와 4 밑에 여드름 1개 누락",
+      "excluded": false,
+      "completed": true,
+      "updated_at": "2026-10-08T00:29:59.981Z"
+    },
+    "valid/images/acne-150_jpg.rf.ffcc725634ec3221b86686905e57e399.jpg": {
+      "annotations": [
+        {
+          "class_id": 0,
+          "x_center": 0.01953125,
+          "y_center": 0.8578125,
+          "width": 0.0390625,
+          "height": 0.084375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.63203125,
+          "y_center": 0.58515625,
+          "width": 0.078125,
+          "height": 0.08828125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.28203125,
+          "y_center": 0.4390625,
+          "width": 0.06796875,
+          "height": 0.06328125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.53984375,
+          "y_center": 0.01796875,
+          "width": 0.0640625,
+          "height": 0.0359375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.7380126953124999,
+          "y_center": 0.5042388916015625,
+          "width": 0.09560546874999998,
+          "height": 0.11140747070312501,
+          "source": "added"
+        }
+      ],
+      "note": "2의 오른쪽 윗 부분에 여드름 1개 누락",
+      "excluded": false,
+      "completed": true,
+      "updated_at": "2026-10-08T00:30:12.081Z"
+    },
+    "valid/images/acne-204_jpg.rf.f33f3ded55db615da9540b2ad9e8ffc3.jpg": {
+      "annotations": [
+        {
+          "class_id": 0,
+          "x_center": 0.36640625,
+          "y_center": 0.14375,
+          "width": 0.0390625,
+          "height": 0.05390625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.315625,
+          "y_center": 0.2265625,
+          "width": 0.03125,
+          "height": 0.05,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.3421875,
+          "y_center": 0.27734375,
+          "width": 0.0375,
+          "height": 0.0546875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.43515625,
+          "y_center": 0.3828125,
+          "width": 0.0375,
+          "height": 0.0625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.49453125,
+          "y_center": 0.3953125,
+          "width": 0.04140625,
+          "height": 0.05234375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.61640625,
+          "y_center": 0.25234375,
+          "width": 0.05,
+          "height": 0.08984375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.62734375,
+          "y_center": 0.11484375,
+          "width": 0.02890625,
+          "height": 0.0453125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.54453125,
+          "y_center": 0.06640625,
+          "width": 0.03828125,
+          "height": 0.05078125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.7234375,
+          "y_center": 0.30234375,
+          "width": 0.02578125,
+          "height": 0.04609375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.540625,
+          "y_center": 0.66640625,
+          "width": 0.03828125,
+          "height": 0.0625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.57421875,
+          "y_center": 0.725,
+          "width": 0.0484375,
+          "height": 0.05078125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.3921875,
+          "y_center": 0.80234375,
+          "width": 0.0375,
+          "height": 0.053125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.3546875,
+          "y_center": 0.7703125,
+          "width": 0.05390625,
+          "height": 0.0796875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.26640625,
+          "y_center": 0.665625,
+          "width": 0.0265625,
+          "height": 0.0421875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.303125,
+          "y_center": 0.56640625,
+          "width": 0.034375,
+          "height": 0.05625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.1484375,
+          "y_center": 0.64140625,
+          "width": 0.0328125,
+          "height": 0.05,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.43515625,
+          "y_center": 0.29453125,
+          "width": 0.03515625,
+          "height": 0.05703125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.4921875,
+          "y_center": 0.32734375,
+          "width": 0.0359375,
+          "height": 0.0546875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.6546875,
+          "y_center": 0.4625,
+          "width": 0.0375,
+          "height": 0.0546875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.60078125,
+          "y_center": 0.534375,
+          "width": 0.03125,
+          "height": 0.053125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.44609375,
+          "y_center": 0.67109375,
+          "width": 0.03515625,
+          "height": 0.0390625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.48515625,
+          "y_center": 0.6375,
+          "width": 0.0453125,
+          "height": 0.04609375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.453125,
+          "y_center": 0.8328125,
+          "width": 0.0328125,
+          "height": 0.03984375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.8125,
+          "y_center": 0.5625,
+          "width": 0.05390625,
+          "height": 0.06796875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.7859375,
+          "y_center": 0.68125,
+          "width": 0.03203125,
+          "height": 0.0453125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.8487396240234375,
+          "y_center": 0.0854888916015625,
+          "width": 0.061016845703125044,
+          "height": 0.080291748046875,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.9452880859375,
+          "y_center": 0.36687927246093754,
+          "width": 0.04901123046875,
+          "height": 0.05918579101562499,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.9378112792968749,
+          "y_center": 0.502691650390625,
+          "width": 0.04453125000000002,
+          "height": 0.04393310546875001,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.27001953125,
+          "y_center": 0.7771759033203125,
+          "width": 0.04056396484375002,
+          "height": 0.036175537109375044,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.4028045654296875,
+          "y_center": 0.1925567626953125,
+          "width": 0.04596557617187502,
+          "height": 0.040374755859375,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.5694732666015625,
+          "y_center": 0.21494140625000002,
+          "width": 0.037799072265624956,
+          "height": 0.038427734374999994,
+          "source": "added"
+        }
+      ],
+      "note": "9의 오른쪽 맨끝 부분에 여드름 1개 누락",
+      "excluded": false,
+      "completed": true,
+      "updated_at": "2026-10-08T00:30:31.181Z"
+    },
+    "valid/images/acne-217_jpg.rf.50e3f9c13b5969348eeef19d2c81e0ba.jpg": {
+      "annotations": [
+        {
+          "class_id": 0,
+          "x_center": 0.17421875,
+          "y_center": 0.3046875,
+          "width": 0.04375,
+          "height": 0.07109375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.1234375,
+          "y_center": 0.24375,
+          "width": 0.03984375,
+          "height": 0.10546875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.21015625,
+          "y_center": 0.11640625,
+          "width": 0.04140625,
+          "height": 0.071875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.23125,
+          "y_center": 0.45234375,
+          "width": 0.040625,
+          "height": 0.06640625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.253125,
+          "y_center": 0.33671875,
+          "width": 0.04453125,
+          "height": 0.1046875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.26484375,
+          "y_center": 0.7609375,
+          "width": 0.04453125,
+          "height": 0.08671875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.58671875,
+          "y_center": 0.5890625,
+          "width": 0.0515625,
+          "height": 0.09375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.7921875,
+          "y_center": 0.4125,
+          "width": 0.04296875,
+          "height": 0.06171875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.82734375,
+          "y_center": 0.4421875,
+          "width": 0.03671875,
+          "height": 0.09921875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.63984375,
+          "y_center": 0.8875,
+          "width": 0.06796875,
+          "height": 0.10078125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.71796875,
+          "y_center": 0.84140625,
+          "width": 0.0453125,
+          "height": 0.09921875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.51875,
+          "y_center": 0.80703125,
+          "width": 0.05234375,
+          "height": 0.1125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.43515625,
+          "y_center": 0.78046875,
+          "width": 0.03828125,
+          "height": 0.0640625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.35078125,
+          "y_center": 0.71484375,
+          "width": 0.03984375,
+          "height": 0.06796875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.4234375,
+          "y_center": 0.68828125,
+          "width": 0.059375,
+          "height": 0.0703125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.428125,
+          "y_center": 0.87109375,
+          "width": 0.0796875,
+          "height": 0.071875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.54453125,
+          "y_center": 0.92265625,
+          "width": 0.05546875,
+          "height": 0.04921875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.64453125,
+          "y_center": 0.74609375,
+          "width": 0.08203125,
+          "height": 0.13828125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.71768798828125,
+          "y_center": 0.1297332763671875,
+          "width": 0.040576171874999956,
+          "height": 0.041241455078125,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.7144287109375,
+          "y_center": 0.47217712402343753,
+          "width": 0.05718994140625,
+          "height": 0.06079711914062502,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.42461853027343754,
+          "y_center": 0.4977081298828125,
+          "width": 0.03230590820312501,
+          "height": 0.04026489257812493,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.4281158447265625,
+          "y_center": 0.5918792724609374,
+          "width": 0.048724365234374956,
+          "height": 0.05516967773437498,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.1995880126953125,
+          "y_center": 0.6438507080078125,
+          "width": 0.03526000976562502,
+          "height": 0.042218017578125044,
+          "source": "added"
+        }
+      ],
+      "note": "15의 윗 부분에 여드름 다수 누락",
+      "excluded": false,
+      "completed": true,
+      "updated_at": "2026-10-08T00:30:47.199Z"
+    },
+    "valid/images/acne-223_jpg.rf.1b603f941d5d6b2ed05a4998dabd83d4.jpg": {
+      "annotations": [
+        {
+          "class_id": 0,
+          "x_center": 0.1703125,
+          "y_center": 0.45234375,
+          "width": 0.0390625,
+          "height": 0.0640625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.340625,
+          "y_center": 0.67265625,
+          "width": 0.03671875,
+          "height": 0.05625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.75625,
+          "y_center": 0.18125,
+          "width": 0.05546875,
+          "height": 0.1078125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.925,
+          "y_center": 0.39921875,
+          "width": 0.03046875,
+          "height": 0.05546875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.921875,
+          "y_center": 0.30625,
+          "width": 0.0453125,
+          "height": 0.103125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.85234375,
+          "y_center": 0.54140625,
+          "width": 0.0390625,
+          "height": 0.06640625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.715625,
+          "y_center": 0.675,
+          "width": 0.0453125,
+          "height": 0.0734375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.67890625,
+          "y_center": 0.7203125,
+          "width": 0.03359375,
+          "height": 0.0765625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.784375,
+          "y_center": 0.725,
+          "width": 0.04765625,
+          "height": 0.075,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.8984375,
+          "y_center": 0.73203125,
+          "width": 0.03828125,
+          "height": 0.08359375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.75859375,
+          "y_center": 0.9078125,
+          "width": 0.03671875,
+          "height": 0.071875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.78125,
+          "y_center": 0.61171875,
+          "width": 0.05703125,
+          "height": 0.065625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.77109375,
+          "y_center": 0.4234375,
+          "width": 0.046875,
+          "height": 0.08203125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.9234375,
+          "y_center": 0.609375,
+          "width": 0.0421875,
+          "height": 0.09375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.628125,
+          "y_center": 0.56953125,
+          "width": 0.03671875,
+          "height": 0.0625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.6734375,
+          "y_center": 0.565625,
+          "width": 0.04609375,
+          "height": 0.0546875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.31796875,
+          "y_center": 0.5609375,
+          "width": 0.05390625,
+          "height": 0.04453125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.3980926513671875,
+          "y_center": 0.44851989746093746,
+          "width": 0.07337036132812497,
+          "height": 0.06876831054687499,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.6198089599609375,
+          "y_center": 0.2282440185546875,
+          "width": 0.055755615234375,
+          "height": 0.06122436523437502,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.389923095703125,
+          "y_center": 0.7569305419921875,
+          "width": 0.0489501953125,
+          "height": 0.063934326171875,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.27052001953125,
+          "y_center": 0.52967529296875,
+          "width": 0.0313720703125,
+          "height": 0.03912353515625,
+          "source": "added"
+        }
+      ],
+      "note": "17의 왼쪽에 여드름 누락",
+      "excluded": false,
+      "completed": true,
+      "updated_at": "2026-10-08T00:31:06.650Z"
+    },
+    "valid/images/acne-246_jpeg.rf.97766b7ea51380c13600bb25c9153fca.jpg": {
+      "annotations": [
+        {
+          "class_id": 0,
+          "x_center": 0.2578125,
+          "y_center": 0.33359375,
+          "width": 0.05078125,
+          "height": 0.0890625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.1546875,
+          "y_center": 0.29921875,
+          "width": 0.04453125,
+          "height": 0.1703125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.7931060791015625,
+          "y_center": 0.2197967529296875,
+          "width": 0.06522827148437504,
+          "height": 0.128826904296875,
+          "source": "added"
+        }
+      ],
+      "note": "오른쪽 볼 부분에 여드름 다수 누락",
+      "excluded": false,
+      "completed": true,
+      "updated_at": "2026-10-08T00:31:21.317Z"
+    },
+    "valid/images/acne-257_jpeg.rf.895db52509dcf3274333c8a46af00f79.jpg": {
+      "annotations": [
+        {
+          "class_id": 0,
+          "x_center": 0.45390625,
+          "y_center": 0.33125,
+          "width": 0.0875,
+          "height": 0.134375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.4828125,
+          "y_center": 0.709375,
+          "width": 0.06015625,
+          "height": 0.08828125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.5953125,
+          "y_center": 0.48359375,
+          "width": 0.05390625,
+          "height": 0.1,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.72890625,
+          "y_center": 0.92109375,
+          "width": 0.08828125,
+          "height": 0.1578125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.734375,
+          "y_center": 0.759375,
+          "width": 0.04609375,
+          "height": 0.078125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.83411865234375,
+          "y_center": 0.3847442626953125,
+          "width": 0.03217773437499993,
+          "height": 0.04968872070312497,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.816448974609375,
+          "y_center": 0.6132110595703124,
+          "width": 0.05561523437499993,
+          "height": 0.06627807617187498,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.849072265625,
+          "y_center": 0.8221343994140625,
+          "width": 0.05223388671875007,
+          "height": 0.07039184570312496,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.8237518310546874,
+          "y_center": 0.9237152099609376,
+          "width": 0.04100952148437498,
+          "height": 0.06281127929687502,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.2577880859375,
+          "y_center": 0.882354736328125,
+          "width": 0.06369628906249997,
+          "height": 0.062744140625,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.4464874267578125,
+          "y_center": 0.565716552734375,
+          "width": 0.05316772460937502,
+          "height": 0.067138671875,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.6003021240234374,
+          "y_center": 0.3029541015625,
+          "width": 0.05487670898437502,
+          "height": 0.05056152343750003,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.6413909912109375,
+          "y_center": 0.1938720703125,
+          "width": 0.04929809570312493,
+          "height": 0.06182861328125,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.3664825439453125,
+          "y_center": 0.3751953125,
+          "width": 0.061676025390625,
+          "height": 0.09786376953124998,
+          "source": "added"
+        }
+      ],
+      "note": "전체적으로 여드름 다수 누락",
+      "excluded": false,
+      "completed": true,
+      "updated_at": "2026-10-08T00:31:44.717Z"
+    },
+    "valid/images/acne-267_jpeg.rf.f242964df9d8d9b39d5da13dea75712c.jpg": {
+      "annotations": [
+        {
+          "class_id": 0,
+          "x_center": 0.1796875,
+          "y_center": 0.38203125,
+          "width": 0.0984375,
+          "height": 0.19453125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.30703125,
+          "y_center": 0.5296875,
+          "width": 0.06640625,
+          "height": 0.0828125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.41953125,
+          "y_center": 0.5953125,
+          "width": 0.05078125,
+          "height": 0.07890625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.36484375,
+          "y_center": 0.575,
+          "width": 0.04765625,
+          "height": 0.08671875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.6984375,
+          "y_center": 0.57109375,
+          "width": 0.0703125,
+          "height": 0.12890625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.296875,
+          "y_center": 0.6484375,
+          "width": 0.05703125,
+          "height": 0.09453125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.37421875,
+          "y_center": 0.66328125,
+          "width": 0.06328125,
+          "height": 0.06875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.815625,
+          "y_center": 0.13359375,
+          "width": 0.059375,
+          "height": 0.10546875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.55234375,
+          "y_center": 0.55859375,
+          "width": 0.04453125,
+          "height": 0.0734375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.6828125,
+          "y_center": 0.715625,
+          "width": 0.10625,
+          "height": 0.07109375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.271875,
+          "y_center": 0.75703125,
+          "width": 0.0921875,
+          "height": 0.12265625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.3671875,
+          "y_center": 0.7859375,
+          "width": 0.04921875,
+          "height": 0.11640625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.23727111816406252,
+          "y_center": 0.560406494140625,
+          "width": 0.05604858398437501,
+          "height": 0.05836181640624993,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.67701416015625,
+          "y_center": 0.36641235351562496,
+          "width": 0.06524658203125,
+          "height": 0.05894775390625001,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.77650146484375,
+          "y_center": 0.5084716796875,
+          "width": 0.04987792968749993,
+          "height": 0.05568847656249998,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.6733001708984374,
+          "y_center": 0.8231781005859375,
+          "width": 0.06714477539062502,
+          "height": 0.054901123046875,
+          "source": "added"
+        }
+      ],
+      "note": "턱 부분 여드름 다수 누락",
+      "excluded": false,
+      "completed": true,
+      "updated_at": "2026-10-08T00:31:57.368Z"
+    },
+    "valid/images/acne-284_jpeg.rf.3c07273f141120e450c0bc506bb64849.jpg": {
+      "annotations": [
+        {
+          "class_id": 0,
+          "x_center": 0.7546875,
+          "y_center": 0.53515625,
+          "width": 0.09453125,
+          "height": 0.121875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.87890625,
+          "y_center": 0.7296875,
+          "width": 0.05546875,
+          "height": 0.10625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.78515625,
+          "y_center": 0.8640625,
+          "width": 0.128125,
+          "height": 0.128125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.9609375,
+          "y_center": 0.49296875,
+          "width": 0.078125,
+          "height": 0.14765625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.97265625,
+          "y_center": 0.6359375,
+          "width": 0.0546875,
+          "height": 0.103125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.975,
+          "y_center": 0.79140625,
+          "width": 0.05,
+          "height": 0.11875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.7296875,
+          "y_center": 0.96484375,
+          "width": 0.0453125,
+          "height": 0.06953125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.258843994140625,
+          "y_center": 0.551654052734375,
+          "width": 0.04271240234375001,
+          "height": 0.05357666015625007,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.8608184814453125,
+          "y_center": 0.45240478515625004,
+          "width": 0.056353759765624956,
+          "height": 0.07203369140624999,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.8783416748046875,
+          "y_center": 0.5660003662109374,
+          "width": 0.044512939453124956,
+          "height": 0.05048217773437502,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.8343841552734375,
+          "y_center": 0.6233367919921875,
+          "width": 0.057159423828125,
+          "height": 0.06653442382812491,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.44071044921875,
+          "y_center": 0.9502410888671875,
+          "width": 0.05292968749999999,
+          "height": 0.038616943359375044,
+          "source": "added"
+        }
+      ],
+      "note": "",
+      "excluded": true,
+      "completed": true,
+      "updated_at": "2026-10-08T00:32:13.184Z"
+    },
+    "valid/images/acne-319_jpeg.rf.205637ac39511f1f1662a5aec69ebdfa.jpg": {
+      "annotations": [
+        {
+          "class_id": 0,
+          "x_center": 0.36484375,
+          "y_center": 0.5859375,
+          "width": 0.03515625,
+          "height": 0.06171875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.6857147216796875,
+          "y_center": 0.6204559326171875,
+          "width": 0.060015869140624956,
+          "height": 0.04661254882812493,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.6230316162109375,
+          "y_center": 0.5229217529296875,
+          "width": 0.061053466796874956,
+          "height": 0.06548461914062498,
+          "source": "added"
+        }
+      ],
+      "note": "턱 부분 여드름 다수 누락",
+      "excluded": false,
+      "completed": true,
+      "updated_at": "2026-10-08T00:32:20.368Z"
+    },
+    "valid/images/acne-320_jpeg.rf.36da7f5652215ec1bcc16a1d1dc6a420.jpg": {
+      "annotations": [
+        {
+          "class_id": 0,
+          "x_center": 0.3234375,
+          "y_center": 0.6953125,
+          "width": 0.03203125,
+          "height": 0.125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.28984375,
+          "y_center": 0.84609375,
+          "width": 0.03984375,
+          "height": 0.08203125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.22109375,
+          "y_center": 0.8265625,
+          "width": 0.03046875,
+          "height": 0.07109375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.24765625,
+          "y_center": 0.9140625,
+          "width": 0.0453125,
+          "height": 0.08671875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.4993438720703125,
+          "y_center": 0.4620361328125,
+          "width": 0.057452392578124956,
+          "height": 0.06368408203124998,
+          "source": "added"
+        }
+      ],
+      "note": "왼쪽 볼 부분 여드름 다수 누락",
+      "excluded": false,
+      "completed": true,
+      "updated_at": "2026-10-08T00:32:33.069Z"
+    },
+    "valid/images/acne-337_jpeg.rf.d8466fa49f89fb18f3bd152da42a71e5.jpg": {
+      "annotations": [
+        {
+          "class_id": 0,
+          "x_center": 0.46953125,
+          "y_center": 0.603125,
+          "width": 0.06171875,
+          "height": 0.12421875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.90234375,
+          "y_center": 0.584375,
+          "width": 0.05078125,
+          "height": 0.09453125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.51953125,
+          "y_center": 0.20234375,
+          "width": 0.0890625,
+          "height": 0.06875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.25703125,
+          "y_center": 0.36015625,
+          "width": 0.05,
+          "height": 0.08671875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.47890625,
+          "y_center": 0.3125,
+          "width": 0.0421875,
+          "height": 0.0703125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.4265625,
+          "y_center": 0.38828125,
+          "width": 0.0859375,
+          "height": 0.10625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.4110321044921875,
+          "y_center": 0.621270751953125,
+          "width": 0.04047241210937497,
+          "height": 0.10655517578124996,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.312921142578125,
+          "y_center": 0.5426361083984375,
+          "width": 0.08699951171875003,
+          "height": 0.09118041992187498,
+          "source": "added"
+        }
+      ],
+      "note": "1, 4의 아래쪽 부분 여드름 다수 누락",
+      "excluded": false,
+      "completed": true,
+      "updated_at": "2026-10-08T00:32:41.702Z"
+    },
+    "valid/images/acne-373_jpeg.rf.fd792665746bf19c7deebc4d5a166e27.jpg": {
+      "annotations": [
+        {
+          "class_id": 0,
+          "x_center": 0.415625,
+          "y_center": 0.325,
+          "width": 0.0390625,
+          "height": 0.0578125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.48203125,
+          "y_center": 0.33125,
+          "width": 0.07265625,
+          "height": 0.07421875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.54921875,
+          "y_center": 0.3640625,
+          "width": 0.040625,
+          "height": 0.065625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.55234375,
+          "y_center": 0.42890625,
+          "width": 0.04375,
+          "height": 0.0625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.69609375,
+          "y_center": 0.46484375,
+          "width": 0.0390625,
+          "height": 0.06015625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.53515625,
+          "y_center": 0.48125,
+          "width": 0.05625,
+          "height": 0.04609375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.32552795410156254,
+          "y_center": 0.54134521484375,
+          "width": 0.04337768554687499,
+          "height": 0.06622314453125,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.5294403076171874,
+          "y_center": 0.6957794189453125,
+          "width": 0.09014282226562498,
+          "height": 0.088958740234375,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.70048828125,
+          "y_center": 0.3208526611328125,
+          "width": 0.05130615234375002,
+          "height": 0.05494995117187501,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.7610382080078125,
+          "y_center": 0.2298736572265625,
+          "width": 0.08101196289062496,
+          "height": 0.05346069335937498,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.313006591796875,
+          "y_center": 0.195489501953125,
+          "width": 0.07513427734375,
+          "height": 0.096435546875,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.2961944580078125,
+          "y_center": 0.7961029052734374,
+          "width": 0.06687622070312499,
+          "height": 0.07494506835937498,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.32110595703125,
+          "y_center": 0.6093475341796875,
+          "width": 0.06978759765624998,
+          "height": 0.05822143554687498,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.43420715332031246,
+          "y_center": 0.50517578125,
+          "width": 0.10789184570312499,
+          "height": 0.10877685546874999,
+          "source": "added"
+        }
+      ],
+      "note": "라벨 주변에 여드름 다수 누락",
+      "excluded": false,
+      "completed": true,
+      "updated_at": "2026-10-08T00:33:02.803Z"
+    },
+    "valid/images/acne-430_jpeg.rf.060bf1e5e68a338a3c3257f61533d42d.jpg": {
+      "annotations": [
+        {
+          "class_id": 0,
+          "x_center": 0.72109375,
+          "y_center": 0.1015625,
+          "width": 0.06640625,
+          "height": 0.071875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.6015625,
+          "y_center": 0.34140625,
+          "width": 0.03984375,
+          "height": 0.0625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.54140625,
+          "y_center": 0.6375,
+          "width": 0.07109375,
+          "height": 0.10390625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.846875,
+          "y_center": 0.57578125,
+          "width": 0.08515625,
+          "height": 0.134375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.603125,
+          "y_center": 0.73828125,
+          "width": 0.09296875,
+          "height": 0.08359375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.31484375,
+          "y_center": 0.83984375,
+          "width": 0.06328125,
+          "height": 0.08984375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.4421875,
+          "y_center": 0.8453125,
+          "width": 0.046875,
+          "height": 0.06953125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.47578125,
+          "y_center": 0.4421875,
+          "width": 0.04453125,
+          "height": 0.05390625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.71015625,
+          "y_center": 0.56640625,
+          "width": 0.04609375,
+          "height": 0.06171875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.79453125,
+          "y_center": 0.72421875,
+          "width": 0.03828125,
+          "height": 0.08984375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.928125,
+          "y_center": 0.23984375,
+          "width": 0.0484375,
+          "height": 0.06796875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.609375,
+          "y_center": 0.46640625,
+          "width": 0.0453125,
+          "height": 0.10546875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.87734375,
+          "y_center": 0.37265625,
+          "width": 0.0578125,
+          "height": 0.0796875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.68359375,
+          "y_center": 0.4125,
+          "width": 0.05859375,
+          "height": 0.07265625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.7421875,
+          "y_center": 0.6390625,
+          "width": 0.040625,
+          "height": 0.05859375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.61484375,
+          "y_center": 0.63828125,
+          "width": 0.0609375,
+          "height": 0.109375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.5921875,
+          "y_center": 0.94375,
+          "width": 0.08828125,
+          "height": 0.1109375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.67578125,
+          "y_center": 0.88984375,
+          "width": 0.0828125,
+          "height": 0.084375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.40078125,
+          "y_center": 0.75078125,
+          "width": 0.07734375,
+          "height": 0.1078125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.62120361328125,
+          "y_center": 0.2252532958984375,
+          "width": 0.05118408203125002,
+          "height": 0.04793090820312498,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.8403289794921875,
+          "y_center": 0.2467498779296875,
+          "width": 0.05646362304687502,
+          "height": 0.04920043945312502,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.9076080322265625,
+          "y_center": 0.794610595703125,
+          "width": 0.055023193359375,
+          "height": 0.07841796874999996,
+          "source": "added"
+        }
+      ],
+      "note": "",
+      "excluded": true,
+      "completed": true,
+      "updated_at": "2026-10-08T00:33:13.886Z"
+    },
+    "valid/images/acne-434_jpeg.rf.4ec27684c5e305eba0542a73f4e7e9e1.jpg": {
+      "annotations": [
+        {
+          "class_id": 0,
+          "x_center": 0.06328125,
+          "y_center": 0.08125,
+          "width": 0.0578125,
+          "height": 0.08828125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.4734375,
+          "y_center": 0.64609375,
+          "width": 0.0484375,
+          "height": 0.06328125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.5453125,
+          "y_center": 0.74609375,
+          "width": 0.04453125,
+          "height": 0.05078125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.8097259521484375,
+          "y_center": 0.131842041015625,
+          "width": 0.06725463867187498,
+          "height": 0.07835693359375,
+          "source": "added"
+        }
+      ],
+      "note": "입가 주변 여드름 다수 누락",
+      "excluded": false,
+      "completed": true,
+      "updated_at": "2026-10-08T00:33:23.487Z"
+    },
+    "valid/images/acne-90_jpeg.rf.715856ba33d2f7c26294ceea4aaa611b.jpg": {
+      "annotations": [
+        {
+          "class_id": 0,
+          "x_center": 0.65,
+          "y_center": 0.50390625,
+          "width": 0.0484375,
+          "height": 0.07109375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.5015625,
+          "y_center": 0.7453125,
+          "width": 0.053125,
+          "height": 0.1,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.55625,
+          "y_center": 0.3109375,
+          "width": 0.04453125,
+          "height": 0.065625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.6515625,
+          "y_center": 0.23515625,
+          "width": 0.05234375,
+          "height": 0.0546875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.356536865234375,
+          "y_center": 0.4931854248046875,
+          "width": 0.0933837890625,
+          "height": 0.07782592773437497,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.770513916015625,
+          "y_center": 0.1383331298828125,
+          "width": 0.06849365234375004,
+          "height": 0.05607299804687502,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.76502685546875,
+          "y_center": 0.21707763671875002,
+          "width": 0.07326660156249998,
+          "height": 0.07113037109375,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.8929290771484375,
+          "y_center": 0.397943115234375,
+          "width": 0.058624267578125,
+          "height": 0.0631103515625,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.7063812255859375,
+          "y_center": 0.321044921875,
+          "width": 0.060894775390625044,
+          "height": 0.053662109375000044,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.7497772216796875,
+          "y_center": 0.4125457763671875,
+          "width": 0.059368896484375044,
+          "height": 0.061431884765625,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.7474517822265625,
+          "y_center": 0.5164215087890625,
+          "width": 0.037127685546874956,
+          "height": 0.06683959960937502,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.5802093505859375,
+          "y_center": 0.5027740478515625,
+          "width": 0.07295532226562496,
+          "height": 0.09191284179687498,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.6928070068359375,
+          "y_center": 0.57694091796875,
+          "width": 0.06641235351562502,
+          "height": 0.062182617187499956,
+          "source": "added"
+        }
+      ],
+      "note": "1,3,4주변 여드름 다수 누락",
+      "excluded": false,
+      "completed": true,
+      "updated_at": "2026-10-08T00:33:46.904Z"
+    },
+    "test/images/acne-140_jpg.rf.785b2c29676c422c6a1cdbe6708f86e8.jpg": {
+      "annotations": [
+        {
+          "class_id": 0,
+          "x_center": 0.175,
+          "y_center": 0.42734375,
+          "width": 0.0578125,
+          "height": 0.0765625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.128125,
+          "y_center": 0.53984375,
+          "width": 0.0546875,
+          "height": 0.08203125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.32265625,
+          "y_center": 0.54609375,
+          "width": 0.03203125,
+          "height": 0.0390625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.27890625,
+          "y_center": 0.68046875,
+          "width": 0.053125,
+          "height": 0.090625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.365625,
+          "y_center": 0.68515625,
+          "width": 0.04609375,
+          "height": 0.07109375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.4296875,
+          "y_center": 0.7,
+          "width": 0.0625,
+          "height": 0.059375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.5109375,
+          "y_center": 0.7421875,
+          "width": 0.046875,
+          "height": 0.06328125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.64609375,
+          "y_center": 0.59375,
+          "width": 0.0515625,
+          "height": 0.0640625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.19765625,
+          "y_center": 0.54453125,
+          "width": 0.06640625,
+          "height": 0.06875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.2296875,
+          "y_center": 0.46484375,
+          "width": 0.03359375,
+          "height": 0.04921875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.4390625,
+          "y_center": 0.55703125,
+          "width": 0.0375,
+          "height": 0.04453125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.503125,
+          "y_center": 0.8234375,
+          "width": 0.034375,
+          "height": 0.04453125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.81484375,
+          "y_center": 0.52109375,
+          "width": 0.03203125,
+          "height": 0.04765625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.671875,
+          "y_center": 0.415625,
+          "width": 0.0421875,
+          "height": 0.0640625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.496875,
+          "y_center": 0.55546875,
+          "width": 0.0421875,
+          "height": 0.046875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.721875,
+          "y_center": 0.57421875,
+          "width": 0.06875,
+          "height": 0.0921875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.19375,
+          "y_center": 0.63671875,
+          "width": 0.10703125,
+          "height": 0.09765625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.281390380859375,
+          "y_center": 0.5421417236328125,
+          "width": 0.04034423828125,
+          "height": 0.06209106445312507,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.3145965576171875,
+          "y_center": 0.7697509765625,
+          "width": 0.09519653320312499,
+          "height": 0.046398925781250044,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.593939208984375,
+          "y_center": 0.5887786865234375,
+          "width": 0.045458984374999956,
+          "height": 0.05663452148437498,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.6281768798828125,
+          "y_center": 0.8186004638671875,
+          "width": 0.04683227539062507,
+          "height": 0.043365478515625,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.7540618896484375,
+          "y_center": 0.462017822265625,
+          "width": 0.06972045898437507,
+          "height": 0.05910644531249998,
+          "source": "added"
+        }
+      ],
+      "note": "턱 부분 여드름 다수 누락",
+      "excluded": false,
+      "completed": true,
+      "updated_at": "2026-10-08T00:34:03.871Z"
+    },
+    "test/images/acne-151_jpg.rf.638c693eb9342b4800bd8b1758e566e1.jpg": {
+      "annotations": [
+        {
+          "class_id": 0,
+          "x_center": 0.46328125,
+          "y_center": 0.58125,
+          "width": 0.15390625,
+          "height": 0.1125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.621875,
+          "y_center": 0.571875,
+          "width": 0.09453125,
+          "height": 0.08671875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.85546875,
+          "y_center": 0.409375,
+          "width": 0.10078125,
+          "height": 0.12578125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.7828125,
+          "y_center": 0.58046875,
+          "width": 0.0765625,
+          "height": 0.09609375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.521875,
+          "y_center": 0.43203125,
+          "width": 0.10390625,
+          "height": 0.11015625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.724700927734375,
+          "y_center": 0.49446411132812496,
+          "width": 0.04831542968749991,
+          "height": 0.051086425781249944,
+          "source": "added"
+        }
+      ],
+      "note": "2,4 사이의 윗부분 여드름 1개 누락",
+      "excluded": false,
+      "completed": true,
+      "updated_at": "2026-10-08T00:34:09.621Z"
+    },
+    "test/images/acne-155_jpg.rf.96681853cd48ff20eb8c2f0e3f32bdbf.jpg": {
+      "annotations": [
+        {
+          "class_id": 0,
+          "x_center": 0.11015625,
+          "y_center": 0.2546875,
+          "width": 0.0578125,
+          "height": 0.07890625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.08359375,
+          "y_center": 0.52265625,
+          "width": 0.05078125,
+          "height": 0.1265625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.19453125,
+          "y_center": 0.7078125,
+          "width": 0.05703125,
+          "height": 0.14140625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.275,
+          "y_center": 0.42265625,
+          "width": 0.03828125,
+          "height": 0.08125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.37421875,
+          "y_center": 0.43046875,
+          "width": 0.05234375,
+          "height": 0.08125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.35703125,
+          "y_center": 0.74765625,
+          "width": 0.0484375,
+          "height": 0.078125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.58671875,
+          "y_center": 0.653125,
+          "width": 0.05703125,
+          "height": 0.0953125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.8375,
+          "y_center": 0.28046875,
+          "width": 0.03515625,
+          "height": 0.06328125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.7546875,
+          "y_center": 0.42890625,
+          "width": 0.0640625,
+          "height": 0.05625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.77578125,
+          "y_center": 0.60859375,
+          "width": 0.03984375,
+          "height": 0.0765625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.82109375,
+          "y_center": 0.7484375,
+          "width": 0.053125,
+          "height": 0.08671875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.89296875,
+          "y_center": 0.4953125,
+          "width": 0.03203125,
+          "height": 0.059375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.8515625,
+          "y_center": 0.50390625,
+          "width": 0.03125,
+          "height": 0.0578125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.521807861328125,
+          "y_center": 0.5838378906249999,
+          "width": 0.08026123046874994,
+          "height": 0.08791503906249998,
+          "source": "added"
+        }
+      ],
+      "note": "7의 윗부분 여드름 1개 누락",
+      "excluded": false,
+      "completed": true,
+      "updated_at": "2026-10-08T00:34:15.188Z"
+    },
+    "test/images/acne-158_jpg.rf.9c07578d00524a159f65bff978a79c5a.jpg": {
+      "annotations": [
+        {
+          "class_id": 0,
+          "x_center": 0.4046875,
+          "y_center": 0.05390625,
+          "width": 0.03515625,
+          "height": 0.04921875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.4796875,
+          "y_center": 0.15234375,
+          "width": 0.0359375,
+          "height": 0.059375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.4375,
+          "y_center": 0.19921875,
+          "width": 0.0296875,
+          "height": 0.0453125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.39453125,
+          "y_center": 0.29609375,
+          "width": 0.02890625,
+          "height": 0.04296875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.43671875,
+          "y_center": 0.353125,
+          "width": 0.0421875,
+          "height": 0.07421875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.57265625,
+          "y_center": 0.43515625,
+          "width": 0.05546875,
+          "height": 0.071875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.74140625,
+          "y_center": 0.27109375,
+          "width": 0.0453125,
+          "height": 0.06015625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.7203125,
+          "y_center": 0.21015625,
+          "width": 0.03515625,
+          "height": 0.05234375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.8671875,
+          "y_center": 0.21875,
+          "width": 0.03828125,
+          "height": 0.0546875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.92890625,
+          "y_center": 0.1859375,
+          "width": 0.034375,
+          "height": 0.0578125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.96953125,
+          "y_center": 0.37421875,
+          "width": 0.02265625,
+          "height": 0.0625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.8859375,
+          "y_center": 0.415625,
+          "width": 0.05390625,
+          "height": 0.0875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.7890625,
+          "y_center": 0.33671875,
+          "width": 0.034375,
+          "height": 0.0578125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.8421875,
+          "y_center": 0.125,
+          "width": 0.0203125,
+          "height": 0.0390625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.70390625,
+          "y_center": 0.82265625,
+          "width": 0.04296875,
+          "height": 0.0546875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.72578125,
+          "y_center": 0.925,
+          "width": 0.04453125,
+          "height": 0.053125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.83984375,
+          "y_center": 0.8203125,
+          "width": 0.02890625,
+          "height": 0.04375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.93984375,
+          "y_center": 0.884375,
+          "width": 0.03984375,
+          "height": 0.05546875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.88203125,
+          "y_center": 0.9453125,
+          "width": 0.0453125,
+          "height": 0.046875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.91953125,
+          "y_center": 0.640625,
+          "width": 0.04609375,
+          "height": 0.084375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.7921875,
+          "y_center": 0.5921875,
+          "width": 0.03046875,
+          "height": 0.06640625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.78828125,
+          "y_center": 0.67109375,
+          "width": 0.0265625,
+          "height": 0.0453125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.7671875,
+          "y_center": 0.6890625,
+          "width": 0.02734375,
+          "height": 0.04921875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.7625,
+          "y_center": 0.73828125,
+          "width": 0.0296875,
+          "height": 0.05078125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.70859375,
+          "y_center": 0.74765625,
+          "width": 0.028125,
+          "height": 0.0421875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.853125,
+          "y_center": 0.57578125,
+          "width": 0.025,
+          "height": 0.04140625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.8390625,
+          "y_center": 0.8859375,
+          "width": 0.04296875,
+          "height": 0.05625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.88125,
+          "y_center": 0.846875,
+          "width": 0.0375,
+          "height": 0.05703125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.7349700927734375,
+          "y_center": 0.4084564208984375,
+          "width": 0.04161987304687509,
+          "height": 0.03662719726562497,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.729974365234375,
+          "y_center": 0.3431549072265625,
+          "width": 0.053210449218749956,
+          "height": 0.05120239257812498,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.631683349609375,
+          "y_center": 0.8793121337890626,
+          "width": 0.06107177734374991,
+          "height": 0.05823364257812502,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.5029541015625001,
+          "y_center": 0.9477813720703125,
+          "width": 0.04941406250000002,
+          "height": 0.075775146484375,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.3450469970703125,
+          "y_center": 0.023870849609374998,
+          "width": 0.06467895507812504,
+          "height": 0.04293212890625,
+          "source": "added"
+        }
+      ],
+      "note": "귀 근처 부분 여듦 다수 누락",
+      "excluded": false,
+      "completed": true,
+      "updated_at": "2026-10-08T00:34:33.538Z"
+    },
+    "test/images/acne-166_jpg.rf.a12f2acc98f6a862f6d8b7d28306e6ff.jpg": {
+      "annotations": [
+        {
+          "class_id": 0,
+          "x_center": 0.11953125,
+          "y_center": 0.39609375,
+          "width": 0.07109375,
+          "height": 0.0546875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.3109375,
+          "y_center": 0.21328125,
+          "width": 0.0515625,
+          "height": 0.03671875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.39375,
+          "y_center": 0.63984375,
+          "width": 0.06484375,
+          "height": 0.04140625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.659375,
+          "y_center": 0.41484375,
+          "width": 0.06484375,
+          "height": 0.03984375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.4875,
+          "y_center": 0.25,
+          "width": 0.0609375,
+          "height": 0.04296875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.42890625,
+          "y_center": 0.271875,
+          "width": 0.06171875,
+          "height": 0.03984375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.4609375,
+          "y_center": 0.31171875,
+          "width": 0.06171875,
+          "height": 0.04140625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.1375,
+          "y_center": 0.2328125,
+          "width": 0.096875,
+          "height": 0.06796875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.22265625,
+          "y_center": 0.88046875,
+          "width": 0.071875,
+          "height": 0.03828125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.18561401367187502,
+          "y_center": 0.784332275390625,
+          "width": 0.046484374999999994,
+          "height": 0.050769042968749956,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.264422607421875,
+          "y_center": 0.7543121337890625,
+          "width": 0.04680175781249998,
+          "height": 0.034625244140624956,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.742828369140625,
+          "y_center": 0.3841644287109375,
+          "width": 0.035632324218749956,
+          "height": 0.032257080078125,
+          "source": "added"
+        }
+      ],
+      "note": "여드름 다수 누락",
+      "excluded": false,
+      "completed": true,
+      "updated_at": "2026-10-08T00:34:45.922Z"
+    },
+    "test/images/acne-187_jpg.rf.a4bc43c7fb75ea9ddc00fa14bf06eda5.jpg": {
+      "annotations": [
+        {
+          "class_id": 0,
+          "x_center": 0.04140625,
+          "y_center": 0.94296875,
+          "width": 0.0375,
+          "height": 0.0578125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.11640625,
+          "y_center": 0.7125,
+          "width": 0.04375,
+          "height": 0.0828125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.29140625,
+          "y_center": 0.62890625,
+          "width": 0.04765625,
+          "height": 0.0796875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.29765625,
+          "y_center": 0.28984375,
+          "width": 0.02421875,
+          "height": 0.0515625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.23828125,
+          "y_center": 0.87421875,
+          "width": 0.0328125,
+          "height": 0.071875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.021875,
+          "y_center": 0.74453125,
+          "width": 0.03515625,
+          "height": 0.06015625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.159375,
+          "y_center": 0.31171875,
+          "width": 0.0390625,
+          "height": 0.06484375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.8171875,
+          "y_center": 0.73515625,
+          "width": 0.03515625,
+          "height": 0.04765625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.834375,
+          "y_center": 0.8109375,
+          "width": 0.040625,
+          "height": 0.084375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.328125,
+          "y_center": 0.69375,
+          "width": 0.03828125,
+          "height": 0.065625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.82578125,
+          "y_center": 0.67890625,
+          "width": 0.03203125,
+          "height": 0.059375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.4750213623046875,
+          "y_center": 0.884857177734375,
+          "width": 0.04375610351562498,
+          "height": 0.04705810546875,
+          "source": "added"
+        }
+      ],
+      "note": "여드름 다수 누락",
+      "excluded": false,
+      "completed": true,
+      "updated_at": "2026-10-08T00:34:54.656Z"
+    },
+    "test/images/acne-276_jpeg.rf.9d0990f99dee0e0ec17d89fd07384e0b.jpg": {
+      "annotations": [
+        {
+          "class_id": 0,
+          "x_center": 0.61015625,
+          "y_center": 0.66171875,
+          "width": 0.05625,
+          "height": 0.0703125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.58203125,
+          "y_center": 0.8390625,
+          "width": 0.046875,
+          "height": 0.04140625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.80067138671875,
+          "y_center": 0.1383331298828125,
+          "width": 0.04388427734375,
+          "height": 0.046661376953124986,
+          "source": "added"
+        }
+      ],
+      "note": "머리 주변 여드름 1개 누락",
+      "excluded": false,
+      "completed": true,
+      "updated_at": "2026-10-08T00:35:00.539Z"
+    },
+    "test/images/acne-33_jpeg.rf.5f883b1bb6eacef56d03175d54955561.jpg": {
+      "annotations": [
+        {
+          "class_id": 0,
+          "x_center": 0.55703125,
+          "y_center": 0.16015625,
+          "width": 0.0453125,
+          "height": 0.071875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.54609375,
+          "y_center": 0.47890625,
+          "width": 0.02734375,
+          "height": 0.05234375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.7421875,
+          "y_center": 0.89140625,
+          "width": 0.02890625,
+          "height": 0.0640625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.821875,
+          "y_center": 0.80625,
+          "width": 0.03046875,
+          "height": 0.06171875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.903125,
+          "y_center": 0.81796875,
+          "width": 0.03671875,
+          "height": 0.065625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.925,
+          "y_center": 0.31171875,
+          "width": 0.05390625,
+          "height": 0.10703125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.88125,
+          "y_center": 0.246875,
+          "width": 0.02265625,
+          "height": 0.046875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.1390625,
+          "y_center": 0.78125,
+          "width": 0.0265625,
+          "height": 0.05078125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.38203125,
+          "y_center": 0.66015625,
+          "width": 0.06484375,
+          "height": 0.0578125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.35859375,
+          "y_center": 0.715625,
+          "width": 0.02421875,
+          "height": 0.03828125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.5125,
+          "y_center": 0.275,
+          "width": 0.04375,
+          "height": 0.06953125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.546875,
+          "y_center": 0.23359375,
+          "width": 0.03359375,
+          "height": 0.0453125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.7140625,
+          "y_center": 0.30703125,
+          "width": 0.03203125,
+          "height": 0.0921875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.7765625,
+          "y_center": 0.33984375,
+          "width": 0.05625,
+          "height": 0.084375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.39453125,
+          "y_center": 0.46171875,
+          "width": 0.0375,
+          "height": 0.06171875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.33984375,
+          "y_center": 0.40859375,
+          "width": 0.0265625,
+          "height": 0.05234375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.44375,
+          "y_center": 0.39921875,
+          "width": 0.04140625,
+          "height": 0.103125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.61640625,
+          "y_center": 0.1625,
+          "width": 0.02890625,
+          "height": 0.0578125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.5625,
+          "y_center": 0.57890625,
+          "width": 0.0265625,
+          "height": 0.040625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.475,
+          "y_center": 0.66484375,
+          "width": 0.01953125,
+          "height": 0.0390625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.50625,
+          "y_center": 0.6734375,
+          "width": 0.03125,
+          "height": 0.0515625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.5375,
+          "y_center": 0.6390625,
+          "width": 0.0265625,
+          "height": 0.0453125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.4921875,
+          "y_center": 0.5546875,
+          "width": 0.05625,
+          "height": 0.08125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.428125,
+          "y_center": 0.81796875,
+          "width": 0.04140625,
+          "height": 0.06875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.3390625,
+          "y_center": 0.7953125,
+          "width": 0.03984375,
+          "height": 0.08828125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.64140625,
+          "y_center": 0.49140625,
+          "width": 0.0515625,
+          "height": 0.1,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.65078125,
+          "y_center": 0.26796875,
+          "width": 0.03984375,
+          "height": 0.07734375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.7734375,
+          "y_center": 0.2296875,
+          "width": 0.03515625,
+          "height": 0.07109375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.5984375,
+          "y_center": 0.55625,
+          "width": 0.02734375,
+          "height": 0.07109375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.3359375,
+          "y_center": 0.490625,
+          "width": 0.03125,
+          "height": 0.053125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.2984375,
+          "y_center": 0.46015625,
+          "width": 0.0296875,
+          "height": 0.06640625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.68671875,
+          "y_center": 0.63203125,
+          "width": 0.0296875,
+          "height": 0.07109375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.83046875,
+          "y_center": 0.07265625,
+          "width": 0.034375,
+          "height": 0.06875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.76484375,
+          "y_center": 0.03984375,
+          "width": 0.03046875,
+          "height": 0.0515625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.9284820556640625,
+          "y_center": 0.6015258789062501,
+          "width": 0.05225219726562491,
+          "height": 0.07248535156250002,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.83828125,
+          "y_center": 0.463134765625,
+          "width": 0.08349609375,
+          "height": 0.11069335937499997,
+          "source": "added"
+        }
+      ],
+      "note": "14,6 밑 부분 여드름 다수 누락",
+      "excluded": false,
+      "completed": true,
+      "updated_at": "2026-10-08T00:35:11.540Z"
+    },
+    "test/images/acne-457_jpeg.rf.96817d48e7a4fe76651012d96df43141.jpg": {
+      "annotations": [
+        {
+          "class_id": 0,
+          "x_center": 0.19609375,
+          "y_center": 0.5125,
+          "width": 0.04765625,
+          "height": 0.06328125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.14609375,
+          "y_center": 0.45078125,
+          "width": 0.05390625,
+          "height": 0.06875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.80390625,
+          "y_center": 0.4625,
+          "width": 0.0640625,
+          "height": 0.08203125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.3015625,
+          "y_center": 0.67421875,
+          "width": 0.06171875,
+          "height": 0.125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.177349853515625,
+          "y_center": 0.6509643554687501,
+          "width": 0.06535644531249998,
+          "height": 0.06350097656249998,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.36387329101562504,
+          "y_center": 0.5721527099609376,
+          "width": 0.08037109375000001,
+          "height": 0.07776489257812502,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.8678558349609375,
+          "y_center": 0.266461181640625,
+          "width": 0.053741455078125,
+          "height": 0.047766113281249994,
+          "source": "added"
+        }
+      ],
+      "note": "1 밑부분 여드름 1개 누락",
+      "excluded": false,
+      "completed": true,
+      "updated_at": "2026-10-08T00:35:22.924Z"
+    },
+    "test/images/acne-49_jpeg.rf.3c951af43df31b304067823e836ec20b.jpg": {
+      "annotations": [
+        {
+          "class_id": 0,
+          "x_center": 0.15234375,
+          "y_center": 0.51484375,
+          "width": 0.03671875,
+          "height": 0.0609375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.2171875,
+          "y_center": 0.103125,
+          "width": 0.02421875,
+          "height": 0.0734375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.28828125,
+          "y_center": 0.22265625,
+          "width": 0.0359375,
+          "height": 0.06015625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.18125,
+          "y_center": 0.68125,
+          "width": 0.028125,
+          "height": 0.0546875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.23984375,
+          "y_center": 0.69140625,
+          "width": 0.03359375,
+          "height": 0.046875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.278125,
+          "y_center": 0.79609375,
+          "width": 0.0359375,
+          "height": 0.04609375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.40234375,
+          "y_center": 0.896875,
+          "width": 0.03671875,
+          "height": 0.05390625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.66640625,
+          "y_center": 0.78125,
+          "width": 0.0296875,
+          "height": 0.04375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.71328125,
+          "y_center": 0.71640625,
+          "width": 0.0265625,
+          "height": 0.0484375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.284375,
+          "y_center": 0.56015625,
+          "width": 0.028125,
+          "height": 0.04921875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.18359375,
+          "y_center": 0.40234375,
+          "width": 0.02421875,
+          "height": 0.0484375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.6980682373046875,
+          "y_center": 0.42311401367187496,
+          "width": 0.050274658203125044,
+          "height": 0.05113525390625001,
+          "source": "added"
+        }
+      ],
+      "note": "코 밑부분 여드름 1개 누락",
+      "excluded": false,
+      "completed": true,
+      "updated_at": "2026-10-08T00:35:29.340Z"
+    },
+    "test/images/acne-95_jpeg.rf.28c5c0321aca3fbff22844c56937dbfd.jpg": {
+      "annotations": [
+        {
+          "class_id": 0,
+          "x_center": 0.40546875,
+          "y_center": 0.55859375,
+          "width": 0.06328125,
+          "height": 0.05703125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.08984375,
+          "y_center": 0.59375,
+          "width": 0.09140625,
+          "height": 0.13046875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.49140625,
+          "y_center": 0.42265625,
+          "width": 0.03828125,
+          "height": 0.059375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.53046875,
+          "y_center": 0.525,
+          "width": 0.03515625,
+          "height": 0.04765625,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.46875,
+          "y_center": 0.6953125,
+          "width": 0.05390625,
+          "height": 0.05234375,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.67734375,
+          "y_center": 0.46328125,
+          "width": 0.0515625,
+          "height": 0.0875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.725,
+          "y_center": 0.575,
+          "width": 0.04765625,
+          "height": 0.0953125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.58515625,
+          "y_center": 0.446875,
+          "width": 0.06328125,
+          "height": 0.075,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.49921875,
+          "y_center": 0.63671875,
+          "width": 0.0296875,
+          "height": 0.0421875,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.55078125,
+          "y_center": 0.3671875,
+          "width": 0.0484375,
+          "height": 0.103125,
+          "source": "original"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.149285888671875,
+          "y_center": 0.7201263427734375,
+          "width": 0.0518798828125,
+          "height": 0.062835693359375,
+          "source": "added"
+        },
+        {
+          "class_id": 0,
+          "x_center": 0.7982757568359375,
+          "y_center": 0.38593750000000004,
+          "width": 0.03795776367187498,
+          "height": 0.06507568359374999,
+          "source": "added"
+        }
+      ],
+      "note": "턱 부분 여드름 다수 누락",
+      "excluded": false,
+      "completed": true,
+      "updated_at": "2026-10-08T00:35:44.657Z"
+    }
+  }
+}
