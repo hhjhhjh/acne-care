@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "split": "val",
+  "images": 54,
+  "ground_truths": 677,
+  "reference": {
+    "model_id": "yolo11n-acne-seed42",
+    "confidence_threshold": 0.2,
+    "counts": {
+      "true_positives": 391,
+      "false_positives": 212,
+      "false_negatives": 286
+    },
+    "precision": 0.648424543946932,
+    "recall": 0.5775480059084195,
+    "recall_by_size": {
+      "small": 0.4675925925925926,
+      "medium": 0.6327433628318584,
+      "large": 0.4444444444444444
+    }
+  },
+  "candidate": {
+    "model_id": "yolo11n-dataset-v2-control-seed42",
+    "confidence_threshold": 0.3,
+    "counts": {
+      "true_positives": 418,
+      "false_positives": 209,
+      "false_negatives": 259
+    },
+    "precision": 0.6666666666666666,
+    "recall": 0.6174298375184638,
+    "by_size": {
+      "small": {
+        "ground_truths": 216,
+        "detected": 112,
+        "missed": 104,
+        "recall": 0.5185185185185185
+      },
+      "medium": {
+        "ground_truths": 452,
+        "detected": 300,
+        "missed": 152,
+        "recall": 0.6637168141592921
+      },
+      "large": {
+        "ground_truths": 9,
+        "detected": 6,
+        "missed": 3,
+        "recall": 0.6666666666666666
+      }
+    },
+    "iou_sensitivity": {
+      "0.30": 0.6927621861152142,
+      "0.50": 0.6174298375184638,
+      "0.75": 0.30576070901033975
+    },
+    "condition_groups": {
+      "brightness": {
+        "low": {"recall": 0.6151079136690647, "false_positives": 88},
+        "middle": {"recall": 0.5907172995780591, "false_positives": 63},
+        "high": {"recall": 0.6604938271604939, "false_positives": 58}
+      },
+      "sharpness": {
+        "low": {"recall": 0.6078431372549019, "false_positives": 50},
+        "middle": {"recall": 0.6044444444444445, "false_positives": 68},
+        "high": {"recall": 0.6321070234113713, "false_positives": 91}
+      },
+      "density": {
+        "low": {"recall": 0.6705882352941176, "false_positives": 45},
+        "middle": {"recall": 0.6114285714285714, "false_positives": 54},
+        "high": {"recall": 0.6091127098321343, "false_positives": 110}
+      }
+    },
+    "highest_false_negative_images": [
+      {"image": "acne-6_jpeg.rf.80265b4fa3a385c07f2f9395e486faf9.jpg", "false_negatives": 19},
+      {"image": "acne-237_jpg.rf.e5f4f7eaa88499717b72c8d9d88fe289.jpg", "false_negatives": 15},
+      {"image": "acne-224_jpg.rf.21be34e10c2c539505d35f293f36f36d.jpg", "false_negatives": 13},
+      {"image": "acne-20_jpeg.rf.d401578b451f1b68e8c29f5e4c7f4da1.jpg", "false_negatives": 12},
+      {"image": "acne-204_jpg.rf.f33f3ded55db615da9540b2ad9e8ffc3.jpg", "false_negatives": 11}
+    ],
+    "highest_false_positive_images": [
+      {"image": "acne-217_jpg.rf.50e3f9c13b5969348eeef19d2c81e0ba.jpg", "false_positives": 12},
+      {"image": "acne-220_jpg.rf.71b2cf21050700b1329f90be30ef4a66.jpg", "false_positives": 11},
+      {"image": "acne-221_jpg.rf.b18cf9dc385b45ae4d38acec4b978e51.jpg", "false_positives": 11},
+      {"image": "acne-223_jpg.rf.1b603f941d5d6b2ed05a4998dabd83d4.jpg", "false_positives": 11},
+      {"image": "acne-216_jpg.rf.229a8cdefe7eae1fa2fdcd7f63036f7e.jpg", "false_positives": 9}
+    ]
+  },
+  "rules": {
+    "iou_threshold": 0.5,
+    "size": "COCO area: small < 32^2, medium < 96^2, large otherwise",
+    "condition_groups": "54 images divided into three equal-sized rank groups"
+  }
+}
