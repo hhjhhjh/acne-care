@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "decision": "reject",
+  "reason": "Validation F1, Count MAE, mAP50-95, mAP75, and small-object recall all worsened.",
+  "model": {
+    "id": "yolo11n-dataset-v2-imgsz832-seed42",
+    "initial_weights": "yolo11n.pt",
+    "weights": "runs/experiments/yolo11n-dataset-v2-imgsz832-seed42/weights/best.pt",
+    "weights_sha256": "5eeba4a664aa771fb72eaaa2d3395da042d0207cc805419d032d176f977d6358"
+  },
+  "training": {
+    "dataset": "acne-dataset-v2",
+    "epochs": 50,
+    "best_epoch": 48,
+    "image_size": 832,
+    "batch_size": 8,
+    "device": "NVIDIA RTX A5000",
+    "workers": 4,
+    "seed": 42,
+    "patience": 15
+  },
+  "validation": {
+    "images": 54,
+    "ground_truths": 677,
+    "confidence_threshold": 0.25,
+    "iou_threshold": 0.5,
+    "counts": {
+      "true_positives": 416,
+      "false_positives": 233,
+      "false_negatives": 261
+    },
+    "precision": 0.6409861325115562,
+    "recall": 0.6144756277695717,
+    "f1": 0.627450980392157,
+    "count_mae": 3.6666666666666665,
+    "coco": {
+      "mAP50-95": 0.2916741054361494,
+      "mAP50": 0.6584390805130534,
+      "mAP75": 0.2219412842131578
+    },
+    "by_size": {
+      "small": {
+        "ground_truths": 216,
+        "detected": 104,
+        "missed": 112,
+        "recall": 0.48148148148148145
+      },
+      "medium": {
+        "ground_truths": 452,
+        "detected": 306,
+        "missed": 146,
+        "recall": 0.6769911504424779
+      },
+      "large": {
+        "ground_truths": 9,
+        "detected": 6,
+        "missed": 3,
+        "recall": 0.6666666666666666
+      }
+    }
+  },
+  "test_evaluated": false
+}
