@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "model": {
+    "id": "yolo11n-dataset-v2-control-seed42",
+    "initial_weights": "yolo11n.pt",
+    "weights": "runs/baselines/yolo11n-dataset-v2-control-seed42/weights/best.pt",
+    "weights_sha256": "0b486ebc4cd983ae23380529cf72790914838a4bdf298cf54732b9762d12beef"
+  },
+  "runtime": {
+    "gpu": "NVIDIA RTX A5000",
+    "python": "3.12.3",
+    "ultralytics": "8.4.157",
+    "torch": "2.10.0+cu130"
+  },
+  "training": {
+    "dataset": "acne-dataset-v2",
+    "image_counts": {
+      "train": 823,
+      "val": 54,
+      "test": 47
+    },
+    "epochs": 50,
+    "best_epoch": 50,
+    "image_size": 640,
+    "batch_size": 8,
+    "device": "0",
+    "workers": 4,
+    "seed": 42,
+    "deterministic": true,
+    "patience": 15,
+    "pretrained": true,
+    "optimizer": "auto",
+    "amp": true,
+    "augmentation": {
+      "hsv_h": 0.015,
+      "hsv_s": 0.7,
+      "hsv_v": 0.4,
+      "degrees": 0.0,
+      "translate": 0.1,
+      "scale": 0.5,
+      "shear": 0.0,
+      "perspective": 0.0,
+      "flipud": 0.0,
+      "fliplr": 0.5,
+      "mosaic": 1.0,
+      "mixup": 0.0,
+      "close_mosaic": 10
+    }
+  },
+  "validation": {
+    "selection_rule": "maximum F1, then minimum count MAE, then maximum recall",
+    "confidence_threshold": 0.3,
+    "iou_threshold": 0.5,
+    "counts": {
+      "true_positives": 418,
+      "false_positives": 209,
+      "false_negatives": 259
+    },
+    "precision": 0.6666666666666666,
+    "recall": 0.6174298375184638,
+    "f1": 0.6411042944785276,
+    "count_mae": 3.2962962962962963,
+    "coco": {
+      "mAP50-95": 0.300984784596935,
+      "mAP50": 0.6775938860824455,
+      "mAP75": 0.22846474418752716
+    }
+  },
+  "test": {
+    "threshold_source": "validation",
+    "confidence_threshold": 0.3,
+    "iou_threshold": 0.5,
+    "counts": {
+      "true_positives": 379,
+      "false_positives": 160,
+      "false_negatives": 232
+    },
+    "precision": 0.7031539888682746,
+    "recall": 0.6202945990180033,
+    "f1": 0.6591304347826088,
+    "count_mae": 3.574468085106383,
+    "coco": {
+      "mAP50-95": 0.3137011724751536,
+      "mAP50": 0.6885051377132821,
+      "mAP75": 0.22522976636115405
+    }
+  },
+  "timing": {
+    "published": false,
+    "reason": "The evaluation run did not synchronize CUDA before measuring elapsed time."
+  }
+}

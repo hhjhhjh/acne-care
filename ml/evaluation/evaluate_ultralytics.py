@@ -5,7 +5,6 @@ import json
 import platform
 import time
 from dataclasses import asdict
-from hashlib import sha256
 from pathlib import Path
 
 import torch
@@ -23,6 +22,7 @@ from acne_care.evaluation.prediction_artifact import (
     save_prediction_artifact,
     serialize_sample,
 )
+from acne_care.evaluation.runtime import build_model_metadata, synchronize_torch_device
 
 
 CLASS_ID = 0
@@ -107,11 +107,7 @@ def main() -> None:
     ) if arguments.thresholds else ()
 
     result_document = {
-        "model": {
-            "id": "yolo11n-acne-seed42",
-            "weights": str(arguments.weights),
-            "weights_sha256": file_sha256(arguments.weights),
-        },
+        "model": build_model_metadata(arguments.model_id, arguments.weights),
         "runtime": {
             "python": platform.python_version(),
             "ultralytics": ultralytics.__version__,
@@ -179,6 +175,7 @@ def parse_arguments() -> argparse.Namespace:
         required=True,
     )
     parser.add_argument("--weights", type=Path, required=True)
+    parser.add_argument("--model-id", required=True)
     parser.add_argument("--output", type=Path)
     parser.add_argument("--predictions-output", type=Path)
     parser.add_argument("--image-size", type=int, default=640)
@@ -209,17 +206,8 @@ def label_path_for(image_path: Path) -> Path:
     return Path(*parts).with_suffix(".txt")
 
 
-def file_sha256(path: Path) -> str:
-    digest = sha256()
-    with path.open("rb") as source_file:
-        for chunk in iter(lambda: source_file.read(1024 * 1024), b""):
-            digest.update(chunk)
-    return digest.hexdigest()
-
-
 def synchronize_device(device: str) -> None:
-    if device == "mps" and torch.backends.mps.is_available():
-        torch.mps.synchronize()
+    synchronize_torch_device(device, torch)
 
 
 def threshold_result_to_dict(result: ThresholdMetrics) -> dict[str, object]:
