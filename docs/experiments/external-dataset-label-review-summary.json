@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "review_date": "2026-10-22",
+  "source_dataset": "imtkaggleteam/acne-computer-vision",
+  "sample": {
+    "dataset_fingerprint": "4ef1e314890b",
+    "images": 50,
+    "annotations": 184,
+    "seed": 42
+  },
+  "status_counts": {
+    "ok": 30,
+    "needs_correction": 20,
+    "unreviewed": 0
+  },
+  "group_status_counts": {
+    "acne_only": {
+      "ok": 18,
+      "needs_correction": 7,
+      "unreviewed": 0
+    },
+    "pimple": {
+      "ok": 12,
+      "needs_correction": 13,
+      "unreviewed": 0
+    }
+  },
+  "local_review_file": {
+    "path": "runs/dataset-audit/external-candidate-review/review-2026-10-22.json",
+    "sha256": "a2409803f9d82510c21143b0b40b668d63c6a7e77396b73aee04722905f8592a",
+    "tracked_by_git": false
+  },
+  "screenshot": {
+    "path": "docs/assets/screenshots/2026-10-22-external-dataset-label-review.png",
+    "sha256": "af0faa042defcd641bb0522f18ffcb08197db139924d145dccb94be3a20df66d"
+  }
+}

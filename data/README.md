@@ -45,3 +45,42 @@ Test 47장이다. `data/processed/`는 Git에서 제외되므로 생성 코드�
 현재 검사는 파일이 완전히 같은 경우만 확인했다. 변형된 유사 이미지와 동일 인물의 분할 간 중복 여부는 아직 확인하지 못했다. 이 검사가 끝나기 전에는 47개 비교 집합의 성능을 외부 일반화 성능으로 해석하지 않는다.
 
 검사를 마치기 전에는 제공된 test 분할의 성능을 최종 성능으로 보고하지 않는다.
+
+## 외부 데이터 후보
+
+추가 데이터는 `data/raw/candidates/` 아래에 원본별로 분리해서 둔다. 이 경로도 Git에서 제외한다.
+기존 `dataset-v2`에 바로 복사하지 않고, 출처와 이용 조건, 라벨 정의, 구조 오류, 분할 중복,
+기존 데이터와의 이미지 중복을 먼저 검사한다.
+
+2026년 10월 22일에는 Kaggle의
+[`Acne | Computer Vision`](https://www.kaggle.com/datasets/imtkaggleteam/acne-computer-vision)을
+첫 후보로 검사했다. 아직 학습 데이터로 승인하거나 병합하지 않았다. 검사 결과와 보류 근거는
+[`external-dataset-candidate-audit.md`](../docs/experiments/external-dataset-candidate-audit.md)에 기록했다.
+
+다음 명령은 후보의 Roboflow CSV 주석을 검사하고 `dataset-v2`와 이미지 중복을 비교한다.
+상세 결과에는 원본 파일 이름이 들어갈 수 있으므로 Git에서 제외된 `runs/` 아래에 저장한다.
+
+```bash
+PYTHONPATH=backend/src .venv/training/bin/python ml/dataset/audit_external_candidate.py \
+  --candidate-root data/raw/candidates/acne-computer-vision \
+  --reference-root data/processed/acne-dataset-v2 \
+  --output runs/dataset-audit/acne-computer-vision-candidate.json \
+  --kaggle-ref imtkaggleteam/acne-computer-vision \
+  --declared-license "CC BY 4.0"
+```
+
+`acne`과 `pimple`을 단일 `Acne` 클래스로 변환한 50장 표본과 검토 화면은 다음과 같이 만든다.
+고정 시드로 `pimple` 포함 이미지 25장과 `acne`만 있는 이미지 25장을 선택한다. `spot` 상자는
+표본 라벨에 넣지 않는다.
+
+```bash
+PYTHONPATH=backend/src .venv/training/bin/python ml/dataset/prepare_external_candidate_review.py \
+  --source-root data/raw/candidates/acne-computer-vision \
+  --output-root runs/dataset-audit/external-candidate-review-dataset \
+  --sample-size 50 \
+  --seed 42
+
+PYTHONPATH=backend/src .venv/training/bin/python ml/dataset/prepare_label_review.py \
+  --dataset-root runs/dataset-audit/external-candidate-review-dataset \
+  --output-directory runs/dataset-audit/external-candidate-review
+```
