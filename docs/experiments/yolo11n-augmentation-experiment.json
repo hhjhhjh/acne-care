@@ -1,0 +1,151 @@
+{
+  "schema_version": 1,
+  "decision": "keep-control",
+  "reason": "None of the additional augmentation presets exceeded the control model's validation F1 and count MAE.",
+  "experiment": {
+    "dataset": "acne-dataset-v2",
+    "train_images": 823,
+    "validation_images": 54,
+    "validation_ground_truths": 677,
+    "initial_weights": "yolo11n.pt",
+    "epochs": 50,
+    "image_size": 640,
+    "batch_size": 8,
+    "workers": 4,
+    "seed": 42,
+    "patience": 15,
+    "device": "NVIDIA RTX A5000",
+    "python": "3.12.3",
+    "ultralytics": "8.4.157",
+    "torch": "2.10.0+cu130",
+    "iou_threshold": 0.5,
+    "threshold_selection": "maximum F1, then minimum count MAE, then maximum recall"
+  },
+  "control": {
+    "id": "yolo11n-dataset-v2-control-seed42",
+    "weights": "runs/baselines/yolo11n-dataset-v2-control-seed42/weights/best.pt",
+    "weights_sha256": "0b486ebc4cd983ae23380529cf72790914838a4bdf298cf54732b9762d12beef",
+    "best_epoch": 50,
+    "augmentation": {
+      "hsv_h": 0.015,
+      "hsv_s": 0.7,
+      "hsv_v": 0.4,
+      "degrees": 0.0,
+      "translate": 0.1,
+      "scale": 0.5,
+      "flipud": 0.0,
+      "fliplr": 0.5,
+      "mosaic": 1.0,
+      "mixup": 0.0,
+      "close_mosaic": 10
+    },
+    "validation": {
+      "confidence_threshold": 0.3,
+      "counts": {
+        "true_positives": 418,
+        "false_positives": 209,
+        "false_negatives": 259
+      },
+      "precision": 0.6666666666666666,
+      "recall": 0.6174298375184638,
+      "f1": 0.6411042944785276,
+      "count_mae": 3.2962962962962963,
+      "coco": {
+        "mAP50-95": 0.300984784596935,
+        "mAP50": 0.6775938860824455,
+        "mAP75": 0.22846474418752716
+      }
+    }
+  },
+  "variants": [
+    {
+      "id": "yolo11n-v2-contrast-seed42",
+      "decision": "reject",
+      "weights": "runs/augmentation/yolo11n-v2-contrast-seed42/weights/best.pt",
+      "weights_sha256": "afc0482d822d2982f4a6f76a6286a8ed9d5e87a80e581e4222b7214951484116",
+      "best_epoch": 50,
+      "augmentation": {
+        "name": "RandomBrightnessContrast",
+        "brightness_limit": 0.0,
+        "contrast_limit": 0.15,
+        "probability": 0.5
+      },
+      "validation": {
+        "confidence_threshold": 0.25,
+        "counts": {
+          "true_positives": 438,
+          "false_positives": 293,
+          "false_negatives": 239
+        },
+        "precision": 0.5991792065663475,
+        "recall": 0.6469719350073855,
+        "f1": 0.6221590909090908,
+        "count_mae": 4.074074074074074,
+        "coco": {
+          "mAP50-95": 0.30316047760314874,
+          "mAP50": 0.6714507155921592,
+          "mAP75": 0.2523751979077462
+        }
+      }
+    },
+    {
+      "id": "yolo11n-v2-rotation-seed42",
+      "decision": "reject",
+      "weights": "runs/augmentation/yolo11n-v2-rotation-seed42/weights/best.pt",
+      "weights_sha256": "24b8024a836f932401f77f89f9714ca16a33b457e9c886369156f07e24774631",
+      "best_epoch": 49,
+      "augmentation": {
+        "degrees": 10.0
+      },
+      "validation": {
+        "confidence_threshold": 0.35,
+        "counts": {
+          "true_positives": 372,
+          "false_positives": 171,
+          "false_negatives": 305
+        },
+        "precision": 0.6850828729281768,
+        "recall": 0.5494830132939439,
+        "f1": 0.6098360655737705,
+        "count_mae": 3.6666666666666665,
+        "coco": {
+          "mAP50-95": 0.29346777701003324,
+          "mAP50": 0.6612874211799922,
+          "mAP75": 0.2095881533484328
+        }
+      }
+    },
+    {
+      "id": "yolo11n-v2-safe-crop-seed42",
+      "decision": "reject",
+      "weights": "runs/augmentation/yolo11n-v2-safe-crop-seed42/weights/best.pt",
+      "weights_sha256": "b5a40382af2adccd502ba7ee25f26d5b310b36d35b4d10e1bf54e130853c06ed",
+      "best_epoch": 49,
+      "augmentation": {
+        "name": "RandomSizedBBoxSafeCrop",
+        "height": 640,
+        "width": 640,
+        "erosion_rate": 0.0,
+        "probability": 0.3
+      },
+      "validation": {
+        "confidence_threshold": 0.3,
+        "counts": {
+          "true_positives": 412,
+          "false_positives": 238,
+          "false_negatives": 265
+        },
+        "precision": 0.6338461538461538,
+        "recall": 0.6085672082717873,
+        "f1": 0.6209495101733232,
+        "count_mae": 3.574074074074074,
+        "coco": {
+          "mAP50-95": 0.29581621429324,
+          "mAP50": 0.6623144208223557,
+          "mAP75": 0.21853669407804005
+        }
+      }
+    }
+  ],
+  "test_evaluated": false
+}
