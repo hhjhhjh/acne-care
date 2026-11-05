@@ -78,7 +78,10 @@ def _validate_inputs(
         raise FileNotFoundError(f"dataset root does not exist: {source_root}")
     if edit_document.get("schema_version") != 1:
         raise ValueError("unsupported label edit schema version")
-    expected_fingerprint = review_dataset_fingerprint(audit_document)
+    review_splits = edit_document.get("review_splits", ["valid", "test"])
+    if review_splits not in (["valid", "test"], ["train", "valid", "test"]):
+        raise ValueError("unsupported review splits")
+    expected_fingerprint = review_dataset_fingerprint(audit_document, splits=tuple(review_splits))
     if edit_document.get("dataset_fingerprint") != expected_fingerprint:
         raise ValueError("label edits belong to a different dataset version")
     edits = edit_document.get("edits")
