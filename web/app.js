@@ -1,4 +1,6 @@
 "use strict";
+import { createComparison } from "./comparison.js";
+
 const $ = id => document.getElementById(id);
 let selectedFile = null, previewURL = null, busy = false, ready = false, currentRecord = null;
 let historyOffset = 0, historyTotal = 0, historyLoading = false;
@@ -52,15 +54,19 @@ $("drop-zone").addEventListener("drop", event => { event.preventDefault(); $("dr
 function showPage(name) {
   $("analysis-page").hidden = name !== "analysis";
   $("history-page").hidden = name !== "history";
-  for (const page of ["analysis", "history"]) {
+  $("comparison-page").hidden = name !== "comparison";
+  for (const page of ["analysis", "history", "comparison"]) {
     $(`${page}-tab`).classList.toggle("active", name === page);
     if (name === page) $(`${page}-tab`).setAttribute("aria-current", "page");
     else $(`${page}-tab`).removeAttribute("aria-current");
   }
   notice("");
 }
+const comparison = createComparison({ api, showPage, openRecord });
 $("analysis-tab").addEventListener("click", () => showPage("analysis"));
 $("history-tab").addEventListener("click", () => { showPage("history"); loadHistory(true); });
+$("comparison-tab").addEventListener("click", () => comparison.open());
+$("compare-current").addEventListener("click", () => comparison.open(currentRecord));
 $("refresh-history").addEventListener("click", () => loadHistory(true));
 $("load-more").addEventListener("click", () => loadHistory(false));
 $("start-analysis").addEventListener("click", () => showPage("analysis"));
@@ -143,7 +149,13 @@ async function start() {
   try {await api("/api/health");ready=true;$("model-status").textContent="AI 모델 준비 완료";}
   catch {$("model-status").textContent="서버 연결 확인 필요";$("model-status").classList.add("error");notice("분석 서버에 연결할 수 없습니다. 서버가 실행 중인지 확인해 주세요.");}
   updateButton();
-  const recordId=new URLSearchParams(location.search).get("analysis");
-  if(recordId && ready) await openRecord(recordId, false);
+  const params=new URLSearchParams(location.search);
+  if(params.has("previous") || params.has("current")) {
+    await comparison.restore(params.get("previous"), params.get("current"));
+  } else if(params.get("view") === "comparison") {
+    await comparison.open();
+  } else if(params.get("analysis") && ready) {
+    await openRecord(params.get("analysis"), false);
+  }
 }
 start();
