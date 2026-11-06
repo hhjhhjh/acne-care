@@ -46,3 +46,41 @@ class AnalysisAPITest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp, self.client(Path(temp)) as client:
             response = client.post("/api/analyses", headers={"Origin": "https://unrelated.example"}, files={"file": ("photo.png", fixtures.image_bytes(), "image/png")}, data={"captured_on": "2026-10-01"})
             self.assertEqual(response.status_code, 403)
+
+    def upload(self, client, captured_on):
+        response = client.post("/api/analyses", files={"file": ("photo.png", fixtures.image_bytes(), "image/png")},
+                               data={"captured_on": captured_on})
+        self.assertEqual(response.status_code, 201, response.text)
+        return response.json()
+
+    def test_comparison_uses_saved_records_without_new_analysis(self):
+        with tempfile.TemporaryDirectory() as temp, self.client(Path(temp)) as client:
+            previous = self.upload(client, "2026-10-01")
+            current = self.upload(client, "2026-10-06")
+            response = client.get("/api/comparisons", params={"previous_id": previous["id"], "current_id": current["id"]})
+            self.assertEqual(response.status_code, 200, response.text)
+            result = response.json()
+            self.assertEqual(result["comparison"]["days_between"], 5)
+            self.assertEqual(result["comparison"]["count_delta"], 0)
+            self.assertTrue(result["comparison"]["analysis_settings_match"])
+            for side in ("previous", "current"):
+                self.assertNotIn("original_path", result[side])
+                self.assertEqual(client.get(result[side]["annotated_image_url"]).status_code, 200)
+            self.assertEqual(response.headers["cache-control"], "no-store")
+            self.assertEqual(client.get("/api/analyses").json()["total"], 2)
+
+    def test_comparison_rejects_same_record_and_reversed_dates(self):
+        with tempfile.TemporaryDirectory() as temp, self.client(Path(temp)) as client:
+            previous = self.upload(client, "2026-10-01")
+            current = self.upload(client, "2026-10-06")
+            for ids in [(previous["id"], previous["id"]), (current["id"], previous["id"])]:
+                response = client.get("/api/comparisons", params={"previous_id": ids[0], "current_id": ids[1]})
+                self.assertEqual(response.status_code, 422, response.text)
+
+    def test_comparison_requires_two_existing_records(self):
+        with tempfile.TemporaryDirectory() as temp, self.client(Path(temp)) as client:
+            previous = self.upload(client, "2026-10-01")
+            for unknown in ["invalid-id", "00000000-0000-0000-0000-000000000000"]:
+                response = client.get("/api/comparisons", params={"previous_id": previous["id"], "current_id": unknown})
+                self.assertEqual(response.status_code, 404)
+            self.assertEqual(client.get("/api/comparisons").status_code, 422)

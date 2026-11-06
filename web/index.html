@@ -6,12 +6,12 @@
   <meta name="color-scheme" content="light">
   <title>acne-care · 나의 피부 기록</title>
   <link rel="stylesheet" href="/style.css">
-  <script src="/app.js" defer></script>
+  <script src="/app.js" type="module"></script>
 </head>
 <body>
   <header class="site-header">
     <a class="brand" href="/" aria-label="acne-care 처음으로"><span class="brand-mark" aria-hidden="true"></span>acne<span class="brand-light">care</span><span class="beta">PROTOTYPE</span></a>
-    <nav aria-label="주 메뉴"><button class="nav-button active" id="analysis-tab" aria-current="page">사진 분석</button><button class="nav-button" id="history-tab">분석 기록</button></nav>
+    <nav aria-label="주 메뉴"><button class="nav-button active" id="analysis-tab" aria-current="page">사진 분석</button><button class="nav-button" id="history-tab">분석 기록</button><button class="nav-button" id="comparison-tab">기록 비교</button></nav>
     <span class="local-badge">이 기기에 저장</span>
   </header>
   <main>
@@ -36,14 +36,37 @@
             <p class="storage-note">분석하면 사진과 결과가 이 맥북의 로컬 저장소에 보관됩니다.</p>
           </form>
         </section>
-        <aside class="guide" aria-labelledby="guide-title"><p class="step-label">BEFORE YOU START</p><h2 id="guide-title">비슷하게 찍을수록,<br>비교하기 좋아요.</h2><p class="guide-intro">촬영 조건에 따라 탐지 결과가 달라질 수 있어요. 매번 비슷한 환경에서 촬영해 주세요.</p><div class="guide-item"><span class="guide-icon" aria-hidden="true">☀</span><div><h3>밝고 고른 조명</h3><p>얼굴에 짙은 그림자가 생기지 않는 곳에서 찍어주세요.</p></div></div><div class="guide-item"><span class="guide-icon" aria-hidden="true">◎</span><div><h3>비슷한 각도와 거리</h3><p>얼굴이 선명하게 보이도록, 같은 방향과 거리에서 찍어주세요.</p></div></div><div class="guide-item"><span class="guide-icon" aria-hidden="true">◇</span><div><h3>필터 없이 자연스럽게</h3><p>피부 보정이나 뷰티 필터를 사용하지 않은 사진이 좋아요.</p></div></div><p class="guide-footnote">현재는 사진별 탐지와 기록 조회를 제공합니다. 과거 기록과의 변화 비교는 후속 개발로 준비합니다.</p></aside>
+        <aside class="guide" aria-labelledby="guide-title"><p class="step-label">BEFORE YOU START</p><h2 id="guide-title">비슷하게 찍을수록,<br>비교하기 좋아요.</h2><p class="guide-intro">촬영 조건에 따라 탐지 결과가 달라질 수 있어요. 매번 비슷한 환경에서 촬영해 주세요.</p><div class="guide-item"><span class="guide-icon" aria-hidden="true">☀</span><div><h3>밝고 고른 조명</h3><p>얼굴에 짙은 그림자가 생기지 않는 곳에서 찍어주세요.</p></div></div><div class="guide-item"><span class="guide-icon" aria-hidden="true">◎</span><div><h3>비슷한 각도와 거리</h3><p>얼굴이 선명하게 보이도록, 같은 방향과 거리에서 찍어주세요.</p></div></div><div class="guide-item"><span class="guide-icon" aria-hidden="true">◇</span><div><h3>필터 없이 자연스럽게</h3><p>피부 보정이나 뷰티 필터를 사용하지 않은 사진이 좋아요.</p></div></div><p class="guide-footnote">분석 후 ‘기록 비교’에서 두 사진의 결과를 확인할 수 있습니다. 같은 사람의 비슷한 촬영 조건인 기록을 선택해 주세요.</p></aside>
       </div>
       <section id="result" class="card result-card" aria-labelledby="result-title" hidden>
         <div class="card-heading"><div><p class="step-label">YOUR SKIN RECORD</p><h2 id="result-title">사진 분석 결과</h2><p id="result-date" class="muted"></p></div><button id="new-analysis" class="text-button">새 사진 분석하기 ↗</button></div>
-        <div class="result-layout"><div><div class="image-tabs" role="group" aria-label="이미지 표시"><button id="show-annotated" class="selected" aria-pressed="true">탐지 결과</button><button id="show-original" aria-pressed="false">원본 사진</button></div><div class="result-image-wrap"><img id="result-image" alt="여드름 탐지 결과"></div></div><div class="result-summary"><span class="metric-label">탐지된 여드름</span><p class="count"><span id="result-count">0</span><span>개</span></p><p id="result-message" class="muted"></p><div class="saved-badge">✓ 분석 기록에 저장됐습니다.</div><h3 class="confidence-title">탐지별 confidence</h3><p class="confidence-help">모델의 탐지 점수이며 의학적 확률을 뜻하지 않습니다.</p><ol id="detection-list" class="detection-list"></ol><details class="model-details"><summary>분석에 사용한 모델 정보</summary><dl id="model-details"></dl></details></div></div>
+        <div class="result-layout"><div><div class="image-tabs" role="group" aria-label="이미지 표시"><button id="show-annotated" class="selected" aria-pressed="true">탐지 결과</button><button id="show-original" aria-pressed="false">원본 사진</button></div><div class="result-image-wrap"><img id="result-image" alt="여드름 탐지 결과"></div></div><div class="result-summary"><span class="metric-label">탐지된 여드름</span><p class="count"><span id="result-count">0</span><span>개</span></p><p id="result-message" class="muted"></p><div class="saved-badge">✓ 분석 기록에 저장됐습니다.</div><button id="compare-current" class="secondary-button">과거 기록과 비교하기 →</button><h3 class="confidence-title">탐지별 confidence</h3><p class="confidence-help">모델의 탐지 점수이며 의학적 확률을 뜻하지 않습니다.</p><ol id="detection-list" class="detection-list"></ol><details class="model-details"><summary>분석에 사용한 모델 정보</summary><dl id="model-details"></dl></details></div></div>
       </section>
     </section>
     <section id="history-page" aria-labelledby="history-title" hidden><div class="intro compact"><p class="eyebrow">YOUR RECORDS</p><h1 id="history-title">차곡차곡 쌓이는<br>나의 피부 기록.</h1><p class="intro-copy">촬영일별 사진과 분석 결과를 다시 확인하세요.</p></div><div class="history-heading"><p id="history-count" role="status">기록을 불러오는 중입니다.</p><button id="refresh-history" class="text-button">새로고침 ↻</button></div><div id="history-empty" class="card empty-state" hidden><span aria-hidden="true">▧</span><h2>아직 분석 기록이 없어요.</h2><p>사진을 분석하면 이곳에서 다시 볼 수 있습니다.</p><button id="start-analysis" class="primary-button">첫 사진 분석하기 →</button></div><div id="history-grid" class="history-grid"></div><button id="load-more" class="secondary-button" hidden>기록 더 보기</button></section>
+    <section id="comparison-page" aria-labelledby="comparison-title" hidden>
+      <div class="intro compact"><p class="eyebrow">SIDE BY SIDE</p><h1 id="comparison-title">지난 기록과 오늘을,<br>나란히 살펴보세요.</h1><p class="intro-copy">같은 사람의 사진 두 장을 선택해 탐지 결과를 비교하세요.<br>조명, 각도와 보이는 피부 범위가 비슷한 기록이 좋아요.</p></div>
+      <form id="comparison-form" class="card comparison-picker">
+        <div class="comparison-fields">
+          <label for="previous-record">이전 기록<select id="previous-record" required aria-describedby="comparison-picker-status"><option value="">기록을 불러오는 중입니다.</option></select></label>
+          <label for="current-record">현재 기록<select id="current-record" required aria-describedby="comparison-picker-status"><option value="">기록을 불러오는 중입니다.</option></select></label>
+        </div>
+        <div class="comparison-actions"><button id="compare-button" type="submit" class="primary-button" disabled>비교 결과 보기 →</button><button id="refresh-comparison" type="button" class="text-button">기록 새로고침 ↻</button></div>
+        <p id="comparison-picker-status" class="muted" role="status"></p><button id="more-comparison-records" type="button" class="secondary-button" hidden>선택할 기록 더 불러오기</button>
+      </form>
+      <section id="comparison-result" class="card comparison-result" aria-labelledby="comparison-result-title" hidden>
+        <div class="card-heading"><div><p class="step-label">RECORD COMPARISON</p><h2 id="comparison-result-title">두 기록의 탐지 결과</h2></div><p id="comparison-interval" class="muted"></p></div>
+        <div class="comparison-metric" role="status"><span>탐지 개수 차이</span><strong id="comparison-delta"></strong><p id="comparison-counts"></p></div>
+        <p class="comparison-caution">탐지 개수의 증감은 피부의 호전·악화 판정이 아닙니다. 촬영 조건이나 모델의 오탐·누락에 따라 결과가 달라질 수 있습니다. 같은 사람인지와 촬영 조건은 자동으로 확인하지 않습니다.</p>
+        <p id="comparison-settings-notice" class="comparison-settings-notice" role="status"></p>
+        <div class="image-tabs" role="group" aria-label="비교 이미지 표시"><button id="comparison-annotated" type="button" class="selected" aria-pressed="true">탐지 결과</button><button id="comparison-original" type="button" aria-pressed="false">원본 사진</button></div>
+        <div class="comparison-images">
+          <article><h3>이전 기록</h3><p id="previous-date" class="muted"></p><p id="previous-count" class="comparison-image-count"></p><div class="comparison-image-wrap"><img id="previous-image" alt="이전 기록의 탐지 결과"></div><button id="open-previous" type="button" class="text-button">이전 기록 상세 보기 ↗</button></article>
+          <article><h3>현재 기록</h3><p id="current-date" class="muted"></p><p id="current-count" class="comparison-image-count"></p><div class="comparison-image-wrap"><img id="current-image" alt="현재 기록의 탐지 결과"></div><button id="open-current" type="button" class="text-button">현재 기록 상세 보기 ↗</button></article>
+        </div>
+        <details class="model-details"><summary>두 기록의 분석 조건 확인</summary><div class="comparison-table-wrap"><table class="comparison-table"><thead><tr><th scope="col">분석 조건</th><th scope="col">이전 기록</th><th scope="col">현재 기록</th></tr></thead><tbody id="comparison-settings"></tbody></table></div></details>
+      </section>
+    </section>
   </main>
   <footer><span class="footer-brand">acnecare</span><p>연구용 프로토타입입니다. 탐지 결과는 의료 진단을 제공하지 않습니다.</p></footer>
 </body>
