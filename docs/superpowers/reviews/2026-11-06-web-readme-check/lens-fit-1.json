@@ -1,0 +1,66 @@
+{
+  "lens": "lens-fit",
+  "doc_type": "절차·계약. 로컬 설치·실행·테스트 명령과 데이터 보관 방법을 포함한다.",
+  "read": [
+    "/Users/hwangjeonghyun/Desktop/github/acne-care/README.md",
+    "/Users/hwangjeonghyun/.claude/disciplined-coder/agent-principles.md",
+    "/Users/hwangjeonghyun/.codex/plugins/cache/chshin-tools/disciplined-coder/local/agents/lens-fit.md",
+    "/Users/hwangjeonghyun/.codex/plugins/cache/chshin-tools/disciplined-coder/local/skills/dispatching-lenses/SKILL.md",
+    "/Users/hwangjeonghyun/.codex/plugins/cache/chshin-tools/disciplined-coder/local/docs/domain-korean.md",
+    "/Users/hwangjeonghyun/.codex/plugins/cache/chshin-tools/disciplined-coder/local/skills/managing-docs/SKILL.md",
+    "/Users/hwangjeonghyun/.codex/plugins/cache/chshin-tools/disciplined-coder/local/skills/managing-docs/references/reading-docs.md",
+    "/Users/hwangjeonghyun/.codex/plugins/cache/chshin-tools/disciplined-coder/local/skills/domain-readme/SKILL.md"
+  ],
+  "issues": [
+    {
+      "where": "웹앱 기능의 둘째 문단",
+      "type": "constraint",
+      "claim": "실행 안내에 후속 개발 항목을 직접 나열하여 다음 단계의 내용도 함께 보관한다.",
+      "file": "README.md",
+      "evidence": "실제 휴대폰 접속, 직접 촬영, 과거 기록 비교와 리포트는 후속 개발 범위이다.",
+      "counterpart_file": "/Users/hwangjeonghyun/.codex/plugins/cache/chshin-tools/disciplined-coder/local/skills/managing-docs/SKILL.md",
+      "counterpart": "| **절차·계약** (operations·setup·contract) | 수행 방법과 스키마 계약 | 상태를 적지 말고 방법만 적어라 |",
+      "principle": "DOC-TYPE / 문서 타입과 수명: 절차·계약",
+      "consequence": "README가 실행 방법과 후속 개발 범위를 함께 담으며, 바로 뒤에서 별도 개선 계획도 가리킨다."
+    },
+    {
+      "where": "웹앱 기능의 첫 문장",
+      "type": "style",
+      "claim": "별도 주어를 가진 관형절을 문장 가운데 넣었다.",
+      "file": "README.md",
+      "evidence": "사진을 업로드하면 YOLO11n이 탐지한 위치, confidence와 전체 개수를 확인할 수 있다.",
+      "counterpart_file": "/Users/hwangjeonghyun/.claude/disciplined-coder/agent-principles.md",
+      "counterpart": "주어를 따로 가진 관형절(예: '감독원이 지적한')은 독립된 문장으로 떼어 앞에 먼저 써라.",
+      "principle": "NO-MID-MOD",
+      "consequence": "업로드 조건과 결과 확인 사이에 'YOLO11n이 탐지한'이라는 별도 주어의 절이 들어 있다."
+    },
+    {
+      "where": "웹앱 기능의 첫 문장",
+      "type": "constraint",
+      "claim": "confidence를 처음 사용하면서 의미를 설명하지 않았다.",
+      "file": "README.md",
+      "evidence": "사진을 업로드하면 YOLO11n이 탐지한 위치, confidence와 전체 개수를 확인할 수 있다.",
+      "counterpart_file": "/Users/hwangjeonghyun/.claude/disciplined-coder/agent-principles.md",
+      "counterpart": "표준 용어가 영어 원어이면 원어를 그대로 쓰되 처음 나올 때 한 줄로 풀어라.",
+      "principle": "출력 언어 문단",
+      "consequence": "뒤에서는 의학적 확률이 아니라는 한계만 설명하며, confidence가 나타내는 값의 의미는 문서에 없다."
+    }
+  ],
+  "principles_applied": [
+    "DOC-TYPE",
+    "TONE-AXIS",
+    "WRITTEN-ONLY",
+    "NO-MID-MOD",
+    "NO-STACK-MOD",
+    "FULL-SENTENCE",
+    "ONE-ENDING",
+    "BOTTOM-LINE",
+    "BULLET-SCOPE",
+    "TERM-ONE",
+    "TITLE-LAYERS",
+    "TITLE-CLAIM",
+    "출력 언어 문단",
+    "domain-readme: 독자 분리·권장 동선"
+  ],
+  "notes": "형식·스타일·오염·호환·규율을 검토했다. H2 개념 제목, 완결 문장, 표와 목록의 종결은 기존 형식과 맞는다. 전달받은 링크·CLI 도움말·공백 검사 결과를 전제로 삼았으며 금지 낱말은 재검사하지 않았다. 구현과 외부 사실은 확인하지 않았다. 문서 타입과 문장 구조 판정은 LLM 판단이다."
+}

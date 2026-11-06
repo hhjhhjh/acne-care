@@ -1,0 +1,39 @@
+{
+  "lens": "lens-grounding",
+  "read": [
+    "/Users/hwangjeonghyun/.claude/disciplined-coder/agent-principles.md",
+    "README.md",
+    "docs/web-service.md",
+    "models/README.md",
+    "models/detector-baseline.yaml",
+    "docs/plans/web-service-improvements.md",
+    "docs/experiments/yolo11n-dataset-v2-control.md",
+    "data/README.md",
+    "docs/legacy-acne-cv-audit.md",
+    "references/acne-cv/README.md",
+    "backend/src/acne_care/api/app.py",
+    "backend/src/acne_care/api/settings.py",
+    "backend/src/acne_care/api/__main__.py",
+    "backend/src/acne_care/application/analysis.py",
+    "backend/src/acne_care/adapters/sqlite_repository.py",
+    "backend/src/acne_care/adapters/yolo_detector.py",
+    "backend/src/acne_care/domain/__init__.py",
+    "backend/src/acne_care/ports/acne_detector.py",
+    "backend/pyproject.toml",
+    "backend/requirements-service.txt",
+    "backend/requirements-training.txt",
+    "web/index.html",
+    "web/app.js",
+    "web/style.css",
+    ".gitignore"
+  ],
+  "issues": [],
+  "principles_applied": [
+    "NO-ASSUME",
+    "EVIDENCE-FIRST",
+    "MEASURE-FIRST",
+    "SSOT",
+    "SURGICAL"
+  ],
+  "notes": "doc 모드로 누락·모순·근거 없는 단정·숫자와 식별자 불일치를 검토했다. 업로드, 탐지 위치·confidence·개수 표시, 촬영일 기본값, SQLite와 사진 저장, 기록 재조회, 로컬 주소 제한은 구현과 일치한다. 비교·직접 촬영·리포트는 후속 범위로 구분되어 있다. 얼굴 5개 부위 제외는 제공된 사용자 결정과 후속 계획에 부합한다. 기본 모델과 저장 경로, Python 버전, 의존성 설치 안내도 소유자 문서 및 설정과 일치한다. 실행 검증은 호출자가 제공한 결과를 전제로 삼았으며 이 검토에서 재실행하지 않았다."
+}
