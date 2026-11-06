@@ -15,6 +15,7 @@ from starlette.middleware.trustedhost import TrustedHostMiddleware
 from acne_care.adapters.sqlite_repository import SQLiteAnalysisRepository
 from acne_care.api.settings import PROJECT_ROOT, Settings
 from acne_care.application.analysis import AnalysisService, InvalidImage, ModelInfo
+from acne_care.application.comparison import compare_analyses
 from acne_care.ports.acne_detector import AcneDetector
 
 
@@ -109,6 +110,16 @@ def create_app(settings: Settings | None = None, *, detector: AcneDetector | Non
     @app.get("/api/analyses/{analysis_id}")
     def analysis_detail(analysis_id: str):
         return _public_record(get_record(analysis_id))
+
+    @app.get("/api/comparisons")
+    def compare_records(previous_id: str, current_id: str):
+        previous, current = get_record(previous_id), get_record(current_id)
+        try:
+            comparison = compare_analyses(previous, current)
+        except ValueError as error:
+            raise HTTPException(422, str(error)) from error
+        return {"previous": _public_record(previous), "current": _public_record(current),
+                "comparison": comparison}
 
     @app.get("/api/analyses/{analysis_id}/image")
     def analysis_image(analysis_id: str, view: str = Query("annotated", pattern="^(original|annotated)$")):
