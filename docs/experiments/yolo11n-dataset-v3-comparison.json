@@ -1,0 +1,225 @@
+{
+  "schema_version": 1,
+  "run_id": "v3-comparison-20261110-052049",
+  "dataset": {
+    "image_counts": {
+      "train": 2256,
+      "valid": 361,
+      "test": 354
+    },
+    "baseline_image_counts": {
+      "train": 823,
+      "valid": 54,
+      "test": 47
+    },
+    "external_image_counts": {
+      "train": 1433,
+      "valid": 307,
+      "test": 307
+    },
+    "external_human_reviewed_counts": {
+      "train": 412,
+      "valid": 87,
+      "test": 89
+    },
+    "external_group_cross_split_violations": 0,
+    "person_disjoint_verified": false,
+    "all_external_labels_human_reviewed": false
+  },
+  "v3_training": {
+    "initial_weights": "yolo11n.pt",
+    "epochs": 50,
+    "image_size": 640,
+    "batch_size": 8,
+    "workers": 4,
+    "seed": 42,
+    "patience": 15,
+    "augmentation_preset": "control",
+    "device": "NVIDIA RTX A5000"
+  },
+  "matching_iou": 0.5,
+  "models": {
+    "v2": {
+      "model": {
+        "id": "v2",
+        "weights": "runs/baselines/yolo11n-dataset-v2-control-seed42/weights/best.pt",
+        "weights_sha256": "0b486ebc4cd983ae23380529cf72790914838a4bdf298cf54732b9762d12beef"
+      },
+      "runtime": {
+        "python": "3.12.3",
+        "ultralytics": "8.4.157",
+        "torch": "2.10.0+cu130"
+      },
+      "validation": {
+        "images": 361,
+        "threshold_selection_rule": "maximum F1, then minimum count MAE, then maximum recall",
+        "thresholds": [
+          0.05,
+          0.1,
+          0.15,
+          0.2,
+          0.25,
+          0.3,
+          0.35,
+          0.4,
+          0.45,
+          0.5,
+          0.55,
+          0.6,
+          0.65,
+          0.7,
+          0.75,
+          0.8,
+          0.85,
+          0.9
+        ],
+        "selected": {
+          "threshold": 0.25,
+          "counts": {
+            "true_positives": 549,
+            "false_positives": 472,
+            "false_negatives": 906
+          },
+          "precision": 0.5377081292850147,
+          "recall": 0.37731958762886597,
+          "f1": 0.44345718901453957,
+          "count_mae": 2.260387811634349
+        }
+      },
+      "test": {
+        "all": {
+          "images": 354,
+          "counts": {
+            "true_positives": 470,
+            "false_positives": 372,
+            "false_negatives": 916
+          },
+          "precision": 0.5581947743467933,
+          "recall": 0.33910533910533913,
+          "f1": 0.42190305206463197,
+          "count_mae": 2.2824858757062145,
+          "coco": {
+            "mAP50-95": 0.15048796220608085,
+            "mAP50": 0.36444602472898463,
+            "mAP75": 0.09375756458538526
+          }
+        },
+        "baseline": {
+          "images": 47,
+          "counts": {
+            "true_positives": 400,
+            "false_positives": 216,
+            "false_negatives": 211
+          },
+          "precision": 0.6493506493506493,
+          "recall": 0.6546644844517185,
+          "f1": 0.6519967400162999,
+          "count_mae": 3.4680851063829787
+        },
+        "external": {
+          "images": 307,
+          "counts": {
+            "true_positives": 70,
+            "false_positives": 156,
+            "false_negatives": 705
+          },
+          "precision": 0.30973451327433627,
+          "recall": 0.09032258064516129,
+          "f1": 0.13986013986013984,
+          "count_mae": 2.1009771986970684
+        }
+      }
+    },
+    "v3": {
+      "model": {
+        "id": "v3",
+        "weights": "runs/baselines/yolo11n-dataset-v3-control-seed42-20261110-050115/weights/best.pt",
+        "weights_sha256": "6003ca9d03a71265a2f0ac7bff96b8620f1d6e2256e42d00e26e73bbcaac8b19"
+      },
+      "runtime": {
+        "python": "3.12.3",
+        "ultralytics": "8.4.157",
+        "torch": "2.10.0+cu130"
+      },
+      "validation": {
+        "images": 361,
+        "threshold_selection_rule": "maximum F1, then minimum count MAE, then maximum recall",
+        "thresholds": [
+          0.05,
+          0.1,
+          0.15,
+          0.2,
+          0.25,
+          0.3,
+          0.35,
+          0.4,
+          0.45,
+          0.5,
+          0.55,
+          0.6,
+          0.65,
+          0.7,
+          0.75,
+          0.8,
+          0.85,
+          0.9
+        ],
+        "selected": {
+          "threshold": 0.25,
+          "counts": {
+            "true_positives": 734,
+            "false_positives": 498,
+            "false_negatives": 721
+          },
+          "precision": 0.5957792207792207,
+          "recall": 0.50446735395189,
+          "f1": 0.5463342017119464,
+          "count_mae": 1.6537396121883656
+        }
+      },
+      "test": {
+        "all": {
+          "images": 354,
+          "counts": {
+            "true_positives": 666,
+            "false_positives": 432,
+            "false_negatives": 720
+          },
+          "precision": 0.6065573770491803,
+          "recall": 0.4805194805194805,
+          "f1": 0.536231884057971,
+          "count_mae": 1.7175141242937852,
+          "coco": {
+            "mAP50-95": 0.21653572977843888,
+            "mAP50": 0.5454544299775662,
+            "mAP75": 0.12113775974270469
+          }
+        },
+        "baseline": {
+          "images": 47,
+          "counts": {
+            "true_positives": 389,
+            "false_positives": 210,
+            "false_negatives": 222
+          },
+          "precision": 0.6494156928213689,
+          "recall": 0.6366612111292962,
+          "f1": 0.6429752066115703,
+          "count_mae": 3.9574468085106385
+        },
+        "external": {
+          "images": 307,
+          "counts": {
+            "true_positives": 277,
+            "false_positives": 222,
+            "false_negatives": 498
+          },
+          "precision": 0.5551102204408818,
+          "recall": 0.3574193548387097,
+          "f1": 0.434850863422292,
+          "count_mae": 1.3745928338762214
+        }
+      }
+    }
+  }
+}
