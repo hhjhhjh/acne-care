@@ -70,6 +70,7 @@
     </section>
     <section id="history-page" aria-labelledby="history-title" hidden><div class="intro compact"><p class="eyebrow">YOUR RECORDS</p><h1 id="history-title">차곡차곡 쌓이는<br>나의 피부 기록.</h1><p class="intro-copy">촬영일별 사진과 분석 결과를 다시 확인하세요.</p></div><div class="history-heading"><p id="history-count" role="status">기록을 불러오는 중입니다.</p><button id="refresh-history" class="text-button">새로고침 ↻</button></div><div id="history-empty" class="card empty-state" hidden><span aria-hidden="true">▧</span><h2>아직 분석 기록이 없어요.</h2><p>사진을 분석하면 이곳에서 다시 볼 수 있습니다.</p><button id="start-analysis" class="primary-button">첫 사진 분석하기 →</button></div><div id="history-grid" class="history-grid"></div><button id="load-more" class="secondary-button" hidden>기록 더 보기</button></section>
     <section id="comparison-page" aria-label="기록 비교" hidden>
+      <div id="comparison-entry">
       <div class="intro compact"><p class="eyebrow">SIDE BY SIDE</p><h1 id="comparison-title">지난 기록과 오늘을,<br>나란히 살펴보세요.</h1><p class="intro-copy">같은 사람의 사진 두 장을 선택해 탐지 결과를 비교하세요.<br>조명, 각도와 보이는 피부 범위가 비슷한 기록이 좋아요.</p></div>
       <form id="comparison-form" class="card comparison-picker">
         <div class="comparison-fields">
@@ -84,12 +85,45 @@
         <div class="comparison-metric" role="status"><span>탐지 개수 차이</span><strong id="comparison-delta"></strong><p id="comparison-counts"></p></div>
         <p class="comparison-caution">탐지 개수의 증감은 피부의 호전·악화 판정이 아닙니다. 촬영 조건이나 모델의 오탐·누락에 따라 결과가 달라질 수 있습니다. 같은 사람인지와 촬영 조건은 자동으로 확인하지 않습니다.</p>
         <p id="comparison-settings-notice" class="comparison-settings-notice" role="status"></p>
+        <button id="open-report" type="button" class="primary-button report-open">비교 리포트 보기 <span aria-hidden="true">→</span></button>
         <div class="image-tabs" role="group" aria-label="비교 이미지 표시"><button id="comparison-annotated" type="button" class="selected" aria-pressed="true">탐지 결과</button><button id="comparison-original" type="button" aria-pressed="false">원본 사진</button></div>
         <div class="comparison-images">
           <article><h3>이전 기록</h3><p id="previous-date" class="muted"></p><p id="previous-count" class="comparison-image-count"></p><div class="comparison-image-wrap"><img id="previous-image" alt="이전 기록의 탐지 결과"></div><button id="open-previous" type="button" class="text-button">이전 기록 상세 보기 ↗</button></article>
           <article><h3>현재 기록</h3><p id="current-date" class="muted"></p><p id="current-count" class="comparison-image-count"></p><div class="comparison-image-wrap"><img id="current-image" alt="현재 기록의 탐지 결과"></div><button id="open-current" type="button" class="text-button">현재 기록 상세 보기 ↗</button></article>
         </div>
         <details class="model-details"><summary>두 기록의 분석 조건 확인</summary><div class="comparison-table-wrap"><table class="comparison-table"><thead><tr><th scope="col">분석 조건</th><th scope="col">이전 기록</th><th scope="col">현재 기록</th></tr></thead><tbody id="comparison-settings"></tbody></table></div></details>
+      </section>
+      </div>
+      <section id="comparison-report" class="card comparison-report" aria-labelledby="report-title" hidden>
+        <header class="report-header">
+          <div><h1 id="report-title" tabindex="-1">피부 기록 비교 리포트</h1><p id="report-period"></p></div>
+          <div class="report-controls">
+            <button id="close-report" type="button" class="text-button">비교로 돌아가기</button>
+            <button id="print-report" type="button" class="secondary-button">인쇄 · PDF 저장</button>
+          </div>
+        </header>
+        <div class="report-summary">
+          <div><p class="report-metric-label">탐지 개수 차이</p><p id="report-delta" class="report-delta"></p></div>
+          <div><p id="report-counts" class="report-counts"></p><p id="report-explanation"></p></div>
+        </div>
+        <section aria-labelledby="report-chart-title" class="report-section">
+          <h2 id="report-chart-title">촬영일별 탐지 개수</h2>
+          <ul id="report-bars" class="report-bars"></ul>
+          <div class="report-scale" aria-hidden="true"><span>0개</span><span id="report-scale-max"></span></div>
+          <p class="report-guide"><strong>그래프 읽는 법</strong> 두 막대는 0개에서 시작하고 같은 눈금을 써요. 각 막대는 해당 사진에서 모델이 탐지한 개수를 보여줘요.</p>
+        </section>
+        <section aria-labelledby="report-photos-title" class="report-section">
+          <h2 id="report-photos-title">두 시점의 탐지 사진</h2>
+          <div id="report-photos" class="report-photos"></div>
+          <p class="report-guide"><strong>사진 읽는 법</strong> 상자는 모델이 여드름으로 탐지한 위치예요. 상자 옆 백분율은 그 위치에 대한 모델의 탐지 점수예요.</p>
+        </section>
+        <section aria-labelledby="report-settings-title" class="report-section report-settings">
+          <h2 id="report-settings-title">분석 조건과 해석</h2>
+          <p id="report-settings-status"></p>
+          <dl id="report-settings" class="report-settings-list"></dl>
+          <p class="report-note">탐지 개수는 조명, 각도, 보이는 피부 범위와 모델의 오탐·누락에 따라 달라질 수 있어요. 탐지 개수 차이만으로 피부 상태의 호전이나 악화를 판단할 수 없어요.</p>
+          <p class="report-note">다음 기록도 같은 사람을 비슷한 조명, 각도, 거리에서 촬영하면 비교하기 좋아요.</p>
+        </section>
       </section>
     </section>
   </main>

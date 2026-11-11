@@ -203,7 +203,7 @@ async function start() {
   updateButton();
   const params=new URLSearchParams(location.search);
   if(params.has("previous") || params.has("current")) {
-    await comparison.restore(params.get("previous"), params.get("current"));
+    await comparison.restore(params.get("previous"), params.get("current"), params.get("view") === "report");
   } else if(params.get("view") === "comparison") {
     await comparison.open();
   } else if(params.get("analysis") && ready) {
