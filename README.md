@@ -48,6 +48,6 @@ PYTHONPATH=backend/src .venv/training/bin/python -m unittest discover -s backend
 
 기존 `acne-CV`는 초기 비교 자료로 활용하며 현재 서비스는 독립된 구조로 개발한다. 얼굴 위치만으로 장기 상태나 질환의 원인을 추정하는 문구는 사용하지 않는다.
 
-- [기준 모델 실험](docs/experiments/yolo11n-dataset-v2-control.md)에서 학습 조건과 평가 결과를 확인할 수 있다.
+- [v2·v3 비교 실험](docs/experiments/yolo11n-dataset-v3-comparison.md)에서 기본 모델의 학습 조건과 평가 결과를 확인할 수 있다.
 - [데이터 관리 안내](data/README.md)에서 데이터 출처와 라벨 검토 방법을 확인할 수 있다.
 - [이전 프로젝트 조사](docs/legacy-acne-cv-audit.md)와 [보관 자료](references/acne-cv/README.md)에서 재사용 판단의 근거를 확인할 수 있다.
