@@ -33,6 +33,26 @@
               <p id="upload-error" class="upload-error" role="alert" hidden></p>
               <label class="date-label" for="captured-on">촬영일 <span>사진을 찍은 날짜를 선택해 주세요.</span></label>
               <input id="captured-on" name="captured_on" type="date" required>
+              <details id="capture-context-fields" class="capture-context-fields">
+                <summary>촬영 조건과 한 줄 메모 <span>(선택)</span></summary>
+                <fieldset id="capture-context-inputs" aria-label="촬영 조건과 메모">
+                  <label for="capture_lighting">조명
+                    <select id="capture_lighting" name="capture_lighting"><option value="">선택 안 함</option></select>
+                  </label>
+                  <label for="capture_angle">각도
+                    <select id="capture_angle" name="capture_angle"><option value="">선택 안 함</option></select>
+                  </label>
+                  <label for="capture_distance">거리
+                    <select id="capture_distance" name="capture_distance"><option value="">선택 안 함</option></select>
+                  </label>
+                  <label for="capture_filter">필터
+                    <select id="capture_filter" name="capture_filter"><option value="">선택 안 함</option></select>
+                  </label>
+                  <label class="capture-note-label" for="capture_note">한 줄 메모
+                    <input id="capture_note" name="capture_note" type="text" placeholder="예) 세안제 변경" autocomplete="off">
+                  </label>
+                </fieldset>
+              </details>
               <button id="analyze-button" class="primary-button" type="submit" disabled><span id="analyze-label">사진 분석하고 기록하기</span><span aria-hidden="true">→</span></button>
               <p id="analysis-progress" class="progress-text" role="status" hidden>사진을 분석하고 있습니다. 잠시만 기다려 주세요.</p>
               <p class="storage-note">분석하면 사진과 결과가 앱을 실행한 기기에 저장돼요.</p>
@@ -58,6 +78,7 @@
           </div>
           <div class="result-actions"><button id="compare-current" type="button" class="secondary-button">과거 기록과 비교하기 <span aria-hidden="true">→</span></button></div>
           <div class="result-details">
+            <div id="result-capture-context" class="result-capture-context"></div>
             <details id="result-detection-details" class="model-details">
               <summary>탐지 점수 보기</summary>
               <p class="confidence-help">모델의 탐지 점수이며 의학적 확률을 뜻하지 않습니다.</p>

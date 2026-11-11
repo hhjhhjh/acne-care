@@ -319,3 +319,57 @@ select{font:inherit;color:var(--ink)}select:focus-visible{outline:3px solid #9dc
   .report-settings { padding-top: 10px; }
   .report-note { margin-top: 8px; }
 }
+
+.capture-context-fields {
+  margin-top: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.capture-context-fields summary {
+  min-height: 44px;
+  padding: 12px;
+  color: var(--deep);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.capture-context-fields summary span { color: var(--muted); font-weight: 400; }
+#capture-context-inputs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  min-width: 0;
+  margin: 0;
+  padding: 0 12px 12px;
+  border: 0;
+}
+#capture-context-inputs label { display: grid; gap: 5px; min-width: 0; font-size: 12px; }
+#capture-context-inputs .capture-note-label { grid-column: 1 / -1; }
+#capture-context-inputs :is(select, input) {
+  width: 100%;
+  min-height: 44px;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--ink);
+  background: var(--surface);
+  font: inherit;
+  font-size: 16px;
+}
+.capture-context-fields :is(summary, select):focus-visible {
+  outline: 3px solid #9dc7b6;
+  outline-offset: 2px;
+}
+.capture-context-list {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 4px 10px;
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.capture-context-list dt { color: var(--muted); }
+.capture-context-list dd { margin: 0; overflow-wrap: anywhere; }
+.capture-context-empty { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
+.result-capture-context { padding: 12px 0; }
+.report-photo-context { padding: 8px 12px; }

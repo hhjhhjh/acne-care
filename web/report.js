@@ -1,3 +1,5 @@
+import { renderCaptureContext } from "./capture-context.js";
+
 const $ = id => document.getElementById(id);
 
 export function formatCountDelta(delta) {
@@ -54,7 +56,9 @@ function reportPhoto(label, record) {
   }, { once: true });
   image.src = record.annotated_image_url;
   frame.append(image, fallback);
-  figure.append(caption, frame);
+  const context = element("div", "", "report-photo-context");
+  renderCaptureContext(context, record);
+  figure.append(caption, frame, context);
   return figure;
 }
 

@@ -1,5 +1,6 @@
 "use strict";
 import { createComparison } from "./comparison.js";
+import { configureCaptureContext, renderCaptureContext } from "./capture-context.js";
 
 const $ = id => document.getElementById(id);
 let selectedFile = null, previewURL = null, busy = false, ready = false, currentRecord = null;
@@ -84,6 +85,8 @@ function showAnalysisForm(focusUpload = false) {
   currentRecord = null;
   history.replaceState(null, "", "/");
   if (leavingResult) {
+    $("upload-form").reset();
+    $("capture-context-fields").open = false;
     clearPhoto();
     $("captured-on").value = today;
     showUploadError("");
@@ -128,6 +131,7 @@ function renderResult(record, scroll=true) {
   $("result-detection-details").hidden = !record.count;
   $("result-detection-details").open = false;
   $("result-model-details").open = false;
+  renderCaptureContext($("result-capture-context"), record);
   $("detection-list").replaceChildren();
   record.detections.forEach((detection,index) => {
     const row=document.createElement("li"), label=document.createElement("span"), value=document.createElement("span");
@@ -152,18 +156,19 @@ async function openRecord(id, scroll=true) {
 
 $("upload-form").addEventListener("submit",async event => {
   event.preventDefault();if(!selectedFile || busy || !ready) return;
+  const form = new FormData(event.currentTarget);
+  form.set("file", selectedFile);
   busy=true;updateButton();showUploadError("");
   $("photo-file").disabled=true;$("captured-on").disabled=true;
+  $("capture-context-inputs").disabled = true;
   $("analysis-progress").hidden=false;$("analyze-label").textContent="분석하고 있어요…";
-  const form = new FormData();
-  form.append("file", selectedFile);
-  form.append("captured_on", $("captured-on").value);
   try { renderResult(await api("/api/analyses",{method:"POST",body:form})); }
   catch(error) { showUploadError(error.message || "서버에 연결할 수 없습니다. 실행 상태를 확인해 주세요."); }
   finally {
     busy = false;
     $("photo-file").disabled = false;
     $("captured-on").disabled = false;
+    $("capture-context-inputs").disabled = false;
     $("analysis-progress").hidden = true;
     $("analyze-label").textContent = "사진 분석하고 기록하기";
     updateButton();
@@ -195,7 +200,7 @@ async function loadHistory(reset) {
 
 async function start() {
   try {
-    await api("/api/health");
+    configureCaptureContext(await api("/api/health"));
     ready = true;
     $("model-status").textContent = "AI 모델 준비 완료";
   }

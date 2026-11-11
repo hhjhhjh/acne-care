@@ -15,6 +15,7 @@ from starlette.middleware.trustedhost import TrustedHostMiddleware
 from acne_care.adapters.sqlite_repository import SQLiteAnalysisRepository
 from acne_care.api.settings import PROJECT_ROOT, Settings
 from acne_care.application.analysis import AnalysisService, InvalidImage, ModelInfo
+from acne_care.application.capture_context import CAPTURE_NOTE_LIMIT, CAPTURE_OPTIONS, CaptureDetails
 from acne_care.application.comparison import compare_analyses
 from acne_care.ports.acne_detector import AcneDetector
 
@@ -71,10 +72,18 @@ def create_app(settings: Settings | None = None, *, detector: AcneDetector | Non
 
     @app.get("/api/health")
     def health():
-        return {"ready": True, "model": asdict(app.state.model_info), "max_upload_bytes": settings.max_upload_bytes}
+        return {
+            "ready": True, "model": asdict(app.state.model_info), "max_upload_bytes": settings.max_upload_bytes,
+            "capture_options": CAPTURE_OPTIONS, "capture_note_limit": CAPTURE_NOTE_LIMIT,
+        }
 
     @app.post("/api/analyses", status_code=201)
-    def analyze(file: UploadFile = File(...), captured_on: date = Form(...)):
+    def analyze(
+        file: UploadFile = File(...), captured_on: date = Form(...),
+        capture_lighting: str | None = Form(None), capture_angle: str | None = Form(None),
+        capture_distance: str | None = Form(None), capture_filter: str | None = Form(None),
+        capture_note: str | None = Form(None),
+    ):
         try:
             data = file.file.read(settings.max_upload_bytes + 1)
         finally:
@@ -84,7 +93,14 @@ def create_app(settings: Settings | None = None, *, detector: AcneDetector | Non
         if captured_on > date.today():
             raise HTTPException(422, "촬영일은 오늘 또는 이전 날짜를 선택해 주세요.")
         try:
-            record = app.state.analysis_service.analyze(data, captured_on)
+            capture = CaptureDetails(
+                capture_lighting=capture_lighting, capture_angle=capture_angle,
+                capture_distance=capture_distance, capture_filter=capture_filter, capture_note=capture_note,
+            )
+        except ValueError as error:
+            raise HTTPException(422, str(error)) from error
+        try:
+            record = app.state.analysis_service.analyze(data, captured_on, capture=capture)
         except InvalidImage as error:
             raise HTTPException(422, str(error)) from error
         except Exception as error:
