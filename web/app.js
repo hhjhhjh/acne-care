@@ -10,6 +10,14 @@ $("captured-on").value = today;
 $("captured-on").max = today;
 
 function notice(message) { $("notice").textContent = message || ""; $("notice").hidden = !message; }
+function showUploadError(message) {
+  const error = $("upload-error");
+  error.textContent = message;
+  error.hidden = !message;
+  if (message && !$("analysis-page").hidden && !$("analysis-entry").hidden) {
+    error.scrollIntoView({ block: "nearest" });
+  }
+}
 function updateButton() { $("analyze-button").disabled = !selectedFile || busy || !ready; }
 async function api(path, options) {
   let response;
@@ -20,18 +28,22 @@ async function api(path, options) {
   if (!response.ok) throw new Error(typeof payload.detail === "string" ? payload.detail : "입력 정보를 확인해 주세요.");
   return payload;
 }
-function rejectFile(message) {
+function clearPhoto() {
   selectedFile=null;
   if(previewURL) URL.revokeObjectURL(previewURL);
   previewURL=null;
   $("preview").hidden=true;$("preview").removeAttribute("src");
   $("upload-prompt").hidden=false;$("change-photo").hidden=true;
   $("photo-file").value="";$("file-name").textContent="선택한 사진이 없습니다.";$("file-size").textContent="";
-  updateButton();notice(message);
+  updateButton();
+}
+function rejectFile(message) {
+  clearPhoto();
+  showUploadError(message);
 }
 function selectFile(file) {
   if (busy || !file) return;
-  notice("");
+  showUploadError("");
   if (file.size > 10 * 1024 * 1024) { rejectFile("사진은 10MB 이하로 선택해 주세요."); return; }
   if (!/\.(jpe?g|png|webp)$/i.test(file.name)) { rejectFile("JPG, PNG, WEBP 사진을 선택해 주세요."); return; }
   if (previewURL) URL.revokeObjectURL(previewURL);
@@ -52,6 +64,7 @@ $("drop-zone").addEventListener("dragleave", () => $("drop-zone").classList.remo
 $("drop-zone").addEventListener("drop", event => { event.preventDefault(); $("drop-zone").classList.remove("dragover"); selectFile(event.dataTransfer.files[0]); });
 
 function showPage(name) {
+  const changed = $(`${name}-page`).hidden;
   $("analysis-page").hidden = name !== "analysis";
   $("history-page").hidden = name !== "history";
   $("comparison-page").hidden = name !== "comparison";
@@ -61,16 +74,35 @@ function showPage(name) {
     else $(`${page}-tab`).removeAttribute("aria-current");
   }
   notice("");
+  if (changed) window.scrollTo(0, 0);
+}
+function showAnalysisForm(focusUpload = false) {
+  const leavingResult = !$("result").hidden;
+  showPage("analysis");
+  $("analysis-entry").hidden = false;
+  $("result").hidden = true;
+  currentRecord = null;
+  history.replaceState(null, "", "/");
+  if (leavingResult) {
+    clearPhoto();
+    $("captured-on").value = today;
+    showUploadError("");
+    window.scrollTo(0, 0);
+  }
+  if (focusUpload) {
+    $("upload-title").focus({ preventScroll: true });
+    $("upload-title").scrollIntoView({ block: "nearest" });
+  }
 }
 const comparison = createComparison({ api, showPage, openRecord });
-$("analysis-tab").addEventListener("click", () => showPage("analysis"));
+$("analysis-tab").addEventListener("click", () => showAnalysisForm());
 $("history-tab").addEventListener("click", () => { showPage("history"); loadHistory(true); });
 $("comparison-tab").addEventListener("click", () => comparison.open());
 $("compare-current").addEventListener("click", () => comparison.open(currentRecord));
 $("refresh-history").addEventListener("click", () => loadHistory(true));
 $("load-more").addEventListener("click", () => loadHistory(false));
-$("start-analysis").addEventListener("click", () => showPage("analysis"));
-$("new-analysis").addEventListener("click", () => { $("result").hidden = true; currentRecord = null; history.replaceState(null,"","/"); $("upload-title").scrollIntoView({behavior:"smooth",block:"center"}); });
+$("start-analysis").addEventListener("click", () => showAnalysisForm(true));
+$("new-analysis").addEventListener("click", () => showAnalysisForm(true));
 
 function setResultImage(annotated) {
   if (!currentRecord) return;
@@ -88,10 +120,14 @@ $("result-image").addEventListener("error", () => notice("저장된 결과 이�
 function renderResult(record, scroll=true) {
   currentRecord = record;
   showPage("analysis");
+  $("analysis-entry").hidden = true;
   $("result").hidden = false;
-  $("result-date").textContent = `촬영일 ${record.captured_on.replaceAll("-", ".")} · 분석 ${new Date(record.created_at).toLocaleString("ko-KR")}`;
+  $("result-date").textContent = `촬영일 ${record.captured_on.replaceAll("-", ".")}`;
   $("result-count").textContent = record.count;
   $("result-message").textContent = record.count ? "상자는 모델이 여드름으로 탐지한 위치입니다. 누락되거나 잘못 탐지된 부분이 있을 수 있어요." : "모델이 탐지한 여드름이 없습니다. 피부 상태가 정상이라는 판정을 뜻하지는 않습니다.";
+  $("result-detection-details").hidden = !record.count;
+  $("result-detection-details").open = false;
+  $("result-model-details").open = false;
   $("detection-list").replaceChildren();
   record.detections.forEach((detection,index) => {
     const row=document.createElement("li"), label=document.createElement("span"), value=document.createElement("span");
@@ -99,12 +135,15 @@ function renderResult(record, scroll=true) {
     row.append(label,value);$("detection-list").append(row);
   });
   $("model-details").replaceChildren();
-  for (const [name,value] of [["모델",record.model_id],["Threshold",record.confidence_threshold],["입력 크기",`${record.image_size} × ${record.image_size}`],["실행 장치",record.device],["분석 이미지",`${record.width} × ${record.height}`],["가중치 SHA-256",record.weights_sha256]]) {
+  for (const [name,value] of [["분석 시각",new Date(record.created_at).toLocaleString("ko-KR")],["모델",record.model_id],["탐지 기준 점수",record.confidence_threshold],["입력 크기",`${record.image_size} × ${record.image_size}`],["실행 장치",record.device],["분석 이미지",`${record.width} × ${record.height}`],["가중치 SHA-256",record.weights_sha256]]) {
     const term=document.createElement("dt"), description=document.createElement("dd");term.textContent=name;description.textContent=value;$("model-details").append(term,description);
   }
   setResultImage(true);
   history.replaceState(null,"",`/?analysis=${encodeURIComponent(record.id)}`);
-  if(scroll) $("result").scrollIntoView({behavior:"smooth",block:"start"});
+  if (scroll) {
+    $("result-title").focus({ preventScroll: true });
+    window.scrollTo(0, 0);
+  }
 }
 async function openRecord(id, scroll=true) {
   try { renderResult(await api(`/api/analyses/${encodeURIComponent(id)}`), scroll); }
@@ -113,13 +152,22 @@ async function openRecord(id, scroll=true) {
 
 $("upload-form").addEventListener("submit",async event => {
   event.preventDefault();if(!selectedFile || busy || !ready) return;
-  busy=true;updateButton();notice("");
+  busy=true;updateButton();showUploadError("");
   $("photo-file").disabled=true;$("captured-on").disabled=true;
   $("analysis-progress").hidden=false;$("analyze-label").textContent="분석하고 있어요…";
-  const form=new FormData();form.append("file",selectedFile);form.append("captured_on",$("captured-on").value);
+  const form = new FormData();
+  form.append("file", selectedFile);
+  form.append("captured_on", $("captured-on").value);
   try { renderResult(await api("/api/analyses",{method:"POST",body:form})); }
-  catch(error) { notice(error.message || "서버에 연결할 수 없습니다. 실행 상태를 확인해 주세요."); $("notice").scrollIntoView({behavior:"smooth",block:"center"}); }
-  finally { busy=false;$("photo-file").disabled=false;$("captured-on").disabled=false;$("analysis-progress").hidden=true;$("analyze-label").textContent="사진 분석하고 기록하기";updateButton(); }
+  catch(error) { showUploadError(error.message || "서버에 연결할 수 없습니다. 실행 상태를 확인해 주세요."); }
+  finally {
+    busy = false;
+    $("photo-file").disabled = false;
+    $("captured-on").disabled = false;
+    $("analysis-progress").hidden = true;
+    $("analyze-label").textContent = "사진 분석하고 기록하기";
+    updateButton();
+  }
 });
 
 async function loadHistory(reset) {
@@ -146,7 +194,11 @@ async function loadHistory(reset) {
 }
 
 async function start() {
-  try {await api("/api/health");ready=true;$("model-status").textContent="AI 모델 준비 완료";}
+  try {
+    await api("/api/health");
+    ready = true;
+    $("model-status").textContent = "AI 모델 준비 완료";
+  }
   catch {$("model-status").textContent="서버 연결 확인 필요";$("model-status").classList.add("error");notice("분석 서버에 연결할 수 없습니다. 서버가 실행 중인지 확인해 주세요.");}
   updateButton();
   const params=new URLSearchParams(location.search);

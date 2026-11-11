@@ -16,35 +16,60 @@
   </header>
   <main>
     <div id="notice" class="notice" role="alert" hidden></div>
-    <section id="analysis-page" aria-labelledby="intro-title">
-      <div class="intro"><p class="eyebrow">A LITTLE CARE, EVERY DAY</p><h1 id="intro-title">피부의 변화를,<br>기록부터 차근차근.</h1><p class="intro-copy">사진 한 장으로 여드름 탐지 결과를 확인하고<br class="desktop-break"> 오늘의 피부 기록을 남겨보세요.</p></div>
-      <div class="analysis-layout">
-        <section class="card upload-card" aria-labelledby="upload-title">
-          <div class="card-heading"><div><p class="step-label">PHOTO ANALYSIS</p><h2 id="upload-title">오늘의 사진</h2></div><span id="model-status" class="status-pill" role="status">모델 연결 확인 중</span></div>
-          <form id="upload-form">
-            <input type="file" id="photo-file" class="visually-hidden" accept="image/jpeg,image/png,image/webp" aria-label="얼굴 사진 선택">
-            <label for="photo-file" id="drop-zone" class="drop-zone">
-              <span id="upload-prompt"><svg width="52" height="52" viewBox="0 0 52 52" fill="none" aria-hidden="true"><rect x="8" y="8" width="36" height="36" rx="10" stroke="currentColor" stroke-width="1.5"/><circle cx="20" cy="20" r="3.5" stroke="currentColor" stroke-width="1.5"/><path d="m10 37 11-10 8 7 7-6 7 8" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg><strong>얼굴 사진을 올려주세요</strong><span>사진을 끌어놓거나 눌러서 선택하세요.</span><span class="file-spec">JPG · PNG · WEBP / 최대 10MB</span><span class="choose-file">사진 선택하기 <span aria-hidden="true">↗</span></span></span>
-              <img id="preview" alt="선택한 사진 미리보기" hidden>
-              <span id="change-photo" class="change-photo" hidden>다른 사진 선택</span>
-            </label>
-            <div class="photo-meta"><span id="file-name">선택한 사진이 없습니다.</span><span id="file-size"></span></div>
-            <label class="date-label" for="captured-on">촬영일 <span>사진을 찍은 날짜를 선택해 주세요.</span></label>
-            <input id="captured-on" name="captured_on" type="date" required>
-            <button id="analyze-button" class="primary-button" type="submit" disabled><span id="analyze-label">사진 분석하고 기록하기</span><span aria-hidden="true">→</span></button>
-            <p id="analysis-progress" class="progress-text" role="status" hidden>사진을 분석하고 있습니다. 잠시만 기다려 주세요.</p>
-            <p class="storage-note">분석하면 사진과 결과가 이 맥북의 로컬 저장소에 보관됩니다.</p>
-          </form>
-        </section>
-        <aside class="guide" aria-labelledby="guide-title"><p class="step-label">BEFORE YOU START</p><h2 id="guide-title">비슷하게 찍을수록,<br>비교하기 좋아요.</h2><p class="guide-intro">촬영 조건에 따라 탐지 결과가 달라질 수 있어요. 매번 비슷한 환경에서 촬영해 주세요.</p><div class="guide-item"><span class="guide-icon" aria-hidden="true">☀</span><div><h3>밝고 고른 조명</h3><p>얼굴에 짙은 그림자가 생기지 않는 곳에서 찍어주세요.</p></div></div><div class="guide-item"><span class="guide-icon" aria-hidden="true">◎</span><div><h3>비슷한 각도와 거리</h3><p>얼굴이 선명하게 보이도록, 같은 방향과 거리에서 찍어주세요.</p></div></div><div class="guide-item"><span class="guide-icon" aria-hidden="true">◇</span><div><h3>필터 없이 자연스럽게</h3><p>피부 보정이나 뷰티 필터를 사용하지 않은 사진이 좋아요.</p></div></div><p class="guide-footnote">분석 후 ‘기록 비교’에서 두 사진의 결과를 확인할 수 있습니다. 같은 사람의 비슷한 촬영 조건인 기록을 선택해 주세요.</p></aside>
+    <section id="analysis-page" aria-label="사진 분석">
+      <div id="analysis-entry">
+        <div class="intro"><p class="eyebrow">A LITTLE CARE, EVERY DAY</p><h1 id="intro-title">피부의 변화를,<br>기록부터 차근차근.</h1><p class="intro-copy">사진 한 장으로 여드름 탐지 결과를 확인하고<br class="desktop-break"> 오늘의 피부 기록을 남겨보세요.</p></div>
+        <div class="analysis-layout">
+          <section class="card upload-card" aria-labelledby="upload-title">
+            <div class="card-heading"><div><p class="step-label">PHOTO ANALYSIS</p><h2 id="upload-title" tabindex="-1">오늘의 사진</h2></div><span id="model-status" class="status-pill" role="status">모델 연결 확인 중</span></div>
+            <form id="upload-form">
+              <input type="file" id="photo-file" class="visually-hidden" accept="image/jpeg,image/png,image/webp" aria-label="얼굴 사진 선택" aria-describedby="file-spec upload-error">
+              <label for="photo-file" id="drop-zone" class="drop-zone">
+                <span id="upload-prompt"><svg width="52" height="52" viewBox="0 0 52 52" fill="none" aria-hidden="true"><rect x="8" y="8" width="36" height="36" rx="10" stroke="currentColor" stroke-width="1.5"/><circle cx="20" cy="20" r="3.5" stroke="currentColor" stroke-width="1.5"/><path d="m10 37 11-10 8 7 7-6 7 8" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg><strong>얼굴 사진을 올려주세요</strong><span class="upload-drop-hint">사진을 끌어놓거나 눌러서 선택하세요.</span><span class="file-spec" id="file-spec">JPG · PNG · WEBP / 최대 10MB</span><span class="choose-file">사진 선택하기 <span aria-hidden="true">↗</span></span></span>
+                <img id="preview" alt="선택한 사진 미리보기" hidden>
+                <span id="change-photo" class="change-photo" hidden>다른 사진 선택</span>
+              </label>
+              <div class="photo-meta" aria-live="polite"><span id="file-name">선택한 사진이 없습니다.</span><span id="file-size"></span></div>
+              <p id="upload-error" class="upload-error" role="alert" hidden></p>
+              <label class="date-label" for="captured-on">촬영일 <span>사진을 찍은 날짜를 선택해 주세요.</span></label>
+              <input id="captured-on" name="captured_on" type="date" required>
+              <button id="analyze-button" class="primary-button" type="submit" disabled><span id="analyze-label">사진 분석하고 기록하기</span><span aria-hidden="true">→</span></button>
+              <p id="analysis-progress" class="progress-text" role="status" hidden>사진을 분석하고 있습니다. 잠시만 기다려 주세요.</p>
+              <p class="storage-note">분석하면 사진과 결과가 앱을 실행한 기기에 저장돼요.</p>
+            </form>
+          </section>
+          <aside class="guide" aria-labelledby="guide-title"><p class="step-label">BEFORE YOU START</p><h2 id="guide-title">비슷하게 찍을수록,<br>비교하기 좋아요.</h2><p class="guide-intro">촬영 조건에 따라 탐지 결과가 달라질 수 있어요. 매번 비슷한 환경에서 촬영해 주세요.</p><div class="guide-item"><span class="guide-icon" aria-hidden="true">☀</span><div><h3>밝고 고른 조명</h3><p>얼굴에 짙은 그림자가 생기지 않는 곳에서 찍어주세요.</p></div></div><div class="guide-item"><span class="guide-icon" aria-hidden="true">◎</span><div><h3>비슷한 각도와 거리</h3><p>얼굴이 선명하게 보이도록, 같은 방향과 거리에서 찍어주세요.</p></div></div><div class="guide-item"><span class="guide-icon" aria-hidden="true">◇</span><div><h3>필터 없이 자연스럽게</h3><p>피부 보정이나 뷰티 필터를 사용하지 않은 사진이 좋아요.</p></div></div><p class="guide-footnote">분석 후 ‘기록 비교’에서 두 사진의 결과를 확인할 수 있습니다. 같은 사람의 비슷한 촬영 조건인 기록을 선택해 주세요.</p></aside>
+        </div>
       </div>
       <section id="result" class="card result-card" aria-labelledby="result-title" hidden>
-        <div class="card-heading"><div><p class="step-label">YOUR SKIN RECORD</p><h2 id="result-title">사진 분석 결과</h2><p id="result-date" class="muted"></p></div><button id="new-analysis" class="text-button">새 사진 분석하기 ↗</button></div>
-        <div class="result-layout"><div><div class="image-tabs" role="group" aria-label="이미지 표시"><button id="show-annotated" class="selected" aria-pressed="true">탐지 결과</button><button id="show-original" aria-pressed="false">원본 사진</button></div><div class="result-image-wrap"><img id="result-image" alt="여드름 탐지 결과"></div></div><div class="result-summary"><span class="metric-label">탐지된 여드름</span><p class="count"><span id="result-count">0</span><span>개</span></p><p id="result-message" class="muted"></p><div class="saved-badge">✓ 분석 기록에 저장됐습니다.</div><button id="compare-current" class="secondary-button">과거 기록과 비교하기 →</button><h3 class="confidence-title">탐지별 confidence</h3><p class="confidence-help">모델의 탐지 점수이며 의학적 확률을 뜻하지 않습니다.</p><ol id="detection-list" class="detection-list"></ol><details class="model-details"><summary>분석에 사용한 모델 정보</summary><dl id="model-details"></dl></details></div></div>
+        <div class="card-heading">
+          <div><h1 id="result-title" tabindex="-1">사진 분석 결과</h1><p id="result-date" class="muted"></p></div>
+          <button id="new-analysis" type="button" class="text-button">새 사진 분석하기 <span aria-hidden="true">↗</span></button>
+        </div>
+        <div class="result-layout">
+          <div class="result-summary">
+            <div class="result-metric"><span class="metric-label">여드름 탐지 개수</span><p class="count"><span id="result-count">0</span><span>개</span></p></div>
+            <p id="result-message" class="muted"></p>
+            <p class="saved-badge">✓ 분석 기록에 저장됐어요.</p>
+          </div>
+          <div class="result-visual">
+            <div class="image-tabs" role="group" aria-label="이미지 표시"><button id="show-annotated" type="button" class="selected" aria-pressed="true">탐지 결과</button><button id="show-original" type="button" aria-pressed="false">원본 사진</button></div>
+            <div class="result-image-wrap"><img id="result-image" alt="여드름 탐지 결과"></div>
+          </div>
+          <div class="result-actions"><button id="compare-current" type="button" class="secondary-button">과거 기록과 비교하기 <span aria-hidden="true">→</span></button></div>
+          <div class="result-details">
+            <details id="result-detection-details" class="model-details">
+              <summary>탐지 점수 보기</summary>
+              <p class="confidence-help">모델의 탐지 점수이며 의학적 확률을 뜻하지 않습니다.</p>
+              <ol id="detection-list" class="detection-list"></ol>
+            </details>
+            <details id="result-model-details" class="model-details"><summary>분석에 사용한 모델 정보</summary><dl id="model-details"></dl></details>
+          </div>
+        </div>
       </section>
     </section>
     <section id="history-page" aria-labelledby="history-title" hidden><div class="intro compact"><p class="eyebrow">YOUR RECORDS</p><h1 id="history-title">차곡차곡 쌓이는<br>나의 피부 기록.</h1><p class="intro-copy">촬영일별 사진과 분석 결과를 다시 확인하세요.</p></div><div class="history-heading"><p id="history-count" role="status">기록을 불러오는 중입니다.</p><button id="refresh-history" class="text-button">새로고침 ↻</button></div><div id="history-empty" class="card empty-state" hidden><span aria-hidden="true">▧</span><h2>아직 분석 기록이 없어요.</h2><p>사진을 분석하면 이곳에서 다시 볼 수 있습니다.</p><button id="start-analysis" class="primary-button">첫 사진 분석하기 →</button></div><div id="history-grid" class="history-grid"></div><button id="load-more" class="secondary-button" hidden>기록 더 보기</button></section>
-    <section id="comparison-page" aria-labelledby="comparison-title" hidden>
+    <section id="comparison-page" aria-label="기록 비교" hidden>
       <div class="intro compact"><p class="eyebrow">SIDE BY SIDE</p><h1 id="comparison-title">지난 기록과 오늘을,<br>나란히 살펴보세요.</h1><p class="intro-copy">같은 사람의 사진 두 장을 선택해 탐지 결과를 비교하세요.<br>조명, 각도와 보이는 피부 범위가 비슷한 기록이 좋아요.</p></div>
       <form id="comparison-form" class="card comparison-picker">
         <div class="comparison-fields">
