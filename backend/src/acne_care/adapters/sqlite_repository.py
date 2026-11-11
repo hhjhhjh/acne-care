@@ -5,11 +5,13 @@ from contextlib import closing, contextmanager
 from pathlib import Path
 from typing import Any
 
+from acne_care.application.capture_context import CAPTURE_COLUMNS
 from acne_care.domain import Detection
 
 
 COLUMNS = ("id", "captured_on", "created_at", "width", "height", "model_id", "weights_sha256",
-           "confidence_threshold", "image_size", "device", "nms_iou", "inference_seconds", "original_path", "annotated_path")
+           "confidence_threshold", "image_size", "device", "nms_iou", "inference_seconds", "original_path", "annotated_path",
+           *CAPTURE_COLUMNS)
 SELECT = "SELECT a.*, (SELECT COUNT(*) FROM detections d WHERE d.analysis_id=a.id) AS count FROM analyses a"
 
 
@@ -28,10 +30,20 @@ class SQLiteAnalysisRepository:
     def initialize(self) -> None:
         self.path.parent.mkdir(parents=True, exist_ok=True)
         with self._connection() as connection:
+            connection.execute("BEGIN IMMEDIATE")
             version = connection.execute("PRAGMA user_version").fetchone()[0]
-            if version not in (0, 1):
+            if version not in (0, 1, 2):
                 raise RuntimeError("unsupported analysis database version")
-            connection.executescript("""
+            if version == 0:
+                self._create_tables(connection)
+            if version < 2:
+                for column in CAPTURE_COLUMNS:
+                    connection.execute(f"ALTER TABLE analyses ADD COLUMN {column} TEXT")
+                connection.execute("PRAGMA user_version=2")
+
+    @staticmethod
+    def _create_tables(connection: sqlite3.Connection) -> None:
+        connection.execute("""
                 CREATE TABLE IF NOT EXISTS analyses (
                     id TEXT PRIMARY KEY, captured_on TEXT NOT NULL, created_at TEXT NOT NULL,
                     width INTEGER NOT NULL CHECK(width>0), height INTEGER NOT NULL CHECK(height>0),
@@ -39,17 +51,18 @@ class SQLiteAnalysisRepository:
                     confidence_threshold REAL NOT NULL CHECK(confidence_threshold BETWEEN 0 AND 1),
                     image_size INTEGER NOT NULL, device TEXT NOT NULL, nms_iou REAL NOT NULL,
                     inference_seconds REAL NOT NULL, original_path TEXT NOT NULL, annotated_path TEXT NOT NULL
-                );
+                )
+            """)
+        connection.execute("""
                 CREATE TABLE IF NOT EXISTS detections (
                     analysis_id TEXT NOT NULL REFERENCES analyses(id) ON DELETE CASCADE,
                     ordinal INTEGER NOT NULL, class_id INTEGER NOT NULL CHECK(class_id=0),
                     confidence REAL NOT NULL CHECK(confidence BETWEEN 0 AND 1),
                     x_min REAL NOT NULL, y_min REAL NOT NULL, x_max REAL NOT NULL, y_max REAL NOT NULL,
                     PRIMARY KEY(analysis_id,ordinal), CHECK(x_max>x_min), CHECK(y_max>y_min)
-                );
-                CREATE INDEX IF NOT EXISTS analyses_capture_date ON analyses(captured_on DESC, created_at DESC);
-                PRAGMA user_version=1;
+                )
             """)
+        connection.execute("CREATE INDEX IF NOT EXISTS analyses_capture_date ON analyses(captured_on DESC, created_at DESC)")
 
     def insert(self, record: dict[str, Any], detections: tuple[Detection, ...]) -> None:
         with self._connection() as connection:

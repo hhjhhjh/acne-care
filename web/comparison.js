@@ -1,9 +1,15 @@
+import { formatCountDelta, formatInterval, renderComparisonReport } from "./report.js";
+
 const $ = id => document.getElementById(id);
 const settingLabels = [
   ["model_id", "모델"], ["weights_sha256", "가중치 SHA-256"],
   ["confidence_threshold", "탐지 기준 점수"], ["image_size", "입력 크기"],
   ["nms_iou", "중복 상자 제거 기준"], ["device", "실행 장치"],
 ];
+
+function changedSettingLabels(comparison) {
+  return comparison.setting_differences.map(item => settingLabels.find(([field]) => field === item.field)?.[1] || item.field);
+}
 
 // Dependencies are passed explicitly; this module never uploads or changes a record.
 export function createComparison({ api, showPage, openRecord }) {
@@ -13,10 +19,25 @@ export function createComparison({ api, showPage, openRecord }) {
 
   function setURL() {
     if ($("comparison-page").hidden) return;
-    const query = result
-      ? `?previous=${encodeURIComponent(result.previous.id)}&current=${encodeURIComponent(result.current.id)}`
-      : "?view=comparison";
-    history.replaceState(null, "", `/${query}`);
+    const query = new URLSearchParams(result
+      ? { previous: result.previous.id, current: result.current.id }
+      : { view: "comparison" });
+    if (!$("comparison-report").hidden) query.set("view", "report");
+    history.replaceState(null, "", `/?${query}`);
+  }
+
+  function setReportView(show) {
+    $("comparison-entry").hidden = show;
+    $("comparison-report").hidden = !show;
+  }
+
+  function openReport() {
+    if (!result || $("comparison-page").hidden) return;
+    renderComparisonReport(result, changedSettingLabels(result.comparison));
+    setReportView(true);
+    setURL();
+    $("report-title").focus({ preventScroll: true });
+    window.scrollTo({ top: 0, behavior: "instant" });
   }
 
   function selectionError() {
@@ -44,6 +65,7 @@ export function createComparison({ api, showPage, openRecord }) {
 
   function clearResult() {
     result = null;
+    setReportView(false);
     $("comparison-result").hidden = true;
     setURL();
   }
@@ -112,13 +134,12 @@ export function createComparison({ api, showPage, openRecord }) {
     const { previous, current, comparison } = result;
     records.set(previous.id, previous); records.set(current.id, current);
     populate(previous.id, current.id);
-    const delta = comparison.count_delta;
-    $("comparison-delta").textContent = delta === 0 ? "변화 없음" : `${delta > 0 ? "+" : "−"}${Math.abs(delta)}개`;
+    $("comparison-delta").textContent = formatCountDelta(comparison.count_delta);
     $("comparison-counts").textContent = `이전 ${previous.count}개 → 현재 ${current.count}개`;
-    $("comparison-interval").textContent = comparison.days_between === 0 ? "같은 촬영일의 기록" : `촬영일 간격 ${comparison.days_between}일`;
+    $("comparison-interval").textContent = formatInterval(comparison.days_between);
     const settingsNotice = $("comparison-settings-notice");
     settingsNotice.classList.toggle("different", !comparison.analysis_settings_match);
-    const changedLabels = comparison.setting_differences.map(item => settingLabels.find(([field]) => field === item.field)?.[1] || item.field);
+    const changedLabels = changedSettingLabels(comparison);
     settingsNotice.textContent = comparison.analysis_settings_match
       ? "모델과 탐지 설정이 같습니다. 촬영 조건은 별도로 확인해 주세요."
       : `분석 조건이 다릅니다: ${changedLabels.join(", ")}. 개수 차이를 같은 분석 조건의 변화로 해석하지 마세요.`;
@@ -139,7 +160,7 @@ export function createComparison({ api, showPage, openRecord }) {
     setImages(true);
     $("comparison-result").hidden = false;
     setURL();
-    if (scroll && !$("comparison-page").hidden) $("comparison-result").scrollIntoView({ behavior: "smooth", block: "start" });
+    if (scroll && !$("comparison-page").hidden) $("comparison-result").scrollIntoView({ block: "start" });
   }
 
   async function compare(previousId, currentId, scroll = true) {
@@ -171,6 +192,18 @@ export function createComparison({ api, showPage, openRecord }) {
   $("more-comparison-records").addEventListener("click", () => loadRecords(false));
   $("comparison-annotated").addEventListener("click", () => setImages(true));
   $("comparison-original").addEventListener("click", () => setImages(false));
+  $("open-report").addEventListener("click", openReport);
+  $("close-report").addEventListener("click", () => {
+    setReportView(false);
+    setURL();
+    $("open-report").focus({ preventScroll: true });
+    $("comparison-result").scrollIntoView({ block: "start" });
+  });
+  $("print-report").addEventListener("click", async () => {
+    const images = [...$("report-photos").querySelectorAll("img")];
+    await Promise.allSettled(images.map(image => image.decode()));
+    if (!$("comparison-page").hidden && !$("comparison-report").hidden) window.print();
+  });
   for (const side of ["previous", "current"]) {
     $(`open-${side}`).addEventListener("click", () => { if (result) openRecord(result[side].id); });
     $(`${side}-image`).addEventListener("error", () => {
@@ -184,10 +217,11 @@ export function createComparison({ api, showPage, openRecord }) {
       await loadRecords(true, currentRecord);
       setURL();
     },
-    async restore(previousId, currentId) {
+    async restore(previousId, currentId, reportRequested = false) {
       showPage("comparison");
       await loadRecords(true);
       await compare(previousId, currentId, false);
+      if (reportRequested) openReport();
     },
   };
 }

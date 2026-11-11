@@ -2,7 +2,7 @@
 
 모델 가중치는 Git에 직접 커밋하지 않는다. 웹 서비스의 기본 모델은
 [`detector-baseline.yaml`](detector-baseline.yaml)에서 관리한다. 파일 위치, SHA-256과 탐지 설정을
-이 파일에서 확인한다. 학습 조건과 평가 결과는 [기준 모델 실험](../docs/experiments/yolo11n-dataset-v2-control.md)을 참고한다.
+이 파일에서 확인한다. 학습 조건과 평가 결과는 [v2·v3 비교 실험](../docs/experiments/yolo11n-dataset-v3-comparison.md)을 참고한다.
 
 웹앱을 실행하려면 별도로 보관한 학습 결과 `best.pt`를 모델 설정의 `weights_path`에 복사한다.
 macOS에서는 `shasum -a 256 <가중치 파일 경로>`로 확인값을 비교할 수 있다. 초기 사전학습

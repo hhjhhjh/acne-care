@@ -47,6 +47,42 @@ class AnalysisAPITest(unittest.TestCase):
             response = client.post("/api/analyses", headers={"Origin": "https://unrelated.example"}, files={"file": ("photo.png", fixtures.image_bytes(), "image/png")}, data={"captured_on": "2026-10-01"})
             self.assertEqual(response.status_code, 403)
 
+    def test_capture_details_are_persisted_and_returned_with_comparison(self):
+        with tempfile.TemporaryDirectory() as temp, self.client(Path(temp)) as client:
+            previous = self.upload(client, "2026-10-01")
+            response = client.post(
+                "/api/analyses",
+                files={"file": ("photo.png", fixtures.image_bytes(), "image/png")},
+                data={
+                    "captured_on": "2026-10-02", "capture_lighting": "밝고 고른 조명",
+                    "capture_angle": "정면", "capture_distance": "가까이",
+                    "capture_filter": "사용 안 함", "capture_note": "  세안제 변경  ",
+                },
+            )
+            self.assertEqual(response.status_code, 201, response.text)
+            current = response.json()
+            self.assertEqual(current["capture_note"], "세안제 변경")
+            detail = client.get(f"/api/analyses/{current['id']}").json()
+            self.assertEqual(detail["capture_lighting"], "밝고 고른 조명")
+            self.assertEqual(detail["capture_angle"], "정면")
+            self.assertEqual(detail["capture_distance"], "가까이")
+            self.assertEqual(detail["capture_filter"], "사용 안 함")
+            comparison = client.get("/api/comparisons", params={"previous_id": previous["id"], "current_id": current["id"]}).json()
+            self.assertIsNone(comparison["previous"]["capture_note"])
+            self.assertEqual(comparison["current"]["capture_note"], "세안제 변경")
+            self.assertTrue(comparison["comparison"]["analysis_settings_match"])
+
+    def test_invalid_capture_details_do_not_create_a_record(self):
+        with tempfile.TemporaryDirectory() as temp, self.client(Path(temp)) as client:
+            for invalid in ({"capture_angle": "알 수 없는 값"}, {"capture_note": "메" * 161}, {"capture_note": "두 줄\n메모"}):
+                with self.subTest(invalid=invalid):
+                    response = client.post(
+                        "/api/analyses", files={"file": ("photo.png", fixtures.image_bytes(), "image/png")},
+                        data={"captured_on": "2026-10-01", **invalid},
+                    )
+                    self.assertEqual(response.status_code, 422, response.text)
+            self.assertEqual(client.get("/api/analyses").json()["total"], 0)
+
     def upload(self, client, captured_on):
         response = client.post("/api/analyses", files={"file": ("photo.png", fixtures.image_bytes(), "image/png")},
                                data={"captured_on": captured_on})

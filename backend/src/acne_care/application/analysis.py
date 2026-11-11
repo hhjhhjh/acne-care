@@ -4,7 +4,7 @@ import io
 import shutil
 import time
 import warnings
-from dataclasses import dataclass
+from dataclasses import asdict, dataclass
 from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Any, Protocol
@@ -12,6 +12,7 @@ from uuid import uuid4
 
 from PIL import Image, ImageDraw, ImageFont, ImageOps, UnidentifiedImageError
 
+from acne_care.application.capture_context import CaptureDetails
 from acne_care.domain import Detection
 from acne_care.ports.acne_detector import AcneDetector
 
@@ -67,7 +68,7 @@ class AnalysisService:
         self.storage_root = storage_root
         self.max_pixels = max_pixels
 
-    def analyze(self, data: bytes, captured_on: date) -> dict[str, Any]:
+    def analyze(self, data: bytes, captured_on: date, *, capture: CaptureDetails = CaptureDetails()) -> dict[str, Any]:
         if captured_on > date.today():
             raise ValueError("촬영일은 오늘 또는 이전 날짜를 선택해 주세요.")
         image = decode_image(data, self.max_pixels)
@@ -106,6 +107,7 @@ class AnalysisService:
                 "confidence_threshold": info.confidence_threshold, "image_size": info.image_size,
                 "device": info.device, "nms_iou": info.nms_iou, "inference_seconds": inference_seconds,
                 "original_path": f"{analysis_id}/original.jpg", "annotated_path": f"{analysis_id}/annotated.jpg",
+                **asdict(capture),
             }
             self.repository.insert(record, detections)
         except Exception:
