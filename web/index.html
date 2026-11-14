@@ -24,11 +24,13 @@
             <div class="card-heading"><div><p class="step-label">PHOTO ANALYSIS</p><h2 id="upload-title" tabindex="-1">오늘의 사진</h2></div><span id="model-status" class="status-pill" role="status">모델 연결 확인 중</span></div>
             <form id="upload-form">
               <input type="file" id="photo-file" class="visually-hidden" accept="image/jpeg,image/png,image/webp" aria-label="얼굴 사진 선택" aria-describedby="file-spec upload-error">
+              <input type="file" id="camera-file" accept="image/*" capture="user" hidden>
               <label for="photo-file" id="drop-zone" class="drop-zone">
                 <span id="upload-prompt"><svg width="52" height="52" viewBox="0 0 52 52" fill="none" aria-hidden="true"><rect x="8" y="8" width="36" height="36" rx="10" stroke="currentColor" stroke-width="1.5"/><circle cx="20" cy="20" r="3.5" stroke="currentColor" stroke-width="1.5"/><path d="m10 37 11-10 8 7 7-6 7 8" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg><strong>얼굴 사진을 올려주세요</strong><span class="upload-drop-hint">사진을 끌어놓거나 눌러서 선택하세요.</span><span class="file-spec" id="file-spec">JPG · PNG · WEBP / 최대 10MB</span><span class="choose-file">사진 선택하기 <span aria-hidden="true">↗</span></span></span>
                 <img id="preview" alt="선택한 사진 미리보기" hidden>
                 <span id="change-photo" class="change-photo" hidden>다른 사진 선택</span>
               </label>
+              <button id="take-photo" type="button" class="secondary-button camera-button" hidden>사진 찍기</button>
               <div class="photo-meta" aria-live="polite"><span id="file-name">선택한 사진이 없습니다.</span><span id="file-size"></span></div>
               <p id="upload-error" class="upload-error" role="alert" hidden></p>
               <label class="date-label" for="captured-on">촬영일 <span>사진을 찍은 날짜를 선택해 주세요.</span></label>
@@ -55,7 +57,7 @@
               </details>
               <button id="analyze-button" class="primary-button" type="submit" disabled><span id="analyze-label">사진 분석하고 기록하기</span><span aria-hidden="true">→</span></button>
               <p id="analysis-progress" class="progress-text" role="status" hidden>사진을 분석하고 있습니다. 잠시만 기다려 주세요.</p>
-              <p class="storage-note">분석하면 사진과 결과가 앱을 실행한 기기에 저장돼요.</p>
+              <p id="storage-note" class="storage-note">사진과 분석 결과는 서버를 실행한 Mac에 저장돼요.</p>
             </form>
           </section>
           <aside class="guide" aria-labelledby="guide-title"><p class="step-label">BEFORE YOU START</p><h2 id="guide-title">비슷하게 찍을수록,<br>비교하기 좋아요.</h2><p class="guide-intro">촬영 조건에 따라 탐지 결과가 달라질 수 있어요. 매번 비슷한 환경에서 촬영해 주세요.</p><div class="guide-item"><span class="guide-icon" aria-hidden="true">☀</span><div><h3>밝고 고른 조명</h3><p>얼굴에 짙은 그림자가 생기지 않는 곳에서 찍어주세요.</p></div></div><div class="guide-item"><span class="guide-icon" aria-hidden="true">◎</span><div><h3>비슷한 각도와 거리</h3><p>얼굴이 선명하게 보이도록, 같은 방향과 거리에서 찍어주세요.</p></div></div><div class="guide-item"><span class="guide-icon" aria-hidden="true">◇</span><div><h3>필터 없이 자연스럽게</h3><p>피부 보정이나 뷰티 필터를 사용하지 않은 사진이 좋아요.</p></div></div><p class="guide-footnote">분석 후 ‘기록 비교’에서 두 사진의 결과를 확인할 수 있습니다. 같은 사람의 비슷한 촬영 조건인 기록을 선택해 주세요.</p></aside>

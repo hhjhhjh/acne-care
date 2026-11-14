@@ -11,10 +11,13 @@ from backend.tests import test_analysis_service as fixtures
 
 
 class AnalysisAPITest(unittest.TestCase):
-    def client(self, root, **options):
+    def client(self, root, *, preview_address=None, **options):
         settings = Settings(storage_dir=root / "media", database_path=root / "app.sqlite3", **options)
-        return TestClient(create_app(settings, detector=fixtures.FakeDetector(),
-                          model_info=ModelInfo("test-detector", "a" * 64, 0.3, 640, "cpu")))
+        app = create_app(settings, detector=fixtures.FakeDetector(),
+                         model_info=ModelInfo("test-detector", "a" * 64, 0.3, 640, "cpu"),
+                         preview_address=preview_address)
+        base_url = f"http://{preview_address}:8443" if preview_address else "http://testserver"
+        return TestClient(app, base_url=base_url)
 
     def test_upload_list_detail_and_images(self):
         with tempfile.TemporaryDirectory() as temp, self.client(Path(temp)) as client:
@@ -46,6 +49,20 @@ class AnalysisAPITest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp, self.client(Path(temp)) as client:
             response = client.post("/api/analyses", headers={"Origin": "https://unrelated.example"}, files={"file": ("photo.png", fixtures.image_bytes(), "image/png")}, data={"captured_on": "2026-10-01"})
             self.assertEqual(response.status_code, 403)
+
+    def test_mobile_preview_accepts_local_browser_uploads(self):
+        with tempfile.TemporaryDirectory() as temp, self.client(Path(temp), preview_address="192.168.1.10") as client:
+            self.assertEqual(client.get("/").status_code, 200)
+            self.assertEqual(client.get("/", headers={"Host": "unrelated.example"}).status_code, 400)
+            self.assertEqual(client.get("/api/analyses").json()["total"], 0)
+            photo = {"file": ("camera.png", fixtures.image_bytes(), "image/png")}
+            date = {"captured_on": "2026-10-01"}
+            self.assertEqual(client.post("/api/analyses", files=photo, data=date).status_code, 403)
+            response = client.post("/api/analyses", files=photo, data=date,
+                                   headers={"Origin": "http://192.168.1.10:8443"})
+            self.assertEqual(response.status_code, 201, response.text)
+            image = response.json()["original_image_url"]
+            self.assertEqual(client.get(image).status_code, 200)
 
     def test_capture_details_are_persisted_and_returned_with_comparison(self):
         with tempfile.TemporaryDirectory() as temp, self.client(Path(temp)) as client:

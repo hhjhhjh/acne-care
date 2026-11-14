@@ -4,7 +4,6 @@ import logging
 from contextlib import asynccontextmanager
 from dataclasses import asdict
 from datetime import date
-from urllib.parse import urlsplit
 from uuid import UUID
 
 from fastapi import FastAPI, File, Form, HTTPException, Query, UploadFile
@@ -28,7 +27,7 @@ def _public_record(record):
 
 
 def create_app(settings: Settings | None = None, *, detector: AcneDetector | None = None,
-               model_info: ModelInfo | None = None) -> FastAPI:
+               model_info: ModelInfo | None = None, preview_address: str | None = None) -> FastAPI:
     settings = settings or Settings.from_environment()
     if (detector is None) != (model_info is None):
         raise ValueError("injected detector and model metadata must be provided together")
@@ -52,29 +51,32 @@ def create_app(settings: Settings | None = None, *, detector: AcneDetector | Non
         yield
 
     app = FastAPI(title="acne-care", lifespan=lifespan)
-    app.add_middleware(TrustedHostMiddleware, allowed_hosts=["127.0.0.1", "localhost", "testserver"])
-
     @app.middleware("http")
     async def local_request_checks(request, call_next):
         if request.method == "POST":
             origin = request.headers.get("origin")
-            if origin and urlsplit(origin).netloc != request.url.netloc:
+            same_origin = origin == f"{request.url.scheme}://{request.url.netloc}"
+            if not same_origin and (preview_address or origin):
                 return JSONResponse(status_code=403, content={"detail": "이 화면에서 직접 분석을 요청해 주세요."})
             length = request.headers.get("content-length")
             if length and length.isdigit() and int(length) > settings.max_upload_bytes + 65536:
                 return JSONResponse(status_code=413, content={"detail": "사진은 10MB 이하로 선택해 주세요."})
         response = await call_next(request)
-        if request.url.path.startswith("/api/"):
+        if preview_address or request.url.path.startswith("/api/"):
             response.headers["Cache-Control"] = "no-store"
         response.headers["X-Content-Type-Options"] = "nosniff"
         response.headers["Referrer-Policy"] = "no-referrer"
         return response
+
+    allowed_hosts = [preview_address] if preview_address else ["127.0.0.1", "localhost", "testserver"]
+    app.add_middleware(TrustedHostMiddleware, allowed_hosts=allowed_hosts)
 
     @app.get("/api/health")
     def health():
         return {
             "ready": True, "model": asdict(app.state.model_info), "max_upload_bytes": settings.max_upload_bytes,
             "capture_options": CAPTURE_OPTIONS, "capture_note_limit": CAPTURE_NOTE_LIMIT,
+            "mobile_preview": preview_address is not None,
         }
 
     @app.post("/api/analyses", status_code=201)
