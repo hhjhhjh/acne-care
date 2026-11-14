@@ -75,6 +75,7 @@
           <div class="result-visual">
             <div class="image-tabs" role="group" aria-label="이미지 표시"><button id="show-annotated" type="button" class="selected" aria-pressed="true">탐지 결과</button><button id="show-original" type="button" aria-pressed="false">원본 사진</button></div>
             <div class="result-image-wrap"><img id="result-image" alt="여드름 탐지 결과"></div>
+            <p id="result-label-guide" class="muted" hidden>#이 붙은 숫자는 상자 번호이고, 그 뒤 숫자는 모델의 탐지 점수예요.</p>
           </div>
           <div class="result-actions"><button id="compare-current" type="button" class="secondary-button">과거 기록과 비교하기 <span aria-hidden="true">→</span></button></div>
           <div class="result-details">
@@ -136,7 +137,7 @@
         <section aria-labelledby="report-photos-title" class="report-section">
           <h2 id="report-photos-title">두 시점의 탐지 사진</h2>
           <div id="report-photos" class="report-photos"></div>
-          <p class="report-guide"><strong>사진 읽는 법</strong> 상자는 모델이 여드름으로 탐지한 위치예요. 상자 옆 백분율은 그 위치에 대한 모델의 탐지 점수예요.</p>
+          <p class="report-guide"><strong>사진 읽는 법</strong> 상자는 모델이 여드름으로 탐지한 위치예요. #이 붙은 숫자는 상자 번호이고, 그 뒤 숫자는 모델의 탐지 점수예요.</p>
         </section>
         <section aria-labelledby="report-settings-title" class="report-section report-settings">
           <h2 id="report-settings-title">분석 조건과 해석</h2>

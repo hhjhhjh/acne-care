@@ -89,11 +89,13 @@ class AnalysisService:
             draw = ImageDraw.Draw(annotated)
             line_width = max(2, round(image.width / 350))
             font = ImageFont.load_default(size=max(14, round(image.width / 45)))
-            for index, detection in enumerate(detections):
+            for number, detection in enumerate(detections, start=1):
                 box = detection.box
                 draw.rectangle((box.x_min, box.y_min, box.x_max, box.y_max), outline="#37dcc0", width=line_width)
-                text = f"{index+1} {detection.confidence:.0%}"
-                x, y = box.x_min, max(0, box.y_min - max(19, round(image.width / 35)))
+                text = f"#{number} · {detection.confidence:.2f}"
+                _, _, label_right, _ = font.getbbox(text)
+                x = max(0, min(box.x_min, image.width - label_right - 1))
+                y = max(0, box.y_min - max(19, round(image.width / 35)))
                 bounds = draw.textbbox((x, y), text, font=font)
                 draw.rectangle(bounds, fill="#123c36")
                 draw.text((x, y), text, fill="white", font=font)

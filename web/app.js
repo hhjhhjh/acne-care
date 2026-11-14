@@ -111,6 +111,7 @@ function setResultImage(annotated) {
   if (!currentRecord) return;
   $("result-image").src = annotated ? currentRecord.annotated_image_url : currentRecord.original_image_url;
   $("result-image").alt = annotated ? "여드름 탐지 결과" : "분석에 사용한 원본 사진";
+  $("result-label-guide").hidden = !annotated || currentRecord.count === 0;
   $("show-annotated").classList.toggle("selected",annotated);
   $("show-original").classList.toggle("selected",!annotated);
   $("show-annotated").setAttribute("aria-pressed",String(annotated));
@@ -135,7 +136,8 @@ function renderResult(record, scroll=true) {
   $("detection-list").replaceChildren();
   record.detections.forEach((detection,index) => {
     const row=document.createElement("li"), label=document.createElement("span"), value=document.createElement("span");
-    label.textContent=`탐지 ${index+1}`;value.textContent=`${(detection.confidence*100).toFixed(1)}%`;
+    label.textContent = `#${index + 1}`;
+    value.textContent = detection.confidence.toFixed(2);
     row.append(label,value);$("detection-list").append(row);
   });
   $("model-details").replaceChildren();
