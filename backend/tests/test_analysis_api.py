@@ -137,3 +137,22 @@ class AnalysisAPITest(unittest.TestCase):
                 response = client.get("/api/comparisons", params={"previous_id": previous["id"], "current_id": unknown})
                 self.assertEqual(response.status_code, 404)
             self.assertEqual(client.get("/api/comparisons").status_code, 422)
+
+    def test_series_orders_records_and_flags_setting_changes_between_neighbors(self):
+        import sqlite3
+
+        with tempfile.TemporaryDirectory() as temp, self.client(Path(temp)) as client:
+            first = self.upload(client, "2026-10-01")
+            second = self.upload(client, "2026-10-01")
+            third = self.upload(client, "2026-10-06")
+            with sqlite3.connect(Path(temp) / "app.sqlite3") as database:
+                database.execute("UPDATE analyses SET confidence_threshold = 0.4 WHERE id = ?", (third["id"],))
+            ids = [third["id"], first["id"], second["id"]]
+            response = client.get("/api/comparisons/series", params={"record_id": ids})
+            self.assertEqual(response.status_code, 200, response.text)
+            result = response.json()
+            self.assertEqual([record["id"] for record in result["records"]], [first["id"], second["id"], third["id"]])
+            self.assertEqual([step["analysis_settings_match"] for step in result["steps"]], [True, False])
+            self.assertEqual([step["days_between"] for step in result["steps"]], [0, 5])
+            self.assertEqual(client.get("/api/comparisons/series", params={"record_id": [ids[0], ids[0]]}).status_code, 422)
+            self.assertEqual(client.get("/api/comparisons/series", params={"record_id": [ids[0], "missing"]}).status_code, 404)

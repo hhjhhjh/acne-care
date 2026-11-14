@@ -224,6 +224,7 @@ async function start() {
   try {
     const health = await api("/api/health");
     configureCaptureContext(health);
+    comparison.setLimit(health.comparison_limit);
     if (health.mobile_preview) {
       $("storage-note").textContent = "미리보기에서 분석한 사진과 결과는 서버를 종료하면 지워져요.";
     }
@@ -233,8 +234,10 @@ async function start() {
   catch {$("model-status").textContent="서버 연결 확인 필요";$("model-status").classList.add("error");notice("분석 서버에 연결할 수 없습니다. 서버가 실행 중인지 확인해 주세요.");}
   updateButton();
   const params=new URLSearchParams(location.search);
-  if(params.has("previous") || params.has("current")) {
-    await comparison.restore(params.get("previous"), params.get("current"), params.get("view") === "report");
+  if(params.has("record")) {
+    await comparison.restore(params.getAll("record"), params.get("view") === "report");
+  } else if(params.has("previous") || params.has("current")) {
+    await comparison.restore([params.get("previous"), params.get("current")], params.get("view") === "report");
   } else if(params.get("view") === "comparison") {
     await comparison.open();
   } else if(params.get("analysis") && ready) {

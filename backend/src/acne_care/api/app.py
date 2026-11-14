@@ -15,7 +15,7 @@ from acne_care.adapters.sqlite_repository import SQLiteAnalysisRepository
 from acne_care.api.settings import PROJECT_ROOT, Settings
 from acne_care.application.analysis import AnalysisService, InvalidImage, ModelInfo
 from acne_care.application.capture_context import CAPTURE_NOTE_LIMIT, CAPTURE_OPTIONS, CaptureDetails
-from acne_care.application.comparison import compare_analyses
+from acne_care.application.comparison import COMPARISON_LIMIT, compare_analyses
 from acne_care.ports.acne_detector import AcneDetector
 
 
@@ -77,6 +77,7 @@ def create_app(settings: Settings | None = None, *, detector: AcneDetector | Non
             "ready": True, "model": asdict(app.state.model_info), "max_upload_bytes": settings.max_upload_bytes,
             "capture_options": CAPTURE_OPTIONS, "capture_note_limit": CAPTURE_NOTE_LIMIT,
             "mobile_preview": preview_address is not None,
+            "comparison_limit": COMPARISON_LIMIT,
         }
 
     @app.post("/api/analyses", status_code=201)
@@ -138,6 +139,17 @@ def create_app(settings: Settings | None = None, *, detector: AcneDetector | Non
             raise HTTPException(422, str(error)) from error
         return {"previous": _public_record(previous), "current": _public_record(current),
                 "comparison": comparison}
+
+    @app.get("/api/comparisons/series")
+    def compare_series(record_id: list[str] = Query(min_length=2, max_length=COMPARISON_LIMIT)):
+        records = [get_record(identifier) for identifier in record_id]
+        if len({record["id"] for record in records}) != len(records):
+            raise HTTPException(422, "서로 다른 기록을 선택해 주세요.")
+        records.sort(key=lambda record: (record["captured_on"], record["created_at"], record["id"]))
+        return {
+            "records": [_public_record(record) for record in records],
+            "steps": [compare_analyses(previous, current) for previous, current in zip(records, records[1:])],
+        }
 
     @app.get("/api/analyses/{analysis_id}/image")
     def analysis_image(analysis_id: str, view: str = Query("annotated", pattern="^(original|annotated)$")):

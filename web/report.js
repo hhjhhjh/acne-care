@@ -23,10 +23,26 @@ function captureDate(record) {
   return date;
 }
 
-function reportBar(label, record, maxCount) {
+export function comparisonRecordLabel(index, total) {
+  if (total === 2) return index === 0 ? "이전 기록" : "현재 기록";
+  return `${index + 1}번째 기록`;
+}
+
+function reportBar(label, record, maxCount, changedLabels, openRecord) {
   const row = element("li", "", "report-bar-row");
   const caption = element("span", "", "report-bar-label");
-  caption.append(element("strong", label), captureDate(record));
+  const title = openRecord ? element("button", label, "trend-record-button") : element("strong", label);
+  if (openRecord) {
+    title.type = "button";
+    title.setAttribute("aria-label", `${label} 상세 보기 · ${record.captured_on} · 탐지 ${record.count}개`);
+    title.addEventListener("click", () => openRecord(record.id));
+  }
+  caption.append(title, captureDate(record));
+  if (changedLabels.length) {
+    const change = element("span", "설정 변경", "comparison-step-change");
+    change.title = changedLabels.join(", ");
+    caption.append(change);
+  }
   const track = element("span", "", "report-bar-track");
   track.setAttribute("aria-hidden", "true");
   const fill = element("span", "", "report-bar-fill");
@@ -34,6 +50,15 @@ function reportBar(label, record, maxCount) {
   track.append(fill);
   row.append(caption, track, element("strong", `${record.count}개`, "report-bar-value"));
   return row;
+}
+
+export function renderComparisonChart(container, { records, steps }, getChangedLabels, openRecord) {
+  const maxCount = Math.max(1, ...records.map(record => record.count));
+  container.replaceChildren(...records.map((record, index) => reportBar(
+    comparisonRecordLabel(index, records.length), record, maxCount,
+    index === 0 ? [] : getChangedLabels(steps[index - 1]), openRecord,
+  )));
+  return maxCount;
 }
 
 function reportPhoto(label, record) {
@@ -62,37 +87,47 @@ function reportPhoto(label, record) {
   return figure;
 }
 
-export function renderComparisonReport({ previous, current, comparison }, changedLabels) {
-  const { count_delta: delta, days_between: days, analysis_settings_match: sameSettings } = comparison;
-  $("report-period").textContent = `${previous.captured_on} → ${current.captured_on} · ${formatInterval(days)}`;
+export function renderComparisonReport(result, getChangedLabels) {
+  const { records, steps } = result;
+  const first = records[0], last = records.at(-1);
+  const delta = last.count - first.count;
+  const days = steps.reduce((total, step) => total + step.days_between, 0);
+  const changes = steps.flatMap((step, index) => step.analysis_settings_match
+    ? [] : [`${index + 1} → ${index + 2}번째 기록 (${getChangedLabels(step).join(", ")})`]);
+  const sameSettings = changes.length === 0;
+  $("comparison-report").classList.toggle("multi-report", records.length > 2);
+  $("report-period").textContent = `${first.captured_on} → ${last.captured_on} · ${formatInterval(days)}`;
   $("report-delta").textContent = formatCountDelta(delta);
-  $("report-counts").textContent = `이전 ${previous.count}개 → 현재 ${current.count}개`;
+  $("report-counts").textContent = `첫 기록 ${first.count}개 → 마지막 기록 ${last.count}개`;
   if (!sameSettings) {
     $("report-explanation").textContent = "분석 조건이 다르면 같은 사진에서도 탐지 개수가 달라질 수 있어요. 이 차이는 참고용으로 봐 주세요.";
   } else if (delta === 0) {
-    $("report-explanation").textContent = "두 사진에서 탐지 개수가 같아요. 탐지 위치는 아래 사진에서 확인할 수 있어요.";
+    $("report-explanation").textContent = "첫 기록과 마지막 기록의 탐지 개수가 같아요.";
   } else {
-    $("report-explanation").textContent = `현재 사진의 탐지 개수가 이전 사진보다 ${Math.abs(delta)}개 ${delta > 0 ? "많아요" : "적어요"}.`;
+    $("report-explanation").textContent = `마지막 기록은 첫 기록보다 ${Math.abs(delta)}개 ${delta > 0 ? "많아요" : "적어요"}.`;
   }
 
-  const maxCount = Math.max(1, previous.count, current.count);
+  const maxCount = renderComparisonChart($("report-bars"), result, getChangedLabels);
   $("report-scale-max").textContent = `${maxCount}개`;
-  $("report-bars").replaceChildren(reportBar("이전 기록", previous, maxCount), reportBar("현재 기록", current, maxCount));
-  $("report-photos").replaceChildren(reportPhoto("이전 기록", previous), reportPhoto("현재 기록", current));
+  $("report-photos").replaceChildren(...records.map((record, index) =>
+    reportPhoto(comparisonRecordLabel(index, records.length), record)));
 
   const settingsStatus = $("report-settings-status");
   settingsStatus.classList.toggle("different", !sameSettings);
   settingsStatus.textContent = sameSettings
-    ? "두 기록에 같은 모델과 탐지 설정을 사용했어요."
-    : `두 기록의 ${changedLabels.join(", ")} 설정이 달라요.`;
+    ? "모든 기록에 같은 모델과 탐지 설정을 사용했어요."
+    : `분석 설정이 달라진 구간은 ${changes.join(" · ")}예요.`;
   const fields = [
-    ["모델", previous.model_id, current.model_id],
-    ["탐지 기준 점수", previous.confidence_threshold, current.confidence_threshold],
-    ["입력 크기", `${previous.image_size} × ${previous.image_size}`, `${current.image_size} × ${current.image_size}`],
+    ["모델", record => record.model_id],
+    ["탐지 기준 점수", record => record.confidence_threshold],
+    ["입력 크기", record => `${record.image_size} × ${record.image_size}`],
   ];
-  $("report-settings").replaceChildren(...fields.map(([label, before, after]) => {
+  $("report-settings").replaceChildren(...fields.map(([label, getValue]) => {
     const row = element("div");
-    row.append(element("dt", label), element("dd", before === after ? String(before) : `이전 ${before} / 현재 ${after}`));
+    const values = records.map(getValue);
+    const description = values.every(value => value === values[0]) ? String(values[0])
+      : values.map((value, index) => `${comparisonRecordLabel(index, records.length)} ${value}`).join(" / ");
+    row.append(element("dt", label), element("dd", description));
     return row;
   }));
 }
