@@ -9,6 +9,13 @@ select{font:inherit;color:var(--ink)}select:focus-visible{outline:3px solid #9dc
 @media(max-width:680px){.site-header{height:auto;min-height:94px;padding-top:14px;gap:8px}.site-header nav{width:100%;height:42px;margin-left:0;gap:26px;order:2}.comparison-picker,.comparison-result{padding:20px}.comparison-fields{grid-template-columns:1fr;gap:20px}.comparison-actions{gap:16px;flex-wrap:wrap}.comparison-actions .primary-button{max-width:none}.comparison-images{grid-template-columns:1fr;gap:20px}.comparison-image-wrap{height:330px}.comparison-result .card-heading{align-items:flex-start;flex-direction:column}.comparison-result .card-heading p{margin:0}.comparison-table th,.comparison-table td{padding:8px 5px;font-size:10px}.comparison-metric strong{font-size:30px}}
 
 /* Photo upload and analysis result */
+.camera-button {
+  width: 100%;
+  min-height: 44px;
+  margin: 10px 0 0;
+  font-size: 14px;
+}
+
 #photo-file:focus-visible + .drop-zone {
   outline: 3px solid #9dc7b6;
   outline-offset: 4px;
@@ -192,6 +199,43 @@ select{font:inherit;color:var(--ink)}select:focus-visible{outline:3px solid #9dc
 }
 
 /* Comparison report */
+.extra-comparison-picker {
+  margin-top: 18px;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.extra-comparison-picker summary { padding: 8px 0; cursor: pointer; color: var(--deep); }
+.extra-comparison-records { max-height: 15rem; overflow-y: auto; }
+.extra-comparison-records label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 6px 0;
+  font-size: 13px;
+}
+.extra-comparison-records input { flex-shrink: 0; accent-color: var(--deep); }
+.comparison-trend {
+  --report-label-width: 6.25rem;
+  --report-value-width: 2.5rem;
+  --report-chart-gap: 8px;
+  margin: 16px 0;
+}
+.comparison-step-change { color: #755522; font-size: 11px; font-weight: 650; }
+.trend-record-button {
+  justify-self: start;
+  min-height: 28px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--deep);
+  font-size: inherit;
+  font-weight: 650;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 .report-open {
   max-width: 260px;
   min-height: 46px;
@@ -318,6 +362,9 @@ select{font:inherit;color:var(--ink)}select:focus-visible{outline:3px solid #9dc
   .report-photo-frame { height: 48mm; }
   .report-settings { padding-top: 10px; }
   .report-note { margin-top: 8px; }
+  .multi-report .report-section { break-inside: auto; }
+  .multi-report .report-section h2 { break-after: avoid; }
+  .multi-report .report-photo, .multi-report .report-bar-row { break-inside: avoid; }
 }
 
 .capture-context-fields {

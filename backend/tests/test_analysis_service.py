@@ -3,8 +3,9 @@ import tempfile
 import unittest
 from datetime import date
 from pathlib import Path
+from unittest.mock import patch
 
-from PIL import Image
+from PIL import Image, ImageDraw
 
 from acne_care.adapters.sqlite_repository import SQLiteAnalysisRepository
 from acne_care.application.analysis import AnalysisService, InvalidImage, ModelInfo
@@ -53,6 +54,14 @@ class AnalysisServiceTest(unittest.TestCase):
             with self.assertRaises(InvalidImage):
                 service.analyze(b"not an image", date(2026, 10, 1))
             self.assertEqual(repo.list(20, 0)["total"], 0)
+
+    def test_annotation_distinguishes_box_number_from_detection_score(self):
+        with tempfile.TemporaryDirectory() as temp:
+            service, _ = self.make_service(Path(temp))
+            draw_text = ImageDraw.ImageDraw.text
+            with patch.object(ImageDraw.ImageDraw, "text", autospec=True, side_effect=draw_text) as rendered:
+                service.analyze(image_bytes(), date(2026, 10, 1))
+            self.assertEqual(rendered.call_args.args[2], "#1 · 0.80")
 
     def test_out_of_bounds_detection_is_not_saved(self):
         class BadDetector(FakeDetector):

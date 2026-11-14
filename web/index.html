@@ -24,11 +24,13 @@
             <div class="card-heading"><div><p class="step-label">PHOTO ANALYSIS</p><h2 id="upload-title" tabindex="-1">오늘의 사진</h2></div><span id="model-status" class="status-pill" role="status">모델 연결 확인 중</span></div>
             <form id="upload-form">
               <input type="file" id="photo-file" class="visually-hidden" accept="image/jpeg,image/png,image/webp" aria-label="얼굴 사진 선택" aria-describedby="file-spec upload-error">
+              <input type="file" id="camera-file" accept="image/*" capture="user" hidden>
               <label for="photo-file" id="drop-zone" class="drop-zone">
                 <span id="upload-prompt"><svg width="52" height="52" viewBox="0 0 52 52" fill="none" aria-hidden="true"><rect x="8" y="8" width="36" height="36" rx="10" stroke="currentColor" stroke-width="1.5"/><circle cx="20" cy="20" r="3.5" stroke="currentColor" stroke-width="1.5"/><path d="m10 37 11-10 8 7 7-6 7 8" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg><strong>얼굴 사진을 올려주세요</strong><span class="upload-drop-hint">사진을 끌어놓거나 눌러서 선택하세요.</span><span class="file-spec" id="file-spec">JPG · PNG · WEBP / 최대 10MB</span><span class="choose-file">사진 선택하기 <span aria-hidden="true">↗</span></span></span>
                 <img id="preview" alt="선택한 사진 미리보기" hidden>
                 <span id="change-photo" class="change-photo" hidden>다른 사진 선택</span>
               </label>
+              <button id="take-photo" type="button" class="secondary-button camera-button" hidden>사진 찍기</button>
               <div class="photo-meta" aria-live="polite"><span id="file-name">선택한 사진이 없습니다.</span><span id="file-size"></span></div>
               <p id="upload-error" class="upload-error" role="alert" hidden></p>
               <label class="date-label" for="captured-on">촬영일 <span>사진을 찍은 날짜를 선택해 주세요.</span></label>
@@ -55,7 +57,7 @@
               </details>
               <button id="analyze-button" class="primary-button" type="submit" disabled><span id="analyze-label">사진 분석하고 기록하기</span><span aria-hidden="true">→</span></button>
               <p id="analysis-progress" class="progress-text" role="status" hidden>사진을 분석하고 있습니다. 잠시만 기다려 주세요.</p>
-              <p class="storage-note">분석하면 사진과 결과가 앱을 실행한 기기에 저장돼요.</p>
+              <p id="storage-note" class="storage-note">사진과 분석 결과는 서버를 실행한 Mac에 저장돼요.</p>
             </form>
           </section>
           <aside class="guide" aria-labelledby="guide-title"><p class="step-label">BEFORE YOU START</p><h2 id="guide-title">비슷하게 찍을수록,<br>비교하기 좋아요.</h2><p class="guide-intro">촬영 조건에 따라 탐지 결과가 달라질 수 있어요. 매번 비슷한 환경에서 촬영해 주세요.</p><div class="guide-item"><span class="guide-icon" aria-hidden="true">☀</span><div><h3>밝고 고른 조명</h3><p>얼굴에 짙은 그림자가 생기지 않는 곳에서 찍어주세요.</p></div></div><div class="guide-item"><span class="guide-icon" aria-hidden="true">◎</span><div><h3>비슷한 각도와 거리</h3><p>얼굴이 선명하게 보이도록, 같은 방향과 거리에서 찍어주세요.</p></div></div><div class="guide-item"><span class="guide-icon" aria-hidden="true">◇</span><div><h3>필터 없이 자연스럽게</h3><p>피부 보정이나 뷰티 필터를 사용하지 않은 사진이 좋아요.</p></div></div><p class="guide-footnote">분석 후 ‘기록 비교’에서 두 사진의 결과를 확인할 수 있습니다. 같은 사람의 비슷한 촬영 조건인 기록을 선택해 주세요.</p></aside>
@@ -75,6 +77,7 @@
           <div class="result-visual">
             <div class="image-tabs" role="group" aria-label="이미지 표시"><button id="show-annotated" type="button" class="selected" aria-pressed="true">탐지 결과</button><button id="show-original" type="button" aria-pressed="false">원본 사진</button></div>
             <div class="result-image-wrap"><img id="result-image" alt="여드름 탐지 결과"></div>
+            <p id="result-label-guide" class="muted" hidden>#이 붙은 숫자는 상자 번호이고, 그 뒤 숫자는 모델의 탐지 점수예요.</p>
           </div>
           <div class="result-actions"><button id="compare-current" type="button" class="secondary-button">과거 기록과 비교하기 <span aria-hidden="true">→</span></button></div>
           <div class="result-details">
@@ -92,27 +95,29 @@
     <section id="history-page" aria-labelledby="history-title" hidden><div class="intro compact"><p class="eyebrow">YOUR RECORDS</p><h1 id="history-title">차곡차곡 쌓이는<br>나의 피부 기록.</h1><p class="intro-copy">촬영일별 사진과 분석 결과를 다시 확인하세요.</p></div><div class="history-heading"><p id="history-count" role="status">기록을 불러오는 중입니다.</p><button id="refresh-history" class="text-button">새로고침 ↻</button></div><div id="history-empty" class="card empty-state" hidden><span aria-hidden="true">▧</span><h2>아직 분석 기록이 없어요.</h2><p>사진을 분석하면 이곳에서 다시 볼 수 있습니다.</p><button id="start-analysis" class="primary-button">첫 사진 분석하기 →</button></div><div id="history-grid" class="history-grid"></div><button id="load-more" class="secondary-button" hidden>기록 더 보기</button></section>
     <section id="comparison-page" aria-label="기록 비교" hidden>
       <div id="comparison-entry">
-      <div class="intro compact"><p class="eyebrow">SIDE BY SIDE</p><h1 id="comparison-title">지난 기록과 오늘을,<br>나란히 살펴보세요.</h1><p class="intro-copy">같은 사람의 사진 두 장을 선택해 탐지 결과를 비교하세요.<br>조명, 각도와 보이는 피부 범위가 비슷한 기록이 좋아요.</p></div>
+      <div class="intro compact"><p class="eyebrow">SIDE BY SIDE</p><h1 id="comparison-title">지난 기록과 오늘을,<br>나란히 살펴보세요.</h1><p class="intro-copy">같은 사람의 사진을 두 장 이상 선택해 탐지 결과를 비교하세요.<br>조명, 각도와 보이는 피부 범위가 비슷한 기록이 좋아요.</p></div>
       <form id="comparison-form" class="card comparison-picker">
         <div class="comparison-fields">
           <label for="previous-record">이전 기록<select id="previous-record" required aria-describedby="comparison-picker-status"><option value="">기록을 불러오는 중입니다.</option></select></label>
           <label for="current-record">현재 기록<select id="current-record" required aria-describedby="comparison-picker-status"><option value="">기록을 불러오는 중입니다.</option></select></label>
         </div>
+        <details id="extra-comparison-picker" class="extra-comparison-picker" hidden>
+          <summary>비교할 기록 더 선택하기</summary>
+          <div id="extra-comparison-records" class="extra-comparison-records"></div>
+        </details>
         <div class="comparison-actions"><button id="compare-button" type="submit" class="primary-button" disabled>비교 결과 보기 →</button><button id="refresh-comparison" type="button" class="text-button">기록 새로고침 ↻</button></div>
         <p id="comparison-picker-status" class="muted" role="status"></p><button id="more-comparison-records" type="button" class="secondary-button" hidden>선택할 기록 더 불러오기</button>
       </form>
       <section id="comparison-result" class="card comparison-result" aria-labelledby="comparison-result-title" hidden>
-        <div class="card-heading"><div><p class="step-label">RECORD COMPARISON</p><h2 id="comparison-result-title">두 기록의 탐지 결과</h2></div><p id="comparison-interval" class="muted"></p></div>
-        <div class="comparison-metric" role="status"><span>탐지 개수 차이</span><strong id="comparison-delta"></strong><p id="comparison-counts"></p></div>
+        <div class="card-heading"><div><p class="step-label">RECORD COMPARISON</p><h2 id="comparison-result-title">기록별 탐지 결과</h2></div><p id="comparison-interval" class="muted"></p></div>
+        <div class="comparison-metric" role="status"><span>첫 기록과 마지막 기록의 탐지 개수 차이</span><strong id="comparison-delta"></strong><p id="comparison-counts"></p></div>
+        <ul id="comparison-trend" class="report-bars comparison-trend" aria-label="기록별 탐지 개수" hidden></ul>
         <p class="comparison-caution">탐지 개수의 증감은 피부의 호전·악화 판정이 아닙니다. 촬영 조건이나 모델의 오탐·누락에 따라 결과가 달라질 수 있습니다. 같은 사람인지와 촬영 조건은 자동으로 확인하지 않습니다.</p>
         <p id="comparison-settings-notice" class="comparison-settings-notice" role="status"></p>
         <button id="open-report" type="button" class="primary-button report-open">비교 리포트 보기 <span aria-hidden="true">→</span></button>
         <div class="image-tabs" role="group" aria-label="비교 이미지 표시"><button id="comparison-annotated" type="button" class="selected" aria-pressed="true">탐지 결과</button><button id="comparison-original" type="button" aria-pressed="false">원본 사진</button></div>
-        <div class="comparison-images">
-          <article><h3>이전 기록</h3><p id="previous-date" class="muted"></p><p id="previous-count" class="comparison-image-count"></p><div class="comparison-image-wrap"><img id="previous-image" alt="이전 기록의 탐지 결과"></div><button id="open-previous" type="button" class="text-button">이전 기록 상세 보기 ↗</button></article>
-          <article><h3>현재 기록</h3><p id="current-date" class="muted"></p><p id="current-count" class="comparison-image-count"></p><div class="comparison-image-wrap"><img id="current-image" alt="현재 기록의 탐지 결과"></div><button id="open-current" type="button" class="text-button">현재 기록 상세 보기 ↗</button></article>
-        </div>
-        <details class="model-details"><summary>두 기록의 분석 조건 확인</summary><div class="comparison-table-wrap"><table class="comparison-table"><thead><tr><th scope="col">분석 조건</th><th scope="col">이전 기록</th><th scope="col">현재 기록</th></tr></thead><tbody id="comparison-settings"></tbody></table></div></details>
+        <div id="comparison-images" class="comparison-images"></div>
+        <details class="model-details"><summary>기록별 분석 설정 확인</summary><div class="comparison-table-wrap"><table class="comparison-table"><thead><tr id="comparison-setting-headings"></tr></thead><tbody id="comparison-settings"></tbody></table></div></details>
       </section>
       </div>
       <section id="comparison-report" class="card comparison-report" aria-labelledby="report-title" hidden>
@@ -124,19 +129,19 @@
           </div>
         </header>
         <div class="report-summary">
-          <div><p class="report-metric-label">탐지 개수 차이</p><p id="report-delta" class="report-delta"></p></div>
+          <div><p class="report-metric-label">첫 기록과 마지막 기록의 차이</p><p id="report-delta" class="report-delta"></p></div>
           <div><p id="report-counts" class="report-counts"></p><p id="report-explanation"></p></div>
         </div>
         <section aria-labelledby="report-chart-title" class="report-section">
           <h2 id="report-chart-title">촬영일별 탐지 개수</h2>
           <ul id="report-bars" class="report-bars"></ul>
           <div class="report-scale" aria-hidden="true"><span>0개</span><span id="report-scale-max"></span></div>
-          <p class="report-guide"><strong>그래프 읽는 법</strong> 두 막대는 0개에서 시작하고 같은 눈금을 써요. 각 막대는 해당 사진에서 모델이 탐지한 개수를 보여줘요.</p>
+          <p class="report-guide"><strong>그래프 읽는 법</strong> 막대는 0개에서 시작하고 같은 눈금을 써요. 각 막대는 해당 사진에서 모델이 탐지한 개수를 보여줘요.</p>
         </section>
         <section aria-labelledby="report-photos-title" class="report-section">
-          <h2 id="report-photos-title">두 시점의 탐지 사진</h2>
+          <h2 id="report-photos-title">기록별 탐지 사진</h2>
           <div id="report-photos" class="report-photos"></div>
-          <p class="report-guide"><strong>사진 읽는 법</strong> 상자는 모델이 여드름으로 탐지한 위치예요. 상자 옆 백분율은 그 위치에 대한 모델의 탐지 점수예요.</p>
+          <p class="report-guide"><strong>사진 읽는 법</strong> 상자는 모델이 여드름으로 탐지한 위치예요. #이 붙은 숫자는 상자 번호이고, 그 뒤 숫자는 모델의 탐지 점수예요.</p>
         </section>
         <section aria-labelledby="report-settings-title" class="report-section report-settings">
           <h2 id="report-settings-title">분석 조건과 해석</h2>

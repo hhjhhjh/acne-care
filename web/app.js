@@ -5,10 +5,13 @@ import { configureCaptureContext, renderCaptureContext } from "./capture-context
 const $ = id => document.getElementById(id);
 let selectedFile = null, previewURL = null, busy = false, ready = false, currentRecord = null;
 let historyOffset = 0, historyTotal = 0, historyLoading = false;
-const localDay = new Date();
-const today = `${localDay.getFullYear()}-${String(localDay.getMonth()+1).padStart(2,"0")}-${String(localDay.getDate()).padStart(2,"0")}`;
-$("captured-on").value = today;
-$("captured-on").max = today;
+function setToday() {
+  const now = new Date();
+  const today = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,"0")}-${String(now.getDate()).padStart(2,"0")}`;
+  $("captured-on").value = today;
+  $("captured-on").max = today;
+}
+setToday();
 
 function notice(message) { $("notice").textContent = message || ""; $("notice").hidden = !message; }
 function showUploadError(message) {
@@ -19,7 +22,11 @@ function showUploadError(message) {
     error.scrollIntoView({ block: "nearest" });
   }
 }
-function updateButton() { $("analyze-button").disabled = !selectedFile || busy || !ready; }
+function updateButton() {
+  $("analyze-button").disabled = !selectedFile || busy || !ready;
+  $("take-photo").disabled = busy;
+  $("take-photo").textContent = selectedFile ? "다시 찍기" : "사진 찍기";
+}
 async function api(path, options) {
   let response;
   try { response = await fetch(path, options); }
@@ -46,7 +53,10 @@ function selectFile(file) {
   if (busy || !file) return;
   showUploadError("");
   if (file.size > 10 * 1024 * 1024) { rejectFile("사진은 10MB 이하로 선택해 주세요."); return; }
-  if (!/\.(jpe?g|png|webp)$/i.test(file.name)) { rejectFile("JPG, PNG, WEBP 사진을 선택해 주세요."); return; }
+  if (!/\.(jpe?g|png|webp)$/i.test(file.name) && !["image/jpeg", "image/png", "image/webp"].includes(file.type)) {
+    rejectFile("JPG, PNG, WEBP 사진을 선택해 주세요.");
+    return;
+  }
   if (previewURL) URL.revokeObjectURL(previewURL);
   selectedFile = file;
   previewURL = URL.createObjectURL(file);
@@ -59,6 +69,16 @@ function selectFile(file) {
   updateButton();
 }
 $("photo-file").addEventListener("change", event => selectFile(event.target.files[0]));
+const cameraInput = $("camera-file");
+$("take-photo").hidden = !matchMedia("(any-pointer: coarse)").matches;
+$("take-photo").addEventListener("click", () => cameraInput.click());
+cameraInput.addEventListener("change", () => {
+  const photo = cameraInput.files[0];
+  cameraInput.value = "";
+  if (busy || !photo) return;
+  selectFile(photo);
+  if (selectedFile) setToday();
+});
 $("preview").addEventListener("error", () => { if(selectedFile) rejectFile("사진 미리보기를 읽지 못했습니다. 다른 사진을 선택해 주세요."); });
 $("drop-zone").addEventListener("dragover", event => { event.preventDefault(); if (!busy) $("drop-zone").classList.add("dragover"); });
 $("drop-zone").addEventListener("dragleave", () => $("drop-zone").classList.remove("dragover"));
@@ -88,7 +108,7 @@ function showAnalysisForm(focusUpload = false) {
     $("upload-form").reset();
     $("capture-context-fields").open = false;
     clearPhoto();
-    $("captured-on").value = today;
+    setToday();
     showUploadError("");
     window.scrollTo(0, 0);
   }
@@ -111,6 +131,7 @@ function setResultImage(annotated) {
   if (!currentRecord) return;
   $("result-image").src = annotated ? currentRecord.annotated_image_url : currentRecord.original_image_url;
   $("result-image").alt = annotated ? "여드름 탐지 결과" : "분석에 사용한 원본 사진";
+  $("result-label-guide").hidden = !annotated || currentRecord.count === 0;
   $("show-annotated").classList.toggle("selected",annotated);
   $("show-original").classList.toggle("selected",!annotated);
   $("show-annotated").setAttribute("aria-pressed",String(annotated));
@@ -135,7 +156,8 @@ function renderResult(record, scroll=true) {
   $("detection-list").replaceChildren();
   record.detections.forEach((detection,index) => {
     const row=document.createElement("li"), label=document.createElement("span"), value=document.createElement("span");
-    label.textContent=`탐지 ${index+1}`;value.textContent=`${(detection.confidence*100).toFixed(1)}%`;
+    label.textContent = `#${index + 1}`;
+    value.textContent = detection.confidence.toFixed(2);
     row.append(label,value);$("detection-list").append(row);
   });
   $("model-details").replaceChildren();
@@ -200,15 +222,22 @@ async function loadHistory(reset) {
 
 async function start() {
   try {
-    configureCaptureContext(await api("/api/health"));
+    const health = await api("/api/health");
+    configureCaptureContext(health);
+    comparison.setLimit(health.comparison_limit);
+    if (health.mobile_preview) {
+      $("storage-note").textContent = "미리보기에서 분석한 사진과 결과는 서버를 종료하면 지워져요.";
+    }
     ready = true;
     $("model-status").textContent = "AI 모델 준비 완료";
   }
   catch {$("model-status").textContent="서버 연결 확인 필요";$("model-status").classList.add("error");notice("분석 서버에 연결할 수 없습니다. 서버가 실행 중인지 확인해 주세요.");}
   updateButton();
   const params=new URLSearchParams(location.search);
-  if(params.has("previous") || params.has("current")) {
-    await comparison.restore(params.get("previous"), params.get("current"), params.get("view") === "report");
+  if(params.has("record")) {
+    await comparison.restore(params.getAll("record"), params.get("view") === "report");
+  } else if(params.has("previous") || params.has("current")) {
+    await comparison.restore([params.get("previous"), params.get("current")], params.get("view") === "report");
   } else if(params.get("view") === "comparison") {
     await comparison.open();
   } else if(params.get("analysis") && ready) {

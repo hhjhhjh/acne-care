@@ -5,6 +5,7 @@ from typing import Any
 
 
 INFERENCE_SETTINGS = ("model_id", "weights_sha256", "confidence_threshold", "image_size", "nms_iou", "device")
+COMPARISON_LIMIT = 12
 
 
 def compare_analyses(previous: dict[str, Any], current: dict[str, Any]) -> dict[str, Any]:

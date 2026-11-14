@@ -11,10 +11,13 @@ from backend.tests import test_analysis_service as fixtures
 
 
 class AnalysisAPITest(unittest.TestCase):
-    def client(self, root, **options):
+    def client(self, root, *, preview_address=None, **options):
         settings = Settings(storage_dir=root / "media", database_path=root / "app.sqlite3", **options)
-        return TestClient(create_app(settings, detector=fixtures.FakeDetector(),
-                          model_info=ModelInfo("test-detector", "a" * 64, 0.3, 640, "cpu")))
+        app = create_app(settings, detector=fixtures.FakeDetector(),
+                         model_info=ModelInfo("test-detector", "a" * 64, 0.3, 640, "cpu"),
+                         preview_address=preview_address)
+        base_url = f"http://{preview_address}:8443" if preview_address else "http://testserver"
+        return TestClient(app, base_url=base_url)
 
     def test_upload_list_detail_and_images(self):
         with tempfile.TemporaryDirectory() as temp, self.client(Path(temp)) as client:
@@ -46,6 +49,20 @@ class AnalysisAPITest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp, self.client(Path(temp)) as client:
             response = client.post("/api/analyses", headers={"Origin": "https://unrelated.example"}, files={"file": ("photo.png", fixtures.image_bytes(), "image/png")}, data={"captured_on": "2026-10-01"})
             self.assertEqual(response.status_code, 403)
+
+    def test_mobile_preview_accepts_local_browser_uploads(self):
+        with tempfile.TemporaryDirectory() as temp, self.client(Path(temp), preview_address="192.168.1.10") as client:
+            self.assertEqual(client.get("/").status_code, 200)
+            self.assertEqual(client.get("/", headers={"Host": "unrelated.example"}).status_code, 400)
+            self.assertEqual(client.get("/api/analyses").json()["total"], 0)
+            photo = {"file": ("camera.png", fixtures.image_bytes(), "image/png")}
+            date = {"captured_on": "2026-10-01"}
+            self.assertEqual(client.post("/api/analyses", files=photo, data=date).status_code, 403)
+            response = client.post("/api/analyses", files=photo, data=date,
+                                   headers={"Origin": "http://192.168.1.10:8443"})
+            self.assertEqual(response.status_code, 201, response.text)
+            image = response.json()["original_image_url"]
+            self.assertEqual(client.get(image).status_code, 200)
 
     def test_capture_details_are_persisted_and_returned_with_comparison(self):
         with tempfile.TemporaryDirectory() as temp, self.client(Path(temp)) as client:
@@ -120,3 +137,22 @@ class AnalysisAPITest(unittest.TestCase):
                 response = client.get("/api/comparisons", params={"previous_id": previous["id"], "current_id": unknown})
                 self.assertEqual(response.status_code, 404)
             self.assertEqual(client.get("/api/comparisons").status_code, 422)
+
+    def test_series_orders_records_and_flags_setting_changes_between_neighbors(self):
+        import sqlite3
+
+        with tempfile.TemporaryDirectory() as temp, self.client(Path(temp)) as client:
+            first = self.upload(client, "2026-10-01")
+            second = self.upload(client, "2026-10-01")
+            third = self.upload(client, "2026-10-06")
+            with sqlite3.connect(Path(temp) / "app.sqlite3") as database:
+                database.execute("UPDATE analyses SET confidence_threshold = 0.4 WHERE id = ?", (third["id"],))
+            ids = [third["id"], first["id"], second["id"]]
+            response = client.get("/api/comparisons/series", params={"record_id": ids})
+            self.assertEqual(response.status_code, 200, response.text)
+            result = response.json()
+            self.assertEqual([record["id"] for record in result["records"]], [first["id"], second["id"], third["id"]])
+            self.assertEqual([step["analysis_settings_match"] for step in result["steps"]], [True, False])
+            self.assertEqual([step["days_between"] for step in result["steps"]], [0, 5])
+            self.assertEqual(client.get("/api/comparisons/series", params={"record_id": [ids[0], ids[0]]}).status_code, 422)
+            self.assertEqual(client.get("/api/comparisons/series", params={"record_id": [ids[0], "missing"]}).status_code, 404)
